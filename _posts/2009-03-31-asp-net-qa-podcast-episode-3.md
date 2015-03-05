@@ -1,0 +1,9 @@
+---
+layout: post
+title: ASP.NET QA Podcast – Episode 3
+date: 2009-03-31 23:08
+author: osbornm
+comments: true
+categories: []
+---
+<p><font size="2"><strong>Download :</strong> </font><font size="2"><a href="http://cid-b387831f07f582b4.skydrive.live.com/self.aspx/ASP.NET%20QA%20Podcast/AspNetQAPodcast3%7C_Small.mp3">Episode 3</a></font></p>  <p>In the third installment of the ASP.NET QA Podcast Federico and Matthew interview Mark Berryman, a test lead on the ASP.NET QA Team.  Join them as they learn the ins and outs of test management through Mark’s eyes. </p>  <ul>   <li>Release of the Mobile Browser Database by Live Dublin. </li>    <li>April refresh of the Lightweight Test Automation Framework. </li>    <li>Interview with Mark Berryman.      <ul>       <li>What is the difference between Test Manager and Test Lead. </li>        <li>A little history of Mark and how he came to join the ASP.NET QA team. </li>        <li>Responsibilities of a Test Lead / What Mark is working on. </li>        <li>What Mark looks for in a tester on his team. </li>        <li>Challenges Mark faced when he was an IC (individual Contributor). </li>        <li>What Mark would change on items he has tested in the past. </li>        <li>How Mark Manages risk on his team. </li>        <li>Who is Marks favorite person in the whole world. </li>     </ul>   </li> </ul>  <p><strong>Links from the show :</strong></p>  <ul>   <li><a href="http://mdbf.codeplex.com/">Mobile Browser Database</a> </li>    <li><a href="mailto:farmas@microsoft.com">Federico’s Email</a> </li>    <li><a href="mailto:mosborn@microsoft.com">Matthew’ Email</a> </li>    <li><a href="http://weblogs.asp.net/asptest">ASP.NET QA Team Blog</a> </li> </ul>

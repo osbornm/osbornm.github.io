@@ -1,0 +1,11 @@
+# Site settings
+title: Blog
+email: matthew@osbornm.com
+description: "Matthew Osborn's Blog"
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://blog.osbornm.com" # the base hostname & protocol for your site
+twitter_username: osbornm
+github_username:  osbornm
+
+# Build settings
+markdown: kramdown

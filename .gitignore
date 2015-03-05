@@ -6,7 +6,10 @@
 
 # Ignore cache
 /.cache
+/.sass-cache
 
 # Ignore .DS_store file
 .DS_Store
 
+# site
+/_site

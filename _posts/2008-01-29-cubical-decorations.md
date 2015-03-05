@@ -1,0 +1,9 @@
+---
+layout: post
+title: Cubical Decorations
+date: 2008-01-29 01:50
+author: osbornm
+comments: true
+categories: []
+---
+<p><a href="http://blog.osbornm.com/images/blog_osbornm_com/WindowsLiveWriter/CubicalDecorations_FB69/posters_2.jpg"><img style="border-right: 0px; border-top: 0px; margin: 0px 15px 0px 0px; border-left: 0px; border-bottom: 0px" height="189" alt="posters" src="http://blog.osbornm.com/images/blog_osbornm_com/WindowsLiveWriter/CubicalDecorations_FB69/posters_thumb.jpg" width="244" align="left" border="0" /></a> I know I said I was going to be posting once a week and I have already broken that string because I haven't posted in 2 weeks. For what its worth we just had a release at work so I haven't had much free time. Sorry. I have a few posts the I'm currently working on so keep an eye open for those.  They include a rather length introduction to DIV's (inspired by my boss asking me to teach him the ways of the div) and a pretty cool CSS menu trick that I just picked up.</p>  <p>Until then, I ran across some pretty handy posters the other day while reading some RSS feeds.  There is a new poster for the .NET Framework 3.5, as well as a poster to the default shortcut keys in Visual Studio 2008.  So get to decorating your cubicles in true geek fashion.</p>  <div class="wlWriterSmartContent" id="scid:fb3a1972-4489-4e52-abe7-25a00bb07fdf:df663262-b835-47e2-8fae-e717fbcf9361" style="padding-right: 0px; display: inline; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px"><p>.NET Framework 3.5 <a href="http://blog.osbornm.com/images/blog_osbornm_com/WindowsLiveWriter/CubicalDecorations_FB69/Visual%20C_Sharp%202008%20Poster.pdf" target="_blank">Poster</a><br />Visual Studio 2008 Shortcut Keys <a href="http://blog.osbornm.com/images/blog_osbornm_com/WindowsLiveWriter/CubicalDecorations_FB69/NET_35_Namespaces_Poster_JAN08.pdf" target="_blank">Poster</a></p></div>
