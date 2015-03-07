@@ -6,8 +6,10 @@ author: osbornm
 comments: true
 categories: []
 ---
-<p><img style="BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px; DISPLAY: inline; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px" title="Just a random image ;)" border="0" alt="Just a random image ;)" align="right" width="268" height="218" src="http://blog.osbornm.com/Images/IntroductiontoWebImage_10128/plan9.jpg" /> One common operation that pretty much every website in the world does is either accepting, creating, editing, or displaying images. This could be something as simple as a user’s profile picture or as complex a full blown image gallery. Either way if you have every had implement these functionalities in a website you know that they are not the easiest thing to create. Well, here is where the <em>WebPages </em>team comes in to save the day! We have wrapped what we think are some of the most common image manipulation operations into a brand new fancy <em>WebImage</em> helper. </p>
-<p>Okay so what can the <em>WebImage</em> helper do for you, well a few things:  </p>
+One common operation that pretty much every website in the world does is either accepting, creating, editing, or displaying images. This could be something as simple as a user’s profile picture or as complex a full blown image gallery. Either way if you have every had implement these functionalities in a website you know that they are not the easiest thing to create. Well, here is where the <em>WebPages </em>team comes in to save the day! We have wrapped what we think are some of the most common image manipulation operations into a brand new fancy <em>WebImage</em> helper. </p>
+
+Okay so what can the <em>WebImage</em> helper do for you, well a few things:
+
 <ul>
     <li>Get an image from the request </li>
     <li>Resize </li>
@@ -18,8 +20,11 @@ categories: []
     <li>Save and convert formats </li>
     <li>Some other more boring stuff like get the array of bytes, blah blah blah. </li>
 </ul>
-<p>Okay so now that I got you all excited about the <em>WebImage</em> helper (it’s okay if you’re not I will forgive you) let jump into some code. </p>
-<p>So one of the more common things to do is to allow a user to upload an image and then save it off somewhere, either to a database or the file system. So I am going to stop here and say that for the rest of the article I will assume you have a basic understand of HTML and that I don’t need to show you how to create a file upload input on your page. </p>
+
+Okay so now that I got you all excited about the <em>WebImage</em> helper (it’s okay if you’re not I will forgive you) let jump into some code.
+
+So one of the more common things to do is to allow a user to upload an image and then save it off somewhere, either to a database or the file system. So I am going to stop here and say that for the rest of the article I will assume you have a basic understand of HTML and that I don’t need to show you how to create a file upload input on your page.
+
 <div style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:0225dd65-4257-49b8-83bc-131c29bcff6c" class="wlWriterEditableSmartContent">
 <div style="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
 <div style="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
@@ -36,9 +41,11 @@ categories: []
 </div>
 </div>
 </div>
-<p> </p>
-<p>In the code sample above you can see two different ways to grab the uploaded file from the request (the input has a name of ‘<em>FileUploadNameHere’</em>) and save it off, either to a database or to the file system. The first example shows how to save it up to a database. Most of the time the API for saving to a database just take a Byte[] of the image, for instance see the <em>Simple Data</em> demo. The second one that save the image off to the file system is the much more interesting sample. For right now ignore the man behind the current (line number seven) in the sample that just ensures a unique file name. The team to trying to see what we can do to make this a better story but no promises. So if you’ll notice there is a native API that we are called, called <em>Save. </em>This method takes in a path, which can be a relative path like it is in the sample or a a full path (you would <em>PhysicalApplicationPath</em> to create such a path), and saves a copy of the image to the file system. </p>
-<p>Okay so let’s do something a little more interesting, let’s talk about what you how you would take that image that you just saved off and then create a thumbnail version of it.</p>
+
+In the code sample above you can see two different ways to grab the uploaded file from the request (the input has a name of ‘<em>FileUploadNameHere’</em>) and save it off, either to a database or to the file system. The first example shows how to save it up to a database. Most of the time the API for saving to a database just take a Byte[] of the image, for instance see the <em>Simple Data</em> demo. The second one that save the image off to the file system is the much more interesting sample. For right now ignore the man behind the current (line number seven) in the sample that just ensures a unique file name. The team to trying to see what we can do to make this a better story but no promises. So if you’ll notice there is a native API that we are called, called <em>Save. </em>This method takes in a path, which can be a relative path like it is in the sample or a a full path (you would <em>PhysicalApplicationPath</em> to create such a path), and saves a copy of the image to the file system.
+
+Okay so let’s do something a little more interesting, let’s talk about what you how you would take that image that you just saved off and then create a thumbnail version of it.
+
 <div style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:f0c6009f-966a-4564-a624-9ed0e1b8a696" class="wlWriterEditableSmartContent">
 <div style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:a1424bc2-34f6-441f-a194-62f222ee8097" class="wlWriterEditableSmartContent">
 <div style="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
@@ -50,9 +57,12 @@ categories: []
 </div>
 </div>
 </div>
-<p> </p>
-<p>In this example there are two APIs that I would like to take the time to point out. The first is the call to the <em>Clone</em> method, this effectively create a copy of the image in memory. The reason for this is that we want to still have the original image preserved, assuming we are also going to save it of. The second is the call to the <em>Resize</em> method, it takes a height and a width and has a two optional parameters. In this example I am using the <em>preserveAspectRatio</em> parameter, which will choose a height and a width that matches as closely to the values you passed in while still keeping the aspect ratio.</p>
-<p>This would be a good time to stop and point out that all the <em>WebImage</em> APIs are designed to return a <em>WebImage</em> so you get a fluent design when using them. In the example above you can see how I was able to chain multiple API calls together into one line, which in my humble opinion looks much cleaner. Now that you have a basic understanding of how the <em>WebImage</em> API works, and can explore the remaining APIs, I’d like to leave you with a sample how you can write a page that takes an users uploaded photo adds whatever text they provided as a watermark and then allows them to download the image.</p>
+
+
+In this example there are two APIs that I would like to take the time to point out. The first is the call to the <em>Clone</em> method, this effectively create a copy of the image in memory. The reason for this is that we want to still have the original image preserved, assuming we are also going to save it of. The second is the call to the <em>Resize</em> method, it takes a height and a width and has a two optional parameters. In this example I am using the <em>preserveAspectRatio</em> parameter, which will choose a height and a width that matches as closely to the values you passed in while still keeping the aspect ratio.
+
+This would be a good time to stop and point out that all the <em>WebImage</em> APIs are designed to return a <em>WebImage</em> so you get a fluent design when using them. In the example above you can see how I was able to chain multiple API calls together into one line, which in my humble opinion looks much cleaner. Now that you have a basic understanding of how the <em>WebImage</em> API works, and can explore the remaining APIs, I’d like to leave you with a sample how you can write a page that takes an users uploaded photo adds whatever text they provided as a watermark and then allows them to download the image.
+
 <div style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:12452135-c5b1-4726-84c2-6ac2a60515a1" class="wlWriterEditableSmartContent">
 <div style="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
 <div style="BACKGROUND: #ddd; OVERFLOW: auto">
@@ -122,12 +132,7 @@ categories: []
 </div>
 </div>
 </div>
-<div style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:fb069d2e-09e8-4304-a5ed-5ab5ada99931" class="wlWriterEditableSmartContent">
-<p> </p>
-<p><img style="BORDER-RIGHT-WIDTH: 0px; DISPLAY: inline; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px" title="WebImage Demo" border="0" alt="WebImage Demo" width="500" height="416" src="http://blog.osbornm.com/Images/IntroductiontoWebImage_10128/WebImageDemo.png" /> </p>
-<p>Okay so now that you have a basic understanding of how <em>WebImages</em> work I’d like to encourage you to explore the remaining APIs and see what awesome ideas you can come up with. As always please let us know if you have any feedback. </p>
-<p> </p>
-<p><strong>Demo Source: </strong><a title="Download the sample code" rel="nofollow" href="http://samples.osbornm.com/webimagedemo.zip">WebImageDemo.Zip</a></p>
+
 <h3>Q&amp;A:</h3>
 <p><strong>Question:</strong> Where can I find the dll that has WebImage?<br />
 <strong>Answer:</strong> WebImage is part of the WebMatrix stack, specifically ASP.NET WebPages. WebImage is in the Microsoft.WebPages.Helpers assembly that is GAC'd and also drop in program files when you install the stack.</p>

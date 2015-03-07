@@ -6,8 +6,9 @@ author: osbornm
 comments: true
 categories: []
 ---
-<p><font size="2"><strong>Download :</strong> </font><font size="2"><a href="http://cid-b387831f07f582b4.skydrive.live.com/self.aspx/ASP.NET%20QA%20Podcast/AspNetQAPodcast4.mp3">Episode 4</a></font></p>
-<p>In the fourth installment of the ASP.NET QA Podcast Federico and Matthew discuss “<strong>The Good</strong>,” “<strong>The Bad</strong>,” and “<strong>The Ugly</strong>” of the history of the ASP.NET QA Team. Discussion ranges from the dark ages, to the renaissance, to the industrial revolution, to the “21st and half century”.  Join them as they discuss the lessons learned and how the team has improved over time. </p>
+
+In the fourth installment of the ASP.NET QA Podcast Federico and Matthew discuss “<strong>The Good</strong>,” “<strong>The Bad</strong>,” and “<strong>The Ugly</strong>” of the history of the ASP.NET QA Team. Discussion ranges from the dark ages, to the renaissance, to the industrial revolution, to the “21st and half century”.  Join them as they discuss the lessons learned and how the team has improved over time.
+
 <ul>
     <li>The team released the April update to the Lightweight Test Automation Framework. </li>
     <li>“<strong>The Dark Ages</strong>” ASP.NET 1.0/2.0
@@ -44,7 +45,9 @@ categories: []
     </ul>
     </li>
 </ul>
-<p><strong>Links from the show :</strong></p>
+
+Links from the show :
+
 <ul>
     <li><a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=25887">Lightweight Test Automation Framework April Release</a> </li>
     <li><a mce_href="mailto:farmas@microsoft.com" href="mailto:farmas@microsoft.com">Federico’s Email</a> </li>

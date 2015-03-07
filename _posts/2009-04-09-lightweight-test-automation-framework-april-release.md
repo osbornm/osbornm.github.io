@@ -6,8 +6,10 @@ author: osbornm
 comments: true
 categories: []
 ---
-<p>The April release of the Lightweight Test Automation Framework for ASP.NET has just been posted and you can download it <a title="April Update" href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=25887">here</a>. For this release, the team has worked hard to include the following bug fixes and new features. Please continue to give us your feedback as many of the fixes and features are based what we have heard from the community.</p>
-<h3>Improvements to the user interface</h3>
+The April release of the Lightweight Test Automation Framework for ASP.NET has just been posted and you can download it <a title="April Update" href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=25887">here</a>. For this release, the team has worked hard to include the following bug fixes and new features. Please continue to give us your feedback as many of the fixes and features are based what we have heard from the community.
+
+###Improvements to the user interface
+
 <ul>
     <li>
     <div align="left">A new look has been given to the test name when it passes or fails.  There is both color and visual queues that indicate weather a test has passed or failed.  Failed test names also appear slightly larger to help them stand out. </div>
@@ -16,25 +18,31 @@ categories: []
     <div align="left">There is now a “Run Failed Tests” button. This button will open a new browser window that will select and run only the failed tests, for easy verification of fixes. </div>
     </li>
 </ul>
-<img style="BORDER-RIGHT-WIDTH: 0px; DISPLAY: inline; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; MARGIN-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; MARGIN-RIGHT: 0px" title="NewUI2" border="0" alt="NewUI2" align="left" width="504" height="363" src="http://blog.osbornm.com/images/886b4c04d3f6_86CC/NewUI2.png" /> <br style="CLEAR: both" />
-<p> </p>
-<h3>The ability to automate popup windows</h3>
-<p>In previous versions of the framework there was no way to verify the contents of a popup window.  With this release we have far better support for opening and verifying the contents of popup windows.</p>
+
+
+###The ability to automate popup windows
+
+In previous versions of the framework there was no way to verify the contents of a popup window.  With this release we have far better support for opening and verifying the contents of popup windows.
+
 <pre class="code"><span style="COLOR: #2b91af">HtmlPage </span>page = <span style="COLOR: blue">new </span><span style="COLOR: #2b91af">HtmlPage</span>(<span style="COLOR: #a31515">"MyPage.aspx"</span>);
 page.Elements.Find(<span style="COLOR: #a31515">"OpenPopup"</span>).Click();
 <span style="COLOR: green">// get popup window
 </span><span style="COLOR: #2b91af">HtmlPage </span>popup = page.GetPopupWindow(1);
 <span style="COLOR: green">// verify title of popup
 </span><span style="COLOR: #2b91af">Assert</span>.AreEqual(<span style="COLOR: #a31515">"This is the Popup Page"</span>, popup.Elements.Find(<span style="COLOR: #a31515">"h1"</span>, 0).GetInnerText());</pre>
-<a href="http://11011.net/software/vspaste"></a>
-<p>The GetPopupWindow method returns a HtmlPage object that is representative of the window at that index.  This is pulled from the collection that is maintained by the framework with index zero being the main, or starting, window. In this example index zero is MyPage.aspx, while index one is the popup window.  </p>
-<h3>The ability to find elements by partial attribute values</h3>
-<p>In previous versions of the framework when finding elements on a page you could only use the ID attribute to match against.  So if you wanted to match all the elements that had a CSS class applied to them, as is common in jQuery, you had to supply that whole value for the class attribute.  So, in previous versions of the framework if you wanted to find elements that had a CSS class applied to them you had to specify the whole value for the class attribute.  Meaning that if the element has more than only class and you search based on only one class that element would not be returned.  Now you have the ability to match based on any part of the value for the attribute. Below is an example of how to find elements that have the CSS Class “blue” applied to them.</p>
+
+The GetPopupWindow method returns a HtmlPage object that is representative of the window at that index.  This is pulled from the collection that is maintained by the framework with index zero being the main, or starting, window. In this example index zero is MyPage.aspx, while index one is the popup window.
+
+###The ability to find elements by partial attribute values
+
+In previous versions of the framework when finding elements on a page you could only use the ID attribute to match against.  So if you wanted to match all the elements that had a CSS class applied to them, as is common in jQuery, you had to supply that whole value for the class attribute.  So, in previous versions of the framework if you wanted to find elements that had a CSS class applied to them you had to specify the whole value for the class attribute.  Meaning that if the element has more than only class and you search based on only one class that element would not be returned.  Now you have the ability to match based on any part of the value for the attribute. Below is an example of how to find elements that have the CSS Class “blue” applied to them.
+
 <pre class="code"><span style="COLOR: #2b91af">HtmlElementFindParams </span>find = <span style="COLOR: blue">new </span><span style="COLOR: #2b91af">HtmlElementFindParams</span>();
 find.Attributes.Add(<span style="COLOR: #a31515">"class"</span>, <span style="COLOR: #a31515">"blue"</span>, <span style="COLOR: #2b91af">MatchMethod</span>.Contains);
 <span style="COLOR: #2b91af">ReadOnlyCollection</span>&lt;<span style="COLOR: #2b91af">HtmlElement</span>&gt; elements = page.Elements.FindAll(find);</pre>
-<a href="http://11011.net/software/vspaste"></a>
-<h3>Assembly name change</h3>
+
+###Assembly name change
+
 <ul>
     <li>The assembly name has been changed from “<em>Microsoft.Web.Testing.Light</em>” to “<em>Microsoft.Web.Testing.Lightweight.</em>” The namespaces have not changed. </li>
 </ul>

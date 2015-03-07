@@ -12,39 +12,40 @@ Okay so what is the big deal with the Browser Providers? In previous versions yo
 
 Okay so now you understand the problem you can understand how Browser Providers fix the problem. They are a special type that is registered in application wide that has methods that are executed on each request and allow you to add, remove, or modify capabilities in the browser capabilities collection. The easiest way to do this is to inherit from our default provider and override the methods.
 
-&nbsp;
+
 <div class="wlWriterSmartContent" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:ccbed909-1836-4504-8ede-47743a1e5dac" style="margin: 0px; display: inline; float: none; padding: 0px;">
 <div style="font-family: 'Courier New', courier, monospace; color: #000; font-size: 10pt; border: #000080 1px solid;">
 <div style="background: #ddd; overflow: auto;">
 <ol style="padding-bottom: 0px; margin: 0px 0px 0px 2em; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px;">
-	<li>public class CustomProvider: HttpCapabilitiesDefaultProvider</li>
-	<li style="background: #f3f3f3;">{</li>
-	<li>    public override HttpBrowserCapabilities GetBrowserCapabilities(HttpRequest request)</li>
-	<li style="background: #f3f3f3;">    {</li>
-	<li>        HttpBrowserCapabilities caps = base.GetBrowserCapabilities(request);</li>
-	<li style="background: #f3f3f3;">        caps.Capabilities["Used www"] = request.RawUrl.Contains("www.");</li>
-	<li>        return caps;</li>
-	<li style="background: #f3f3f3;">    }</li>
-	<li>}</li>
+    <li>public class CustomProvider: HttpCapabilitiesDefaultProvider</li>
+    <li style="background: #f3f3f3;">{</li>
+    <li>    public override HttpBrowserCapabilities GetBrowserCapabilities(HttpRequest request)</li>
+    <li style="background: #f3f3f3;">    {</li>
+    <li>        HttpBrowserCapabilities caps = base.GetBrowserCapabilities(request);</li>
+    <li style="background: #f3f3f3;">        caps.Capabilities["Used www"] = request.RawUrl.Contains("www.");</li>
+    <li>        return caps;</li>
+    <li style="background: #f3f3f3;">    }</li>
+    <li>}</li>
 </ol>
 </div>
 </div>
 </div>
-&nbsp;
+
 
 In this example I am just looking at the url that was used to make the request and seeing if the device/user put “www.” in front of the request. Not really useful but it is a demo. Also, remember that this is executed for each request so the code that goes in here should be <strong><em>Very</em></strong> speedy. You do not want to hold up the request while the provider goes and talked to a database. Now that you have your provider you need to register it with the application. You can do this is the <em>browserCaps </em>in the web.config or you can register in the Global.asax, like so.
+
 <div class="wlWriterSmartContent" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:b493ce14-7ee8-44f5-9ab3-dd823fb77f05" style="margin: 0px; display: inline; float: none; padding: 0px;">
 <div style="font-family: 'Courier New', courier, monospace; color: #000; font-size: 10pt; border: #000080 1px solid;">
 <div style="background: #ddd; overflow: auto;">
 <ol style="padding-bottom: 0px; margin: 0px 0px 0px 2em; padding-left: 5px; padding-right: 0px; background: #ffffff; padding-top: 0px;">
-	<li>void Application_Start(object sender, EventArgs e)</li>
-	<li style="background: #f3f3f3;">{</li>
-	<li>    HttpCapabilitiesBase.BrowserCapabilitiesProvider = new CustomProvider();</li>
-	<li style="background: #f3f3f3;">}</li>
+    <li>void Application_Start(object sender, EventArgs e)</li>
+    <li style="background: #f3f3f3;">{</li>
+    <li>    HttpCapabilitiesBase.BrowserCapabilitiesProvider = new CustomProvider();</li>
+    <li style="background: #f3f3f3;">}</li>
 </ol>
 </div>
 </div>
 </div>
-&nbsp;
+
 
 Now your provider will run on each request, it’s pretty simple I know. The main thing to remember is that because it run on each request it should be lightweight code that executes and honestly this should be one of those time where creating a browser provider is the last resort, in my opinion at least.
