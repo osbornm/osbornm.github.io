@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Code Tips & Tricks 1: GhostDoc & NDoc
+title: Code Tips & Tricks 1 - GhostDoc & NDoc
 date: 2008-01-03 22:01
 author: osbornm
 comments: true

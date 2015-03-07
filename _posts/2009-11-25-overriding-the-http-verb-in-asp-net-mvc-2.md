@@ -26,7 +26,7 @@ When you override the verb using the header method you need to add a http header
 
 Now if you look at the request you can see that there is an additional header added with the new value and ASP.NET MVC will treat that request as that verb type.
 
-![Quick Watch]({{ site.url }}/assets/HttpHeader.png)
+![Quick Watch](/assets/HttpHeader.png)
 
 ####Hidden Input
 

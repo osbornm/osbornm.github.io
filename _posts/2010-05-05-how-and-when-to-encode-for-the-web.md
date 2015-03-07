@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Update: How and When to Encode for the Web
+title: Update - How and When to Encode for the Web
 date: 2010-05-05 23:17
 author: osbornm
 comments: true

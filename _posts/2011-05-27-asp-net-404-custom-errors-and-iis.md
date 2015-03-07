@@ -39,7 +39,7 @@ By default IIS will see an response with an error status code (400-500) and will
 
 There are two ways to solve this problem. First is the easiest which is to open up IIS Manger and go to the “Error Pages” settings under IIS and change the 404 page there to use your custom 404 page.
 
-![IIS]({{ site.url }}/assets/IIS_thumb.png)
+![IIS](/assets/IIS_thumb.png)
 
 This is fine if you can remote into the server or you’re not running in the cloud where multiple instances can be started. So how then do you make that work? Well lucky for us starting with IIS7 and later these settings can be added to your web.config file under the <em>System.WebServer</em> node.
 

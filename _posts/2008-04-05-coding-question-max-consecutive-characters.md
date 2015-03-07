@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Coding Question: Max Consecutive Characters
+title: Coding Question - Max Consecutive Characters
 date: 2008-04-05 18:32
 author: osbornm
 comments: true

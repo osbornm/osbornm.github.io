@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Big Blue Monster | My move to Redmond, WA
+title: The Big Blue Monster - My move to Redmond, WA
 date: 2008-05-05 23:16
 author: osbornm
 comments: true

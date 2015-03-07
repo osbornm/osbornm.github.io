@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mojave: The Next Microsoft OS
+title: Mojave - The Next Microsoft OS
 date: 2008-07-29 19:42
 author: osbornm
 comments: true

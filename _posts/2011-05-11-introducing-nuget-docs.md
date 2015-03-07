@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introducing NuGet Docs: Community Driven Documentation
+title: Introducing NuGet Docs - Community Driven Documentation
 date: 2011-05-11 23:18
 author: osbornm
 comments: true

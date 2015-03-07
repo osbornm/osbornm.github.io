@@ -6,7 +6,7 @@ author: osbornm
 comments: true
 categories: []
 ---
-![TekPub + CodingQA]({{ site.url }}/assets/TekPubCodingQA.png)
+![TekPub + CodingQA](/assets/TekPubCodingQA.png)
 
 Today is an exciting day for the <a title="Coding QA Podcast" href="http://www.codingqa.com" target="_blank" rel="">Coding QA</a> Podcast! I am proud to announce that <a title="Coding QA Podcast" href="http://www.codingqa.com" target="_blank" rel="">Coding QA</a> has teamed up with <a href="http://www.tekpub.com">TekPub</a> to give-a-way some licenses for TekPub to our listeners. This has been in the works for some time now and we wanted to find some creative a way to give these licenses away. To us the standard send us an email and we will draw a name out of a hat just did not seem to cut it. I know you’re sitting on the edge of your seat and asking “How then do I get these?” Well given that we are a podcast all about testing we figured what better way than to make you test something. Given that both Federico and I have been working on the newly released WebMatrix we figured that this would be the perfect thing to give our listeners to test. I’d like to take a second and make sure that I make this very clear so listen up. This is NOT in any way, shape, or form connected with Microsoft Corp.
 
