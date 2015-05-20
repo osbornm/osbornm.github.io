@@ -15,9 +15,9 @@ categories: [maker ]
 Recently we aquired a [printrbot metal plus](http://www.printrbot.com) 3D printer at the CenturyLink Cloud office (we have a small group of makers here). I wanted to add a heated bed but this upgrade requires more current than the default laptop style power supply that was supplied. This problem is solved by using a normal ATX power supply, in fact the heated bed upgrade I purchased came with and adapter that allows you to use the PCI Express plug on the ATX power supply. I wanted to have a cleaner, simpler, solution than having a plain old ATX power supply with a bunch of wires hanging out. Here were my goals/requirements for this project.
 
 #### Requirements
-* Runs quietly, the power supply I bought was extremely loud running at full speed all the time. The printer sets in our team room so this was important.
+* Runs quietly, the power supply I bought was extremely loud running at full speed all the time. The printer sits in our team room so this was important.
 * A 5v power source to power a RaspberryPI, we use it on conjunction with [Octoprint](http://octoprint.org/) for remote access and control
-* Looks, it needs to look good, as I said before it sets in our team room and office tours regularly come look at it.
+* Looks, it needs to look good, as I said before it sits in our team room and office tours regularly come look at it.
 
 #### Parts
 * ATX power supply with PCIe Plug
