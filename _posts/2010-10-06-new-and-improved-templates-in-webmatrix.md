@@ -2,9 +2,9 @@
 layout: post
 title: New and Improved Templates in WebMatrix
 date: 2010-10-06 18:22
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 With the latest release of WebMatrix and ASP.NET WebPages I am proud to announce that we have been working to clean up the HTML, CSS, JavaScript, and general file and folder structures of the templates that we ship with the product. One of the major objectives was to provide general guidance on how a developer might actually set up a production website. This means we wanted to get ride of the “this is just a sample” mentality and really write some good code. That being said we also wanted to be able to slowly move users into more complex concepts. For instance one common optimization is to use CSS Sprites on websites. The problem is that this can be confusing when you are just starting to learn HTML and CSS. So we tried to come up with a good balance of production code and easy to understand code. When we were working on the templates we came up with the concept of a level system where Starter Site was entry level and you worked your way up through Fourth Coffee and Link Directory (in this release we didn't have time to get to Link Directory) to Photo Gallery and Wish List (Also didn’t have time to get to this one in this release).
 

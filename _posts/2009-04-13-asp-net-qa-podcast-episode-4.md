@@ -2,9 +2,9 @@
 layout: post
 title: ASP.NET QA Podcast – Episode 4
 date: 2009-04-13 21:56
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+update: This podcast is no longer maintained <a href="/contact">contact me</a> for information about old episodes.
 ---
 
 In the fourth installment of the ASP.NET QA Podcast Federico and Matthew discuss “<strong>The Good</strong>,” “<strong>The Bad</strong>,” and “<strong>The Ugly</strong>” of the history of the ASP.NET QA Team. Discussion ranges from the dark ages, to the renaissance, to the industrial revolution, to the “21st and half century”.  Join them as they discuss the lessons learned and how the team has improved over time.

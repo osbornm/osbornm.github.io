@@ -2,9 +2,9 @@
 layout: post
 title: ASP.NET QA Podcast – Episode 1
 date: 2009-03-12 04:53
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+update: This podcast is no longer maintained <a href="/contact">contact me</a> for information about old episodes.
 ---
 <p>In the first ever ASP.NET QA Podcast Federico and Matthew discuss the motivation behind the community involvement from the QA team and the release of the QA team’s Lightweight Test Automation Framework for ASP.NET and what it is.</p>
 <ul>

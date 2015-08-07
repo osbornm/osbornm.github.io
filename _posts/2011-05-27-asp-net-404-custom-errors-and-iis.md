@@ -2,11 +2,12 @@
 layout: post
 title: ASP.NET 404 Custom Errors & IIS
 date: 2011-05-27 18:12
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
-Recently I have been spending a fair amount of time working on the <a href="http://docs.nuget.org/">NuGet Documentation site</a> (read more about it <a href="http://blog.osbornm.com/archive/2011/05/11/introducing-nuget-docs.aspx">here</a>). One of the improvements I wanted to make to it was to add useful error pages. You know more than the YSOD (yellow screen of death). One of the major issues for me was creating a useful and informative 404 page. I wanted the page to tell the user why they got there, offer suggestions about what page they may be looking for, and allow them to search the site. So I did the development work committed the changes and had the CI machine push to the server (in the case app harbor).
+
+Recently I have been spending a fair amount of time working on the <a href="http://docs.nuget.org/">NuGet Documentation site</a>. One of the improvements I wanted to make to it was to add useful error pages. You know more than the YSOD (yellow screen of death). One of the major issues for me was creating a useful and informative 404 page. I wanted the page to tell the user why they got there, offer suggestions about what page they may be looking for, and allow them to search the site. So I did the development work committed the changes and had the CI machine push to the server (in the case app harbor).
 
 <div class="wlWriterEditableSmartContent" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:fe25d6ec-ceef-4967-9092-df597ae1e310" style="margin: 0px; display: inline; float: none; padding: 0px;">
 <div style="border: #000080 1px solid; color: #000; font-family: 'Courier New', Courier, Monospace; font-size: 10pt;">
@@ -39,7 +40,7 @@ By default IIS will see an response with an error status code (400-500) and will
 
 There are two ways to solve this problem. First is the easiest which is to open up IIS Manger and go to the “Error Pages” settings under IIS and change the 404 page there to use your custom 404 page.
 
-![IIS](/assets/IIS_thumb.png)
+![IIS](/img/posts/IIS_thumb.png)
 
 This is fine if you can remote into the server or you’re not running in the cloud where multiple instances can be started. So how then do you make that work? Well lucky for us starting with IIS7 and later these settings can be added to your web.config file under the <em>System.WebServer</em> node.
 

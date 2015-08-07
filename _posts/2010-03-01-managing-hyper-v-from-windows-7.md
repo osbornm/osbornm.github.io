@@ -2,9 +2,9 @@
 layout: post
 title: Managing Hyper-V from Windows 7
 date: 2010-03-01 18:00
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+
 ---
 Recently everyone on my team has switched to using Hyper-V as our primary means of virtualization. The combination of Hyper-V and differencing disks works great for our team as we install all kinds of bit that more than likely will explode our computers. We are testers after all. There was one thing that really took me awhile to figure out and quite frankly most people on my team don’t know you can do (hence the blog post), mange my Hyper-V install from another machine in this case a windows 7 machine.
 

@@ -2,9 +2,9 @@
 layout: post
 title: The Lightweight Test Automation Framework for ASP.NET
 date: 2008-09-26 04:41
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 Yesterday, the Microsoft ASP.NET QA team released a sample to Codeplex that exposed the world to the Lightweight Test Automation Framework.  The Lightweight Test Automation Framework is the framework that the ASP.NET team uses to test all of our Features.  Before I get a million questions about this let me say that there is nothing amazing or revolutionary in this sample.  It was released simply to introduce the world to how Microsoft goes about testing it’s cycle and how we do things.  You might like it you might not, but never-the-less its there to be downloaded and played with.  Within the next couple of days I will be posting a more in-depth series of screen casts about how to use NexusLight. Please, let us know if there is anything you’d like to learn more about and we’ll see what we can do for you.
 

@@ -2,9 +2,9 @@
 layout: post
 title: Overriding the HTTP Verb in ASP.NET MVC 2
 date: 2009-11-25 07:09
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 ###The Problem
 
@@ -25,8 +25,6 @@ When you override the verb using the header method you need to add a http header
 <span style="font-size: xx-small;"><span style="background: #ffee62;">&lt;%</span> <span style="color: blue;">using</span>(Ajax.BeginForm(<span style="color: blue;">new </span><span style="color: #2b91af;">AjaxOptions</span>(){HttpMethod=<span style="color: #a31515;">"Delete"</span>})){ </span><span style="font-size: xx-small;"><span style="background: #ffee62;">%&gt; </span><span style="color: blue;">&lt;</span><span style="color: #a31515;">input </span><span style="color: red;">type</span><span style="color: blue;">="submit" </span><span style="color: red;">value</span></span><span style="font-size: xx-small;"><span style="color: blue;">="Delete Using Http Header" /&gt; </span><span style="background: #ffee62;">&lt;%</span> } <span style="background: #ffee62;">%&gt;</span></span>
 
 Now if you look at the request you can see that there is an additional header added with the new value and ASP.NET MVC will treat that request as that verb type.
-
-![Quick Watch](/assets/HttpHeader.png)
 
 ####Hidden Input
 

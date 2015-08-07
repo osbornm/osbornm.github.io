@@ -2,9 +2,9 @@
 layout: post
 title: SEO Improvements in ASP.NET 4
 date: 2010-03-10 00:39
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 In ASP.NET 4 there are a few improvements that have been made to make it easier to make tweaks to improve Search Engine Optimization (SEO) on your pages. I’ll be the first to say it and definitely not the last but these improvements are not ground breaking or “sexy” but it does make your life a little easier. There are three main improvements that have been made. First is that <em>webforms</em> now has a better story for routing your pages to friendly URLs, however I am going to skip that one for now because that is a whole post itself. The other two are simply just properties that hang of the base page class that allow you to specify <a href="http://www.w3.org/TR/html401/struct/global.html#edef-META">meta tags</a>.
 

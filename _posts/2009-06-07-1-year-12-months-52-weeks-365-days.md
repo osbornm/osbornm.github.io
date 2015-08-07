@@ -2,9 +2,9 @@
 layout: post
 title: 1 year, 12 months, 52 weeks, 365 days
 date: 2009-06-07 10:02
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+
 ---
 Somewhere around a year and half ago I decided that I need a change of pace in my life. I applied to Microsoft thinking that there was no harm in trying and got an interview. A little over a year ago I packed up two suite cases with some clothes, packed up my house, and got on a plane to Seattle. It honestly doesn’t seem that long ago that it all happened, but the following Monday morning there I was in NEO (new employee orientation)
 

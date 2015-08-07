@@ -2,16 +2,16 @@
 layout: post
 title: Update - How and When to Encode for the Web
 date: 2010-05-05 23:17
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 
 One of the more tricky things to learn when you are developing for the web is to know when and how to encode the content you’re delivering. There are a couple high level reasons as to why you need to encode your content. First is that some characters just are not valid in URLs and attributes which could cause your links and html to not work properly. Secondly, and by far the most important is that if you are outputting user generated content to the page you want to protect against HTML injection. Forgive me but I am going to glean over the importance and theories behind this because that is a whole other blog post. If you’d like to learn more about that here is a good <a href="http://haacked.com/archive/2009/09/25/html-encoding-code-nuggets.aspx">starting point</a><font color="#d78807">.</font> I would like to focus more on when you know you should be encoding your output but you just don’t know what kind of encoding to use. That being said I’m going to talk about the three types of encoding for the web and give you some samples of when and how to use them. There are three main types of encoding for the web that you should be concerned with, HTML, URL, and Attribute encoding.
 
 ### HTML Encoding
 
-The first type of encoding I’d like to talk about is HTML encoding. This is one of the more common types of encoding and the one that is used to prevent the HTML injection attacks mentioned above. For those of you familiar with ASP.NET 4 and <a href="http://blog.osbornm.com/archive/2010/03/11/mvc2rtm.aspx">MVC 2</a> you know that the team added a new feature to support automatic HTML encoding, the <em>&lt;%:</em> syntax. The short explanation of why you need to use HTML encoding is simple that a cretin set of characters mean something special in HTML. For instance ‘&lt;’ is used to open and HTML tag and ‘&amp;’ is used to and the beginning of a sequence of characters to define special symbols like the copy write symbol.
+The first type of encoding I’d like to talk about is HTML encoding. This is one of the more common types of encoding and the one that is used to prevent the HTML injection attacks mentioned above. For those of you familiar with ASP.NET 4 and MVC 2 you know that the team added a new feature to support automatic HTML encoding, the <em>&lt;%:</em> syntax. The short explanation of why you need to use HTML encoding is simple that a cretin set of characters mean something special in HTML. For instance ‘&lt;’ is used to open and HTML tag and ‘&amp;’ is used to and the beginning of a sequence of characters to define special symbols like the copy write symbol.
 
 <div style="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:33b23e2d-87ee-47e0-aca5-7efa42e7a1e5" class="wlWriterEditableSmartContent">
 <div style="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">

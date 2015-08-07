@@ -2,12 +2,11 @@
 layout: post
 title: Magic Page Names in ASP.NET WebPages
 date: 2010-07-27 23:59
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+update: In ASP.NET WebPages Beta 2 moving forward we have changed the name of the of _<em>Init</em> to _<em>PageStart</em> and _<em>Start</em> to _<em>AppStart</em>.</strong>
+header-img: "img/post-bg-code.png"
 ---
-
-<span style="font-size: x-large;"><strong>UPDATE: In ASP.NET WebPages Beta 2 moving forward we have changed the name of the of _<em>Init</em> to _<em>PageStart</em> and _<em>Start</em> to _<em>AppStart</em>.</strong></span>
 
 One of the features in ASP.NET WebPages that is super powerful yet super simple is the “magic names” you can give to a page that make that page behave differently. Unfortunately the feature isn’t really called “magic names” (That would be way too cool!). Instead they are broken down into the two variations, <em>Start pages</em> and <em>Init Pages</em>. You may have seen these pages used before in other posts (I used one in my SimpleMembership post) or maybe even covered in one of the tutorials. I just figured that I would give them their own post as they are pretty powerful and could use some further explanation than what is normally given.
 

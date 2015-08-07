@@ -2,9 +2,9 @@
 layout: post
 title: A Year of Coding QA
 date: 2010-05-17 04:15
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+update: This podcast is no longer maintained <a href="/contact">contact me</a> for information about old episodes.
 ---
 
 This is one of those posts where I don’t talk about coding, sorry, but it’s still about technology so hopefully I don't scare you guys off.</span> So what is this I want to talk about, well my podcast of course, <a href="http://www.codingqa.com/">Coding QA</a>.
@@ -28,7 +28,7 @@ The Next problem was bandwidth, previously I was hosting the files on my Windows
 
 So now that I have claimed that <a href="http://www.codingqa.com/">Coding QA</a> is popular I guess I have to back it up with some numbers. Currently we have 39 episodes and have been “on air” for over a year now. We have had over 33,000 total downloads, now let me tell you I have no idea how Federico and I have fooled people into downloading us that many times. I mean okay I give you that maybe half of those are from my mom but still, WOW. Below is a graph of our monthly download totals from day one to today. (The dip in December is because we only had one new episode due to the holidays, Microsoft shuts down in December :) )
 
-![Monthly Downloads](/assets/MonthlyDownloadTotals.png)
+![Monthly Downloads](/img/posts/MonthlyDownloadTotals.png)
 
 Okay, so what have I learned over the last year? First rule of podcasting is if you can get it in one take your life is far better off! Trust me, I spent countless hours inside of audacity trying to splice episodes together and its a pain! I have found that <a href="http://www.codingqa.com/">Coding QA</a> functions as a release for both Federico and I. Almost every episode is based on something we want to bitch about from our week and it feels good to rant sometimes. Another lesson is that audio quality is important if people are bothered by pops or breath noises they just simply wont listen why would they? Lastly is that the episodes that have been most popular are the episodes that Federico and I have fun on, so have fun with it. It’s my podcast and I’ll laugh if I want to.
 

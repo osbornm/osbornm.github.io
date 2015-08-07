@@ -2,9 +2,9 @@
 layout: post
 title: We want you (again)! If you’re a test ninja
 date: 2009-12-01 20:57
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+
 ---
 That’s right you read the title right the ASP.NET QA team is once again hosting ninja try outs. We are looking for someone who is able to help evolve the team processes, improve our tooling, and join us in the trenches as we test one of the best technologies out there. Overall the team is responsible for ASP.NET WebForms, ASP.NET MVC, Microsoft AJAX, and a whole slew of <a href="http://www.codeplex.com/aspnet">other technologies</a>. Our technologies can be found in numerous large scale web sites such as <a href="http://www.myspace.com">MySpace.com</a>, <a href="http://www.dell.com">Dell.com</a> and <a href="http://deals.woot.com/">Deals.Woot.com</a>.
 

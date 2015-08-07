@@ -2,13 +2,15 @@
 layout: post
 title: ASP.NET MVC 2 Preview 2 Released
 date: 2009-10-01 07:28
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 
-I am proud to announce that ASP.NET MVC 2 Preview 2 has been released! So what are you waiting for? Go <a target="_blank" href="http://go.microsoft.com/fwlink/?LinkID=154414">download it</a>, its okay I’ll wait here… If you are running MVC 1.0 the good news is that just like Preview 1, Preview 2 can live side by side with it. However, as with previous preview releases, it is recommended that you uninstall Preview 1 prior to installing Preview 2. Currently there is no glamorous way of converting a MVC 1.0 project to a MVC 2 project but it is a pretty simple process and instructions can be found in the <a target="_blank" href="http://go.microsoft.com/fwlink/?LinkID=157066">released notes</a>.</p>
-<p>Okay now for some more interesting stuff, the new features that are in Preview 2. If you missed Preview 1 you can read <a target="_blank" href="http://haacked.com/archive/2009/07/30/asp.net-mvc-released.aspx">Phil’s post</a> to see what was in that release.
+I am proud to announce that ASP.NET MVC 2 Preview 2 has been released! So what are you waiting for? Go <a target="_blank" href="http://go.microsoft.com/fwlink/?LinkID=154414">download it</a>, its okay I’ll wait here… If you are running MVC 1.0 the good news is that just like Preview 1, Preview 2 can live side by side with it. However, as with previous preview releases, it is recommended that you uninstall Preview 1 prior to installing Preview 2. Currently there is no glamorous way of converting a MVC 1.0 project to a MVC 2 project but it is a pretty simple process and instructions can be found in the <a target="_blank" href="http://go.microsoft.com/fwlink/?LinkID=157066">released notes</a>.
+
+
+Okay now for some more interesting stuff, the new features that are in Preview 2. If you missed Preview 1 you can read <a target="_blank" href="http://haacked.com/archive/2009/07/30/asp.net-mvc-released.aspx">Phil’s post</a> to see what was in that release.
 
 <ul>
     <li><strong>Single-Project Areas</strong>: For those of you familiar with Multi-Project Areas from Preview one this should be a span. If not, an area is simply a way of segregating logical units of  your application. For instance, think of segmenting the blog and store in a company website. The difference now is that this can all be done inside of a single project file.</li>

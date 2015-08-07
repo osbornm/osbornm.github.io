@@ -2,10 +2,11 @@
 layout: post
 title: Lightweight Test Automation Framework April Release
 date: 2009-04-09 19:10
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
+
 The April release of the Lightweight Test Automation Framework for ASP.NET has just been posted and you can download it <a title="April Update" href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=25887">here</a>. For this release, the team has worked hard to include the following bug fixes and new features. Please continue to give us your feedback as many of the fixes and features are based what we have heard from the community.
 
 ###Improvements to the user interface

@@ -2,9 +2,8 @@
 layout: post
 title: Introducing NuGet Docs - Community Driven Documentation
 date: 2011-05-11 23:18
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
 ---
 
 Introducing NuGet Docs: <a href="http://docs.nuget.org">http://docs.nuget.org</a>! NuGet Docs is a community driven documentation site that provides guides, walkthroughs, and information about anything and everything NuGet related. NuGet Docs is your new resource for learning and understanding how to use NuGet to the fullest. There is information about how to use NuGet to consume packages, information about how to create your own packages, and even information about how to contribute to NuGet along with much more. This is the first iteration of the site and the documentation that is contained on it. So we hope you understand it might be rough around the edges, but here is the good news its community driven so you can contribute your knowledge and understand to help make it better. More about how to do that later.

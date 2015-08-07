@@ -2,9 +2,9 @@
 layout: post
 title: Running the Lightweight Test Automation Framework for ASP.NET from a separate application
 date: 2008-12-02 10:04
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 In some instances it might be best if your tests did not run in the same application as the website being tested.  This is where the “IApplicationPathFinder” interface comes into play.  If you implement this interface you will see that it only has one method “GetApplicationpath.”  What this does is allow you to specify a prefix of sorts for the navigate method.  When you call navigate on a HTMLPage it uses a ApplicationPathFinder to get the location it should look for the website at.  For example, the framework will implement this interface and simply return “http://localhost” by default.  Creating your own ApplicationPathFinder class allows you to specify where to look for the website, there is nothing stopping you from telling it to look for “http://foo.com.”  The fallowing code shows a simple implementation of the IApplicationPathFinder interface, that points to a second test application. This code is place in the DrivePage that is located in the “Test” folder.
 

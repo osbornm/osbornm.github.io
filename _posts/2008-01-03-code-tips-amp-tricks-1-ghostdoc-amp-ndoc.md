@@ -2,9 +2,9 @@
 layout: post
 title: Code Tips & Tricks 1 - GhostDoc & NDoc
 date: 2008-01-03 22:01
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 <p>Documentation is the coders best and worst friend.  It is a two sided sword, it makes your life easier but no one likes writing it.  So coders do what we do best and find a way to make the computer do it for us. There are two tools which I use on a regular basis when I'm working on a project.  while these tools do not work perfectly they do cut down the amount of work it takes to get good project documentation.</p>
 
@@ -23,10 +23,6 @@ categories: []
 </div>
 <p> </p>
 <style type="text/css">
-
-
-
-
 
 .csharpcode, .csharpcode pre
 {

@@ -1,16 +1,18 @@
 # Site settings
-title: Blog
-email: matthew@osbornm.com
-description: "Matthew Osborn's Blog"
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://blog.osbornm.com" # the base hostname & protocol for your site
-twitter_username: osbornm
+title: Matthew M. Osborn
+header-img: img/Shift-Current-Lake.jpg
+description: "The website and blog of Matthew M. Osborn"
+baseurl: ""
+url: "http://osbornm.com"
+twitter_username: osbonrm
 github_username:  osbornm
+instagram_username: osbornmatthew
+500px_username: osbornm
+stackoverflow_username: 5235/matthew-m-osborn
 
 # Build settings
 markdown: kramdown
-
-
-#pagination
-paginate: 10
-paginate_path: "/blog/page/:num/"
+highlighter: pygments
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]

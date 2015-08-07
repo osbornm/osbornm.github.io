@@ -2,9 +2,8 @@
 layout: post
 title: One month @ Microsoft
 date: 2008-07-20 19:37
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
 ---
 This last week I had my one month anniversary at Microsoft.  I put off writing a post about the process and my new job because I wanted to do it after a few weeks of work and settling in.  So what better time then at one month.  I figured I would cover the process of getting the job and what I do at my job.  Please feel free to ask any questions you want. 
 

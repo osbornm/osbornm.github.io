@@ -2,9 +2,9 @@
 layout: post
 title: Introducing WebMatrix Beta
 date: 2010-07-06 21:49
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 Over the last year or so I have had the opportunity to help develop and shape a brand new framework that is, as of today, in its first ever public beta. I’d like to introduce you all to WebMatrix! WebMatrix is actually a group of products and frameworks all with the common goal of making web development simple and easy. A few of the pieces of WebMatrix have already been announced and some are never before seen until now. What are they all you ask, well let’s jump right in and review the pieces.
 
@@ -26,7 +26,7 @@ Over the next few blog posts my focus is going to be primarily on ASP.NET WebPag
     <li>Security and Membership</li>
     <li>An overview of some helper features
 <ul>
-    <li><a href="http://blog.osbornm.com/archive/0001/01/01/webimage-introduction.aspx">Introduction to WebImage</a></li>
+    <li>Introduction to WebImage</li>
 </ul>
 </li>
 </ul>

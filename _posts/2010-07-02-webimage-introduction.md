@@ -2,9 +2,9 @@
 layout: post
 title: Introduction to WebImage
 date: 2010-07-02 18:31
-author: osbornm
+author: Matthew Osborn
 comments: true
-categories: []
+header-img: "img/post-bg-code.png"
 ---
 One common operation that pretty much every website in the world does is either accepting, creating, editing, or displaying images. This could be something as simple as a user’s profile picture or as complex a full blown image gallery. Either way if you have every had implement these functionalities in a website you know that they are not the easiest thing to create. Well, here is where the <em>WebPages </em>team comes in to save the day! We have wrapped what we think are some of the most common image manipulation operations into a brand new fancy <em>WebImage</em> helper. </p>
 
@@ -136,5 +136,4 @@ This would be a good time to stop and point out that all the <em>WebImage</em> A
 <h3>Q&amp;A:</h3>
 <p><strong>Question:</strong> Where can I find the dll that has WebImage?<br />
 <strong>Answer:</strong> WebImage is part of the WebMatrix stack, specifically ASP.NET WebPages. WebImage is in the Microsoft.WebPages.Helpers assembly that is GAC'd and also drop in program files when you install the stack.</p>
-</div>
 </div>
