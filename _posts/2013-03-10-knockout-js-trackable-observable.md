@@ -3,7 +3,7 @@ layout: post
 title: Knockout.js Trackable Observable
 date: 2013-03-10 22:38
 author: matthew osborn
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 comments: true
 update: Trackable Observable is now part of the <a href="github.com/osbornm/uppercut">uppercut library</a>.
 ---

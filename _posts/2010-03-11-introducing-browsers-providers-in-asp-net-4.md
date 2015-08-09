@@ -4,7 +4,7 @@ title: Introducing Browsers Providers in ASP.NET 4
 date: 2010-03-11 22:16
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 In ASP.NET there is a concept of <em>Browser Capabilities,</em> they define what the device that issued the request to the site is capable of doing. For instance things like “<em>Supports JavaScript</em>” and “<em>Supports Frames</em>”, they also provide other meta information about the device such as the Name and version number. I’ll be the first to say that most of the values that are in there are no longer really useful. For example that is a property called “Is AOL”, yes I’m not kidding but at some point in time you wanted to know these things. I’m not going to spend any more time talking about what <em>Browser Capabilities</em> But if you don’t know you might consider watching <a href="http://www.asp.net/learn/videos/video-368.aspx" target="_blank">this</a> before continuing. Also, you might want to check out the <a href="http://mdbf.codeplex.com/" target="_blank">Mobile Device Browser File</a> on codeplex.
 

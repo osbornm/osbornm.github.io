@@ -4,7 +4,7 @@ title: ASP.NET MVC 2 Preview 2 Released
 date: 2009-10-01 07:28
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 
 I am proud to announce that ASP.NET MVC 2 Preview 2 has been released! So what are you waiting for? Go <a target="_blank" href="http://go.microsoft.com/fwlink/?LinkID=154414">download it</a>, its okay I’ll wait here… If you are running MVC 1.0 the good news is that just like Preview 1, Preview 2 can live side by side with it. However, as with previous preview releases, it is recommended that you uninstall Preview 1 prior to installing Preview 2. Currently there is no glamorous way of converting a MVC 1.0 project to a MVC 2 project but it is a pretty simple process and instructions can be found in the <a target="_blank" href="http://go.microsoft.com/fwlink/?LinkID=157066">released notes</a>.

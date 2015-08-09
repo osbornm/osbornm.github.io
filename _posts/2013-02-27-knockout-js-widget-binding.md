@@ -2,7 +2,7 @@
 layout: post
 title: Knockout.js Widget Binding
 date: 2013-02-27 04:38
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 author: matthew osborn
 comments: true
 ---

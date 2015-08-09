@@ -2,7 +2,7 @@
 layout: post
 title: JSHint Visual Studio Error Formatter
 date: 2013-02-28 18:40
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 author: matthew osborn
 comments: true
 ---

@@ -4,7 +4,7 @@ title: Introducing WebMatrix Beta
 date: 2010-07-06 21:49
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 Over the last year or so I have had the opportunity to help develop and shape a brand new framework that is, as of today, in its first ever public beta. I’d like to introduce you all to WebMatrix! WebMatrix is actually a group of products and frameworks all with the common goal of making web development simple and easy. A few of the pieces of WebMatrix have already been announced and some are never before seen until now. What are they all you ask, well let’s jump right in and review the pieces.
 

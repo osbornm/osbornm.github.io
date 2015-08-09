@@ -3,7 +3,7 @@ layout: post
 title: Creating a custom power supply for a Printrbot
 date: 2015-05-20 14:00
 author: matthew osborn
-header-img: "img/post-bg-maker.png"
+header-img: "img/headers/maker.jpg"
 comments: true
 excerpt: Recently we aquired a printrbot metal plus 3D printer at the CenturyLink Cloud office (we have a small group of makers here). I wanted to add a heated bed but this upgrade requires more current than the default laptop style power supply that was supplied.
 

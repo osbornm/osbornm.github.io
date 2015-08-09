@@ -4,7 +4,7 @@ title: ASP.NET 404 Custom Errors & IIS
 date: 2011-05-27 18:12
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 
 Recently I have been spending a fair amount of time working on the <a href="http://docs.nuget.org/">NuGet Documentation site</a>. One of the improvements I wanted to make to it was to add useful error pages. You know more than the YSOD (yellow screen of death). One of the major issues for me was creating a useful and informative 404 page. I wanted the page to tell the user why they got there, offer suggestions about what page they may be looking for, and allow them to search the site. So I did the development work committed the changes and had the CI machine push to the server (in the case app harbor).

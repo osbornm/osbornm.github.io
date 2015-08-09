@@ -4,7 +4,7 @@ title: Update - How and When to Encode for the Web
 date: 2010-05-05 23:17
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 
 One of the more tricky things to learn when you are developing for the web is to know when and how to encode the content you’re delivering. There are a couple high level reasons as to why you need to encode your content. First is that some characters just are not valid in URLs and attributes which could cause your links and html to not work properly. Secondly, and by far the most important is that if you are outputting user generated content to the page you want to protect against HTML injection. Forgive me but I am going to glean over the importance and theories behind this because that is a whole other blog post. If you’d like to learn more about that here is a good <a href="http://haacked.com/archive/2009/09/25/html-encoding-code-nuggets.aspx">starting point</a><font color="#d78807">.</font> I would like to focus more on when you know you should be encoding your output but you just don’t know what kind of encoding to use. That being said I’m going to talk about the three types of encoding for the web and give you some samples of when and how to use them. There are three main types of encoding for the web that you should be concerned with, HTML, URL, and Attribute encoding.

@@ -4,7 +4,7 @@ title: Overriding the HTTP Verb in ASP.NET MVC 2
 date: 2009-11-25 07:09
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 ###The Problem
 

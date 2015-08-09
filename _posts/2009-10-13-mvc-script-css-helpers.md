@@ -4,7 +4,7 @@ title: MVC Script & Css Helpers
 date: 2009-10-13 06:46
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 
 During development of MVC 2 Preview 2 I was lucky enough (I’m on the QA team after all) to get to code and check in a feature that I wanted to MVC Futures. In all actuality it is two separate “features” that basically do the same thing. Okay, I think I might be blowing it out of proportion they are basically two new HTML helpers “<em>Script</em>” and “<em>Css</em>”

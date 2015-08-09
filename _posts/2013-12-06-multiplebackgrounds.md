@@ -2,7 +2,7 @@
 layout: post
 title: Using Multiple Backgrounds for Animated Icons
 date: 2013-12-06 00:00
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 author: matthew osborn
 comments: true
 excerpt: See how you can use multiple CSS backgrounds to create a small neat loading animation.

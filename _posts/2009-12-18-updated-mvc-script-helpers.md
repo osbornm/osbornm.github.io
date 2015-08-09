@@ -4,7 +4,7 @@ title: Updated MVC Script Helpers
 date: 2009-12-18 23:15
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 Okay so if you read this title and said “wait… MVC has Script helpers?!” you should first go read my original post on MVC Script &amp; Css Helpers. Okay now for those of you who know what they are or just finished reading about them, I was able to add a small feature from Beta to RC to the script helper that I just didn’t have time to code the first time. If you download the new <a href="http://aspnet.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=37423" target="_blank">RC futures assembly</a> and add it to your project or update the existing one you will notice that the script helper now has an overload.
 

@@ -4,7 +4,7 @@ title: ASP.NET 4.0 ClientID Overview
 date: 2009-01-07 01:41
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 
 ### Introduction

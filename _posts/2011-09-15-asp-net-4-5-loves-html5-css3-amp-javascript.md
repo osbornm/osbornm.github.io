@@ -4,7 +4,7 @@ title: ASP.NET 4.5 Loves HTML5, CSS3, & JavaScript
 date: 2011-09-15 00:22
 author: Matthew Osborn
 comments: true
-header-img: "img/talks.jpg"
+header-img: "img/headers/talks.jpg"
 ---
 
 Today I had the pleasure of giving a presentation at the <a href="http://www.buildwindows.com/">//BUILD conference</a> in Anaheim, CA. Given that this conference is all about Windows 8 I was one of the few non windows session at the conference. Bellow is the abstract from my talk entitled. For those of you that weren’t lucky enough to get to come to //BUILD there is good news! All the session will be recorded and posted online and that includes mine. You can find a my session session on <a href="http://channel9.msdn.com/events/BUILD/BUILD2011/TOOL-796T">Channel 9</a> (although it may take a day or so to get posted). If you want to download the demos and slides head of to my <a href="/talks">Talks page</a> on my website and if you have questions please don’t hesitate to email me!

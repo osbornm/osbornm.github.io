@@ -4,7 +4,7 @@ title: Introduction to WebImage
 date: 2010-07-02 18:31
 author: Matthew Osborn
 comments: true
-header-img: "img/post-bg-code.png"
+header-img: "img/headers/code.jpg"
 ---
 One common operation that pretty much every website in the world does is either accepting, creating, editing, or displaying images. This could be something as simple as a user’s profile picture or as complex a full blown image gallery. Either way if you have every had implement these functionalities in a website you know that they are not the easiest thing to create. Well, here is where the <em>WebPages </em>team comes in to save the day! We have wrapped what we think are some of the most common image manipulation operations into a brand new fancy <em>WebImage</em> helper. </p>
 
