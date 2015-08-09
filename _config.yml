@@ -10,10 +10,6 @@ instagram_username: osbornmatthew
 500px_username: osbornm
 stackoverflow_username: 5235/matthew-m-osborn
 
-assets:
-  sources:
-    - /fonts
-
 # Build settings
 markdown: kramdown
 highlighter: pygments
