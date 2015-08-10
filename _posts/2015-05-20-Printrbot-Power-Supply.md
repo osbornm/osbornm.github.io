@@ -2,10 +2,10 @@
 layout: post
 title: Creating a custom power supply for a Printrbot
 date: 2015-05-20 14:00
-author: matthew osborn
+author: Matthew
 header-img: "img/headers/maker.jpg"
 comments: true
-excerpt: Recently we aquired a printrbot metal plus 3D printer at the CenturyLink Cloud office (we have a small group of makers here). I wanted to add a heated bed but this upgrade requires more current than the default laptop style power supply that was supplied.
+excerpt: Recently we acquired a printrbot metal plus 3D printer at the CenturyLink Cloud office (we have a small group of makers here). I wanted to add a heated bed but this upgrade requires more current than the default laptop style power supply that was supplied.
 
 ---
 
@@ -14,7 +14,7 @@ excerpt: Recently we aquired a printrbot metal plus 3D printer at the CenturyLin
 
 ![printrbot ATX power supply](/img/posts/printrbotPowerSupply/printrbot_2020.jpg)
 
-Recently we aquired a [printrbot metal plus](http://www.printrbot.com) 3D printer at the CenturyLink Cloud office (we have a small group of makers here). I wanted to add a heated bed but this upgrade requires more current than the default laptop style power supply that was supplied. This problem is solved by using a normal ATX power supply, in fact the heated bed upgrade I purchased came with and adapter that allows you to use the PCI Express plug on the ATX power supply. I wanted to have a cleaner, simpler, solution than having a plain old ATX power supply with a bunch of wires hanging out. Here were my goals/requirements for this project.
+Recently we acquired a [printrbot metal plus](http://www.printrbot.com) 3D printer at the CenturyLink Cloud office (we have a small group of makers here). I wanted to add a heated bed but this upgrade requires more current than the default laptop style power supply that was supplied. This problem is solved by using a normal ATX power supply, in fact the heated bed upgrade I purchased came with and adapter that allows you to use the PCI Express plug on the ATX power supply. I wanted to have a cleaner, simpler, solution than having a plain old ATX power supply with a bunch of wires hanging out. Here were my goals/requirements for this project.
 
 #### Requirements
 * Runs quietly, the power supply I bought was extremely loud running at full speed all the time. The printer sits in our team room so this was important.
