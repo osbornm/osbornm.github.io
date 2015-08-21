@@ -5,6 +5,8 @@ date: 2010-07-21 19:42
 author: Matthew Osborn
 comments: true
 header-img: "img/headers/code.jpg"
+redirect_from:
+  - /2010/07/21/using-simplemembership-with-asp.net-webpages/
 ---
 With the introduction of ASP.NET WebPages and the WebMatrix stack our team has really be focusing on making things simpler for the developer. Based on a lot of customer feedback one of the areas that we wanted to improve was the built in security in ASP.NET. So with this release we took that time to create a new built in (and default for ASP.NET WebPages) security provider. I say provider because the new stuff is still built on the existing ASP.NET framework. So what do we call this new hotness that we have created? Well, none other than <em>SimpleMembership</em>. <em>SimpleMembership</em> is an umbrella term for both <em>SimpleMembership</em> and <em>SimpleRoles</em>.
 
