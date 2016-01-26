@@ -9,7 +9,7 @@ comments: true
 
 ![Fallout 4 Mini Nuke](/img/posts/propMaking/IMG_8030.jpg)
 
-I've always be interested in models / prop / knick knacks I was just never really pursued this interest much. Recently I have been watching several YouTube series that cover prop making and weather. It has really been very interesting to me, perhaps it is the attention to detail and getting the prop just right. Never the less I decided that I wanted to try my hand at making a prop. I deiced to start with something very simple, not many shapes are parts, and so I settled on the mini nuke from Fallout 4.
+I've always be interested in models / prop / knick knacks I was just never really pursued this interest much. Recently I have been watching several YouTube series that cover prop making and weather. It has really been very interesting to me, perhaps it is the attention to detail and getting the prop just right. Never the less I decided that I wanted to try my hand at making a prop. I deiced to start with something very simple, not many shapes or parts, and so I settled on the mini nuke from Fallout 4.
 
 Over the course of a few weeks and some where in the neighborhood of about $40 I ended up making something that I believe is display worthy. I learned a ton and had a lot of fun building it. I find it very therapeutic and relaxing to actually make something with my hands. Perhaps it's because I making a living off of pushing pixels but making something in the physical world just makes me happy. Below is a very quick overview of the steps I went through but it is by no means a step-by-step guide to making your own.
 
@@ -44,7 +44,7 @@ I used basic rattle can matte acrylic paint.
 
 ![Fallout 4 Mini Nuke - The Build](/img/posts/propMaking/process-11.jpg)
 
-To me the screws in the casing of the mini nuke stand out so I want to use some real screws rather than 3D printing some. I didn't want the screws to be new and shiny, I wanted to weathering to them. Rather than just use paint I want to build up some dimension by "scuffing" them up. Which is to say that I took sand paper, a hammer, and a hack saw and beat the crap out of them. This was easier to do if I screwed them all into a board.
+To me the screws in the casing of the mini nuke stand out so I want to use some real screws rather than 3D printing some. I didn't want the screws to be new and shiny, I wanted to weather them. Rather than just use paint I want to build up some dimension by "scuffing" them up. Which is to say that I took sand paper, a hammer, and a hack saw and beat the crap out of them. This was easier to do if I screwed them all into a board.
 
 ![Fallout 4 Mini Nuke - The Build](/img/posts/propMaking/process-12.jpg)
 
