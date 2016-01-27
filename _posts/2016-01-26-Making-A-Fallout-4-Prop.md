@@ -5,6 +5,7 @@ date: '2016-01-26 08:00'
 author: Matthew
 header-img: img/headers/maker.jpg
 comments: true
+excerpt: I've always be interested in models / prop / knick knacks I was just never really pursued this interest much. Recently I have been watching several YouTube series that cover prop making and weather. It has really been very interesting to me, perhaps it is the attention to detail and getting the prop just right. Never the less I decided that I wanted to try my hand at making a prop. I deiced to start with something very simple, not many shapes or parts, and so I settled on the mini nuke from Fallout 4.
 ---
 
 ![Fallout 4 Mini Nuke](/img/posts/propMaking/IMG_8030.jpg)
