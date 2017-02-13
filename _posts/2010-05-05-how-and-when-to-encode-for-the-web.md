@@ -35,7 +35,7 @@ Would return the following <em>string</em>
 </div>
 </div>
 
-###Attribute Encoding
+### Attribute Encoding
 
 The second type of encoding I’d like to talk about is attribute encoding. Attribute encoding replaces three characters that are not valid to use inside attribute values in HTML. Those characters are ampersand ‘&amp;’, less-than ‘&lt;’, and quotation marks ‘”’. The first two for the same reason you HTML encode to prevent HTML injection attacks and the last one because quotation marks are used to define the value of the attribute.
 
@@ -61,7 +61,7 @@ The second type of encoding I’d like to talk about is attribute encoding. Attr
 </div>
 
 
-###URL Encoding
+### URL Encoding
 
 The Last type of encoding I’d like to talk about is URL Encoding. URL encoding is most commonly used when you have some data that you would like to pass in the URL and that data contains some reserved or invalid characters. An Example of an invalid character is a space while a reserved character would be something like a forward slash which normally means directory. Invalid and reserved characters are encoded using a ‘%’ and then two alphanumeric characters. A list of the characters and there encodings can be found <a href="http://www.w3schools.com/tags/ref_urlencode.asp">here</a>.
 
@@ -88,7 +88,7 @@ The Last type of encoding I’d like to talk about is URL Encoding. URL encoding
 
 If you’re quick on your feet you might already be asking yourself what in the world happened to spaces getting encoded with the ‘%’ syntax and what are all these ‘+’ doing? Well here is the catch in .NET and in most modern frameworks/browsers spaces get encoded and decoded from ‘+’ because it is more user readable. Now if you want to ensure full compatibility you should use ‘%20’ to encode spaces and there is a separate API (<em>UrlPathEncode</em>) you can use in .NET to do so. To be honest you will mainly call <em>UrlPathEncode</em> when you are constructing paths and <em>UrlEncode</em> when you are constructing a query string. You can read more about that <a href="http://msdn.microsoft.com/en-us/library/4fkewx0t.aspx">here</a>.<
 
-###The Tricky Part
+### The Tricky Part
 
 Some of you may find yourself in the case where you are writing frameworks or controls that generate HTML mark up. For me, given that I work on the ASP.NET team, this is almost always the case. One thing that I see people get tripped up on is using the appropriate type of encoding. A lot of developers will simply just call <em>HtmlEncode</em> and think they are doing the right thing. This is not always the right case! Lets take the example of where we have a control that generates the HTML mark up to include a Xbox Gamercard in a page. The control takes in user (in this case another developer) input for the Gamertag and constructs an IFrame referencing a URL with that uses the given Gamertag. The first, thing that needs to be done is to URL encode the Gamertag as it will become part of a URL. At this point most developers would call it safe and stick it in the SRC attribute of the IFrame but that is not the case. We also need to Attribute encode it because quotation marks are valid URL characters but not valid attribute characters.
 
@@ -106,7 +106,7 @@ Some of you may find yourself in the case where you are writing frameworks or co
 
 For me this is one of the most tricky parts about developing for the web. So hopefully after reading this you have a little bit better idea of how and when you should be encoding. Please let me know if you have any questions.
 
-###Update: JavaScript Encoding
+### Update: JavaScript Encoding
 
 One issue that I did not cover in my original post was how to handle encoding when you were in JavaScript. JavaScript contains its own methods for Encoding URLs and HTML etc. and you can google on Bing and find all types of posts on the subject. So I wont spend time discussing those methods. What I would like to discuss is when as a developer of a control or framework you need to output some JavaScript on a page and it needs to use some user input in that Script. For the most part the rules for encoding described above are the same when inside of JavaScript. Even the tricky parts are the same, source attributes need to be URL encoded and then attribute encoded. So for the most part this is all just the same stuff over and over.
 
@@ -134,4 +134,3 @@ Would return the following <em>string</em>
 </div>
 </div>
 </div>
-
