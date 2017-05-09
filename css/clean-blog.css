@@ -1,6 +1,6 @@
 /*!
  * Clean Blog v1.0.0 (http://osbornm.com)
- * Copyright 2015 Start Bootstrap
+ * Copyright 2017 Start Bootstrap
  * Licensed under Apache 2.0 ()
  */
 
@@ -497,4 +497,7 @@ body {
   border-top: none;
   padding-top: 0;
   padding-bottom: 0;
+}
+dd {
+  margin-bottom: 20px;
 }
