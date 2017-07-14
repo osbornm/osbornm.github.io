@@ -1,10 +1,11 @@
 ---
 layout: post
-title: Distributed Team Tip: Webcams
+title: Distributed Team Tip Webcams
 date: 2017-07-14
 author: Matthew
 header-img: "img/headers/code.jpg"
 comments: true
+excerpt: Now that I’ve been working in a distributed team for over a year I felt that I could start sharing some of my insights that have helped me start productive and engaged with the team.
 ---
 
 ## Have your webcam on ALL the time
