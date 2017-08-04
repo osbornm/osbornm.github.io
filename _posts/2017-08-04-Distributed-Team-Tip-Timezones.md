@@ -1,11 +1,11 @@
 ---
 layout: post
 title: Distributed Team Tip Time Zones
-date: 2017-07-14
+date: 2017-08-04
 author: Matthew
 header-img: "img/headers/code.jpg"
 comments: true
-excerpt: Most remote teams by nature are widely geographically located. This means that they are likely spread across many time zones. It’s important that when messages are sent, calls are made, or meetings are scheduled that everyone considers the time of day for the other team members. 
+excerpt: Most remote teams by nature are widely geographically located. This means that they are likely spread across many time zones. It’s important that when messages are sent, calls are made, or meetings are scheduled that everyone considers the time of day for the other team members.
 ---
 
 ## Respect team members time zones
