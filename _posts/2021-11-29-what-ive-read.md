@@ -5,12 +5,12 @@ date: 2017-08-04
 author: Matthew
 header-img: "img/headers/default.jpg"
 comments: true
-excerpt: I started off 2023 with a goal of read (or listening) to at least one book a week. Well as December approaches it looks like it will be closer to one every two weeks.
+excerpt: I started off 2023 with a goal of reading (or listening) to at least one book a week. Well as December approaches it looks like it will be closer to one every two weeks.
 ---
 
 ## My Bookshelf 2023
 
-I started off 2023 with a goal of read (or listening) to at least one book a week. Well as December approaches it looks like it will be closer to one every two weeks. Even though I didn’t reach my goal I couldn’t be happier with the outcome. The wealth of knowledge I’ve gained this year has been amazing.
+I started off 2023 with a goal of reading (or listening) to at least one book a week. Well as December approaches it looks like it will be closer to one every two weeks. Even though I didn’t reach my goal I couldn’t be happier with the outcome. The wealth of knowledge I’ve gained this year has been amazing.
 
 ### Non-Fiction
 
