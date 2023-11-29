@@ -5,7 +5,7 @@ date: 2017-08-04
 author: Matthew
 header-img: "img/headers/default.jpg"
 comments: true
-excerpt: What I have read in 2023
+excerpt: I started off 2023 with a goal of read (or listening) to at least one book a week. Well as December approaches it looks like it will be closer to one every two weeks.
 ---
 
 ## My Bookshelf 2023
