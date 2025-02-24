@@ -1,9 +1,0 @@
----
-layout: post
-title: Master pages and their not so master life style
-date: 2008-08-23 03:10
-author: Matthew Osborn
-comments: true
-header-img: "img/headers/code.jpg"
----
-There is no great secrete that I'm letting out of the bag but it is something that I never really had the need to stop and think about, it was just something that I took for granted.  Maybe I thought that it worked by some form of magic, maybe I just never cared, but today I'd like to talk about what a master page really is.  I always thought that a master page was simply that, a page.  This makes since based on the name and the behavior that it has right?, wrong.  If you open up <a href="http://www.red-gate.com/products/reflector/">reflector</a> and take a look at the master page class it inherits from System.Web.UI.UserControl and not from page.  Once I stopped and thought about this for a minute it makes since. Master pages were introduced in FX 2.0 and by not adding anything as the parent of page there would be very little work that would need to be done to implement this. So how do we get the master page to appear to be the parent of page you might ask yourself.  Well here is were the ContentPlaceHolder and Content controls come into play.  They simply control where the page's content is placed when the page is rendered.  ASP.net is aware of the master page control, because of the reference in the page declaration, and places the markup inside the Content Control inside of the ContentPlaceHolder Control.  This gives the effect of the master page acting as the parent of page without actually changing the control hierarchy. Like I said this is no great secrete but simply something I had never stopped to think about.  The reason I stopped to think about it is that I plays a part in a feature I am working on for the next version of the framework, stay tuned for more information about that feature after <a href="http://microsoftpdc.com/">PDC08</a>.
