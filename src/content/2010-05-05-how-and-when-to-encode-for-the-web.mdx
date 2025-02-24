@@ -1,0 +1,132 @@
+---
+title: Update - How and When to Encode for the Web
+date: 2010-05-05
+---
+
+One of the more tricky things to learn when you are developing for the web is to know when and how to encode the content you're delivering. There are a couple high level reasons as to why you need to encode your content. First is that some characters just are not valid in URLs and attributes which could cause your links and html to not work properly. Secondly, and by far the most important is that if you are outputting user generated content to the page you want to protect against HTML injection. Forgive me but I am going to glean over the importance and theories behind this because that is a whole other blog post. If you'd like to learn more about that here is a good <a href="http://haacked.com/archive/2009/09/25/html-encoding-code-nuggets.aspx">starting point</a><font color="#d78807">.</font> I would like to focus more on when you know you should be encoding your output but you just don't know what kind of encoding to use. That being said I'm going to talk about the three types of encoding for the web and give you some samples of when and how to use them. There are three main types of encoding for the web that you should be concerned with, HTML, URL, and Attribute encoding.
+
+### HTML Encoding
+
+The first type of encoding I'd like to talk about is HTML encoding. This is one of the more common types of encoding and the one that is used to prevent the HTML injection attacks mentioned above. For those of you familiar with ASP.NET 4 and MVC 2 you know that the team added a new feature to support automatic HTML encoding, the <em>&lt;%:</em> syntax. The short explanation of why you need to use HTML encoding is simple that a cretin set of characters mean something special in HTML. For instance '&lt;' is used to open and HTML tag and '&amp;' is used to and the beginning of a sequence of characters to define special symbols like the copy write symbol.
+
+<div css="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:33b23e2d-87ee-47e0-aca5-7efa42e7a1e5" className="wlWriterEditableSmartContent">
+<div css="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
+<div css="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
+<ol css="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2em; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; BACKGROUND: #ffffff; PADDING-TOP: 0px">
+    <li><span css="COLOR: #2b91af">HttpUtility</span>.HtmlEncode(<span css="COLOR: #a31515">"&lt;script&gt;alert('&amp;');&lt;/script&gt;"</span>)</li>
+</ol>
+</div>
+</div>
+</div>
+
+Would return the following <em>string</em>
+
+<div css="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:005cd035-8e4a-4e97-b131-22d52490503d" className="wlWriterEditableSmartContent">
+<div css="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
+<div css="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
+<ol css="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2em; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; BACKGROUND: #ffffff; PADDING-TOP: 0px">
+    <li><span css="COLOR: #ff0000">&amp;lt;</span>script<span css="COLOR: #ff0000">&amp;gt;</span>alert(<span css="COLOR: #ff0000">&amp;#39;&amp;amp;&amp;#39;</span>);<span css="COLOR: #ff0000">&amp;lt;</span>/script<span css="COLOR: #ff0000">&amp;gt;</span></li>
+</ol>
+</div>
+</div>
+</div>
+
+### Attribute Encoding
+
+The second type of encoding I'd like to talk about is attribute encoding. Attribute encoding replaces three characters that are not valid to use inside attribute values in HTML. Those characters are ampersand '&amp;', less-than '&lt;', and quotation marks '”'. The first two for the same reason you HTML encode to prevent HTML injection attacks and the last one because quotation marks are used to define the value of the attribute.
+
+<div css="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:59901123-e14d-406b-8496-142a07a466dc" className="wlWriterEditableSmartContent">
+<div css="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
+<div css="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
+<ol css="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2em; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; BACKGROUND: #ffffff; PADDING-TOP: 0px">
+    <li><span css="COLOR: #2b91af">HttpUtility</span>.HtmlAttributeEncode(<span css="COLOR: #a31515">"&lt;script&gt;alert(\"&amp;\");&lt;/script&gt;"</span>)</li>
+</ol>
+</div>
+</div>
+</div>
+<p> </p>
+<p>Would return the following <em>string</em></p>
+<div css="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:c4a99611-0a38-4180-b43b-f0351bf393ff" className="wlWriterEditableSmartContent">
+<div css="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
+<div css="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
+<ol css="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2em; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; BACKGROUND: #ffffff; PADDING-TOP: 0px">
+    <li><span css="COLOR: #ff0000">&amp;lt;</span>script&gt;alert(<span css="COLOR: #ff0000">&amp;quot;&amp;amp;&amp;quot;</span>);<span css="COLOR: #ff0000">&amp;lt;</span>/script&gt;</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+### URL Encoding
+
+The Last type of encoding I'd like to talk about is URL Encoding. URL encoding is most commonly used when you have some data that you would like to pass in the URL and that data contains some reserved or invalid characters. An Example of an invalid character is a space while a reserved character would be something like a forward slash which normally means directory. Invalid and reserved characters are encoded using a '%' and then two alphanumeric characters. A list of the characters and there encodings can be found <a href="http://www.w3schools.com/tags/ref_urlencode.asp">here</a>.
+
+<div css="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:337d643c-c900-47be-8a56-da62d4be79c6" className="wlWriterEditableSmartContent">
+<div css="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
+<div css="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
+<ol css="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2em; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; BACKGROUND: #ffffff; PADDING-TOP: 0px">
+    <li><span css="COLOR: #2b91af">HttpUtility</span>.UrlEncode(<span css="COLOR: #a31515">"Some Special Information / That needs to be in the URL"</span>)</li>
+</ol>
+</div>
+</div>
+</div>
+<p> </p>
+<p>Would return the following <em>string</em></p>
+<div css="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:30a033f3-7357-4ec0-bb7e-eae6ce52469e" className="wlWriterEditableSmartContent">
+<div css="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
+<div css="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
+<ol css="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2em; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; BACKGROUND: #ffffff; PADDING-TOP: 0px">
+    <li>Some+Special+Information+%2f+That+needs+to+be+in+the+URL</li>
+</ol>
+</div>
+</div>
+</div>
+
+If you're quick on your feet you might already be asking yourself what in the world happened to spaces getting encoded with the '%' syntax and what are all these '+' doing? Well here is the catch in .NET and in most modern frameworks/browsers spaces get encoded and decoded from '+' because it is more user readable. Now if you want to ensure full compatibility you should use '%20' to encode spaces and there is a separate API <em>UrlPathEncode</em> you can use in .NET to do so. To be honest you will mainly call <em>UrlPathEncode</em> when you are constructing paths and <em>UrlEncode</em> when you are constructing a query string. You can read more about that <a href="http://msdn.microsoft.com/en-us/library/4fkewx0t.aspx">here</a>.
+
+### The Tricky Part
+
+Some of you may find yourself in the case where you are writing frameworks or controls that generate HTML mark up. For me, given that I work on the ASP.NET team, this is almost always the case. One thing that I see people get tripped up on is using the appropriate type of encoding. A lot of developers will simply just call <em>HtmlEncode</em> and think they are doing the right thing. This is not always the right case! Lets take the example of where we have a control that generates the HTML mark up to include a Xbox Gamercard in a page. The control takes in user (in this case another developer) input for the Gamertag and constructs an IFrame referencing a URL with that uses the given Gamertag. The first, thing that needs to be done is to URL encode the Gamertag as it will become part of a URL. At this point most developers would call it safe and stick it in the SRC attribute of the IFrame but that is not the case. We also need to Attribute encode it because quotation marks are valid URL characters but not valid attribute characters.
+
+<div css="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:65f925b4-41b4-4dbf-b34b-15fb07f38c80" className="wlWriterEditableSmartContent">
+<div css="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
+<div css="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
+<ol css="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2em; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; BACKGROUND: #ffffff; PADDING-TOP: 0px">
+    <li><span css="COLOR: #0000ff">string</span>.Format(<span css="COLOR: #a31515">"&lt;iframe src=\"http://gamercard.xbox.com/{0}.card\" scrolling=\"no\" frameBorder=\"0\" height=\"140\" width=\"204\"&gt;{1}&lt;/iframe&gt;"</span>,</li>
+    <li css="BACKGROUND: #f3f3f3">        <span css="COLOR: #2b91af">HttpUtility</span>.HtmlAttributeEncode(<span css="COLOR: #2b91af">HttpUtility</span>.UrlPathEncode(gamerTag)),</li>
+    <li>        <span css="COLOR: #2b91af">HttpUtility</span>.HtmlEncode(gamerTag));</li>
+</ol>
+</div>
+</div>
+</div>
+
+For me this is one of the most tricky parts about developing for the web. So hopefully after reading this you have a little bit better idea of how and when you should be encoding. Please let me know if you have any questions.
+
+### Update: JavaScript Encoding
+
+One issue that I did not cover in my original post was how to handle encoding when you were in JavaScript. JavaScript contains its own methods for Encoding URLs and HTML etc. and you can google on Bing and find all types of posts on the subject. So I wont spend time discussing those methods. What I would like to discuss is when as a developer of a control or framework you need to output some JavaScript on a page and it needs to use some user input in that Script. For the most part the rules for encoding described above are the same when inside of JavaScript. Even the tricky parts are the same, source attributes need to be URL encoded and then attribute encoded. So for the most part this is all just the same stuff over and over.
+
+There is however one difference, what happens when you need to use user input as a string. For instance you want to store some user string in a variable in JavaScript. There is no rule above that applies to this, but you do need to encode, because that string may include something like a single or double quote. Which means that the string would be ended and everything else would be executed as JavaScript code. There is a new method in ASP.NET 4 that you can use to help you with this, <em>JavaScriptStringEncode</em>. There is even an overload that will add double quotes around the whole thing so you can just drop it right into the JavaScript. Here is some sample code:
+
+<div css="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:09469b61-5d28-4552-af21-e07a5671e01c" className="wlWriterEditableSmartContent">
+<div css="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
+<div css="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
+<ol css="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2em; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; BACKGROUND: #ffffff; PADDING-TOP: 0px">
+    <li><span css="COLOR: #0000ff">string</span> script = <span css="COLOR: #a31515">"&lt;script type=\"text/javascript\"&gt; var msg = {0}; alert(msg); &lt;/script&gt;"</span>;</li>
+    <li css="BACKGROUND: #f3f3f3"><span css="COLOR: #0000ff">string</span>.Format(script, <span css="COLOR: #2b91af">HttpUtility</span>.JavaScriptStringEncode(<span css="COLOR: #a31515">"some'input"</span>, <span css="COLOR: #0000ff">true</span> <span css="COLOR: #008000">/*add double quotes*/</span>));</li>
+</ol>
+</div>
+</div>
+</div>
+
+Would return the following <em>string</em>
+
+<div css="PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; DISPLAY: inline; FLOAT: none; PADDING-TOP: 0px" id="scid:9ce6104f-a9aa-4a17-a79f-3a39532ebf7c:c6b6a6db-ac97-40a2-95d2-433805833cce" className="wlWriterEditableSmartContent">
+<div css="BORDER-BOTTOM: #000080 1px solid; BORDER-LEFT: #000080 1px solid; FONT-FAMILY: &quot;Courier New&quot;, Courier, Monospace; COLOR: #000; FONT-SIZE: 10pt; BORDER-TOP: #000080 1px solid; BORDER-RIGHT: #000080 1px solid">
+<div css="BACKGROUND: #ddd; MAX-HEIGHT: 300px; OVERFLOW: auto">
+<ol css="PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 2em; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; BACKGROUND: #ffffff; PADDING-TOP: 0px">
+    <li>&lt;<span css="COLOR: #800000">script</span> <span css="COLOR: #ff0000">type</span>="<span css="COLOR: #0000ff">text/javascript</span>"&gt; var msg = "Some\'Input"; alert(msg); &lt;/<span css="COLOR: #800000">script</span>&gt;</li>
+</ol>
+</div>
+</div>
+</div>

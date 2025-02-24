@@ -33,7 +33,7 @@ export default async function Page({
           </div>
         </div>
       </div>
-      <hr className="max-w-7xl mx-10 lg:mx-20 mb-10" />
+      <hr className="mx-10 lg:mx-20 mb-10" />
       <main className="mx-auto max-w-7xl px-10 lg:px-20 blog">
         <data.Component />
       </main>
