@@ -29,14 +29,16 @@ const BookshelfHeader = ({ year }: { year: number }) => {
               Every year I set a goal for myself to consume, read or listen to, one book a week. I believe that it is important to continue to learn and grow and I find reading one of the best ways to do that.
             </p>
           </div>
-          <div className="hidden md:block mx-auto mt-5 max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base/7 font-semibold text-white sm:grid-cols-2 md:flex lg:gap-x-10">
+          <div className="mx-auto mt-5 max-w-2xl lg:mx-0 lg:max-w-none">
+            <div className="grid grid-cols-3 gap-x-8 gap-y-6 text-base/7 font-semibold text-white md:flex lg:gap-x-10">
               {years.map((y) => (
                 <Link key={y} href={`/bookshelf/${y}`} className={`${year === y ? 'underline font-semibold' : ''} hover:underline`}>
                   {y} <span aria-hidden="true">&rarr;</span>
                 </Link>
               ))}
             </div>
+          </div>
+          <div className="hidden md:block mx-auto mt-5 max-w-2xl lg:mx-0 lg:max-w-none">
             <dl className=" grid grid-cols-1 gap-8 sm:mt-10 sm:grid-cols-4 lg:grid-cols-4">
               <div className="flex flex-col-reverse gap-1">
                 <dt className="text-base/7 text-gray-300">Total</dt>
