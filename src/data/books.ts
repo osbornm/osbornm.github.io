@@ -3,6 +3,12 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2025 */
   {
+    title: "All Systems Red: The Murderbot Diaries, Book 1",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/iKLld4u",
+  },
+  {
     title: "Source Code My Beginnings",
     year: 2025,
     category: Category.NonFiction,
