@@ -2,6 +2,12 @@ import { Book, Category } from "./types";
 
 export const books: Array<Book> = [
   /* 2025 */
+  {
+    title: "Exit Strategy: The Murderbot Diaries, Book 4",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/4Oemrjt",
+  },
    {
     title: "Rogue Protocol: The Murderbot Diaries, Book 3",
     year: 2025,
