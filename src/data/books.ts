@@ -3,6 +3,30 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2025 */
   {
+    title: "Gateway, Expeditionary Force, Book 18",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/9Hk4Pfp,
+  },
+  {
+    title: "Developer Marketing Does Not Exist",
+    year: 2025,
+    category: Category.NonFiction,
+    href: "https://a.co/d/aoIMsgE,
+  },
+  {
+    title: "Fugitive Telemetry: The Murderbot Diaries, Book 6",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/8iqnq85",
+  },
+   {
+    title: "Network Effect: The Murderbot Diaries, Book 5",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/5j6kscA",
+  },
+  {
     title: "Exit Strategy: The Murderbot Diaries, Book 4",
     year: 2025,
     category: Category.Fiction,
