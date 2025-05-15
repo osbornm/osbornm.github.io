@@ -6,13 +6,13 @@ export const books: Array<Book> = [
     title: "Gateway, Expeditionary Force, Book 18",
     year: 2025,
     category: Category.Fiction,
-    href: "https://a.co/d/9Hk4Pfp,
+    href: "https://a.co/d/9Hk4Pfp",
   },
   {
     title: "Developer Marketing Does Not Exist",
     year: 2025,
     category: Category.NonFiction,
-    href: "https://a.co/d/aoIMsgE,
+    href: "https://a.co/d/aoIMsgE",
   },
   {
     title: "Fugitive Telemetry: The Murderbot Diaries, Book 6",
