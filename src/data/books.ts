@@ -2,6 +2,18 @@ import { Book, Category } from "./types";
 
 export const books: Array<Book> = [
   /* 2025 */
+   {
+    title: "When the Moon Hits Your Eye",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/hdOvFbz",
+  },
+  {
+    title: "System Collapse: The Murderbot Diaries, Book 7",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/5fSd8Xt",
+  },
   {
     title: "Gateway, Expeditionary Force, Book 18",
     year: 2025,
@@ -55,6 +67,12 @@ export const books: Array<Book> = [
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/902xZk1",
+  },
+  {
+    title: "The Kaiju Preservation Society",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/drFcacJ",
   },
   {
     title: "Pathfinder First Colony, Book 17",
