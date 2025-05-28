@@ -2,6 +2,12 @@ import { Book, Category } from "./types";
 
 export const books: Array<Book> = [
   /* 2025 */
+  {
+    title: "Forsaken Outpost, First Colony, Book 18",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/52dUcjf",
+  },
    {
     title: "When the Moon Hits Your Eye",
     year: 2025,
