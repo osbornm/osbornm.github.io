@@ -3,6 +3,12 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2025 */
   {
+    title: "Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger",
+    year: 2025,
+    category: Category.NonFiction,
+    href: "https://a.co/d/4yHkPDT",
+  },
+  {
     title: "12 Months to $1 Million",
     year: 2025,
     category: Category.NonFiction,
