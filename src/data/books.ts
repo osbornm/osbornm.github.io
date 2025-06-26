@@ -2,6 +2,66 @@ import { Book, Category } from "./types";
 
 export const books: Array<Book> = [
   /* 2025 */
+   {
+    title: "The Sound of Rebellion: The Human Division, Episode 8",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
+  },
+   {
+    title: "The Dog King: The Human Division, Episode 7",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
+  },
+   {
+    title: "The Back Channel: The Human Division, Episode 6",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
+  },
+   {
+    title: "Tales from the Clarke: The Human Division, Episode 5",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
+  },
+   {
+    title: "A Voice in the Wilderness: The Human Division, Episode 4",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
+  },
+   {
+    title: "We Only Need the Heads: The Human Division, Episode 3",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
+  },
+   {
+    title: "Walk the Plank: The Human Division, Episode 2",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
+  },
+  {
+    title: "The B-Team: The Human Division, Episode 1",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
+  },
+  {
+    title: "Descent: The Palladium Wars, Book 4",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/6IUpbrr",
+  },
+  {
+    title: "Descent: The Palladium Wars, Book 4",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/6IUpbrr",
+  },
   {
     title: "Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger",
     year: 2025,
