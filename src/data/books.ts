@@ -2,6 +2,36 @@ import { Book, Category } from "./types";
 
 export const books: Array<Book> = [
   /* 2025 */
+  {
+    title: "Earth Below, Sky Above: The Human Division, Episode 13",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/dakdOwk",
+  },
+  {
+    title: "The Gentle Art of Cracking Heads : The Human Division, Episode 12",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/d709tsu",
+  },
+  {
+    title: "A Problem of Porportion: The Human Division, Episode 11",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/iKspf85",
+  },
+  {
+    title: "This Must be the Place: The Human Division, Episode 10",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/iD4CRSx",
+  },
+  {
+    title: "The Observers: The Human Division, Episode 9",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/bVhTttM",
+  },
    {
     title: "The Sound of Rebellion: The Human Division, Episode 8",
     year: 2025,
