@@ -3,6 +3,24 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2025 */
   {
+    title: "Paradox: The Nine Greatest Enigmas in Physics",
+    year: 2025,
+    category: Category.NonFiction,
+    href: "https://a.co/d/cXqTExV",
+  },
+  {
+    title: "Aces, Book 1",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/0s5wXvp",
+  },
+  {
+    title: "Project Hail Mary",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/5QPPKjl",
+  },
+  {
     title: "Earth Below, Sky Above: The Human Division, Episode 13",
     year: 2025,
     category: Category.Fiction,
