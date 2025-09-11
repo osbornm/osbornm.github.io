@@ -3,6 +3,12 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2025 */
   {
+    title: "The 5 Types of Wealth: A Transformative Guide to Design Your Dream Life",
+    year: 2025,
+    category: Category.NonFiction,
+    href: "https://a.co/d/jfkuOc2",
+  },
+  {
     title: "Paradox: The Nine Greatest Enigmas in Physics",
     year: 2025,
     category: Category.NonFiction,
