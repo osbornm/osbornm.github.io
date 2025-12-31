@@ -3,16 +3,85 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2025 */
   {
-    title: "The 5 Types of Wealth: A Transformative Guide to Design Your Dream Life",
+    title: "The Money Trap: Lost Illusions Inside the Tech Bubble",
     year: 2025,
     category: Category.NonFiction,
-    href: "https://a.co/d/jfkuOc2",
+    href: "https://a.co/d/53bDDH4",
+  },
+  {
+    title: "Valley of the Dead: Ruins of the Earth, Book 5",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/bWm9GT7",
+  },
+  {
+    title: "Decayed Legacy: Ruins of the Earth, Book 4",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/fNPesy3",
+  },
+  {
+    title: "Phantom Deadfall: Ruins of the Earth, Book 3",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/5GQOgOV",
+  },
+  {
+    title: "Gods and Men: Ruins of the Earth, Book 2",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/1qZLH6E",
+  },
+  {
+    title: "Scorpio: Frontlines: Evolution, Book 1",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/93gJk5A",
+  },
+  {
+    title: "The Shattering Peace: Old Man's War Book 7",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/eQSTV6u",
+  },
+  {
+    title: "Infinite Powers: How Calculus Reveals the Secrets of the Universe",
+    year: 2025,
+    category: Category.NonFiction,
+    href: "https://a.co/d/diwojsL",
+  },
+  {
+    title: "Ruins of the Earth: Ruins of the Earth, Book 1",
+    year: 2025,
+    category: Category.Fiction,
+    href: "https://a.co/d/aXtt2ns",
   },
   {
     title: "Paradox: The Nine Greatest Enigmas in Physics",
     year: 2025,
     category: Category.NonFiction,
-    href: "https://a.co/d/cXqTExV",
+    href: "https://a.co/d/c3O9EGj",
+  },
+  {
+    title:
+      "Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets",
+    year: 2025,
+    category: Category.NonFiction,
+    href: "https://a.co/d/f9EwP2Q",
+  },
+  {
+    title:
+      "Gambling Man: The Secret Story of the World's Greatest Disruptor, Masayoshi Son",
+    year: 2025,
+    category: Category.NonFiction,
+    href: "https://a.co/d/03B7KVM",
+  },
+  {
+    title:
+      "The 5 Types of Wealth: A Transformative Guide to Design Your Dream Life",
+    year: 2025,
+    category: Category.NonFiction,
+    href: "https://a.co/d/jfkuOc2",
   },
   {
     title: "Aces, Book 1",
@@ -56,43 +125,43 @@ export const books: Array<Book> = [
     category: Category.Fiction,
     href: "https://a.co/d/bVhTttM",
   },
-   {
+  {
     title: "The Sound of Rebellion: The Human Division, Episode 8",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
-   {
+  {
     title: "The Dog King: The Human Division, Episode 7",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
-   {
+  {
     title: "The Back Channel: The Human Division, Episode 6",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
-   {
+  {
     title: "Tales from the Clarke: The Human Division, Episode 5",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
-   {
+  {
     title: "A Voice in the Wilderness: The Human Division, Episode 4",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
-   {
+  {
     title: "We Only Need the Heads: The Human Division, Episode 3",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
-   {
+  {
     title: "Walk the Plank: The Human Division, Episode 2",
     year: 2025,
     category: Category.Fiction,
@@ -117,7 +186,8 @@ export const books: Array<Book> = [
     href: "https://a.co/d/6IUpbrr",
   },
   {
-    title: "Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger",
+    title:
+      "Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/4yHkPDT",
@@ -134,7 +204,7 @@ export const books: Array<Book> = [
     category: Category.Fiction,
     href: "https://a.co/d/52dUcjf",
   },
-   {
+  {
     title: "When the Moon Hits Your Eye",
     year: 2025,
     category: Category.Fiction,
@@ -164,7 +234,7 @@ export const books: Array<Book> = [
     category: Category.Fiction,
     href: "https://a.co/d/8iqnq85",
   },
-   {
+  {
     title: "Network Effect: The Murderbot Diaries, Book 5",
     year: 2025,
     category: Category.Fiction,
@@ -176,13 +246,13 @@ export const books: Array<Book> = [
     category: Category.Fiction,
     href: "https://a.co/d/4Oemrjt",
   },
-   {
+  {
     title: "Rogue Protocol: The Murderbot Diaries, Book 3",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/eClM3YK",
   },
-   {
+  {
     title: "Artificial Condition: The Murderbot Diaries, Book 2",
     year: 2025,
     category: Category.Fiction,
