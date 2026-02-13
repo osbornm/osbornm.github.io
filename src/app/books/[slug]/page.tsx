@@ -7,7 +7,7 @@ export default async function BooksYearPage({
   params: Promise<{ slug: string }>
 }) {
   const slug = (await params).slug;
-  const books = Bookshelf.getYear(slug);
+  const books = await Bookshelf.getYearWithOpenLibrary(slug);
   const years = Bookshelf.getYearList();
 
   return (

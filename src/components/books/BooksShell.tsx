@@ -1,11 +1,19 @@
 'use client';
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import BookList from "@/components/books/BookList";
 import BooksHeader from "@/components/books/header";
 import { Book, Category } from "@/data/types";
+import { useSearchParams } from "next/navigation";
 
-type Filter = "all" | Category.Fiction | Category.NonFiction;
+type Filter = "all" | "fiction" | "nonfiction";
+
+function parseFilter(value: string | null): Filter {
+  if (value === "fiction" || value === "nonfiction") {
+    return value;
+  }
+  return "all";
+}
 
 export default function BooksShell({
   books,
@@ -16,13 +24,16 @@ export default function BooksShell({
   year: number;
   years: Array<number>;
 }) {
-  const [filter, setFilter] = useState<Filter>("all");
+  const searchParams = useSearchParams();
+  const filter = parseFilter(searchParams.get("filter"));
 
   const filteredBooks = useMemo(() => {
     if (filter === "all") {
       return books;
     }
-    return books.filter((book) => book.category === filter);
+    const category =
+      filter === "fiction" ? Category.Fiction : Category.NonFiction;
+    return books.filter((book) => book.category === category);
   }, [books, filter]);
 
   return (
@@ -32,7 +43,6 @@ export default function BooksShell({
         years={years}
         books={books}
         filter={filter}
-        onFilterChange={setFilter}
       />
       <div className="flex flex-col items-center justify-center">
         <BookList books={filteredBooks} />

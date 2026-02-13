@@ -3,22 +3,43 @@
 import { Category } from "@/data/types";
 import Link from "next/link";
 import { Book } from "@/data/types";
+import { usePathname, useSearchParams } from "next/navigation";
 
-type Filter = "all" | Category.Fiction | Category.NonFiction;
+type Filter = "all" | "fiction" | "nonfiction";
 
 const BooksHeader = ({
   year,
   years,
   books,
   filter,
-  onFilterChange,
 }: {
   year: number;
   years: Array<number>;
   books: Array<Book>;
   filter: Filter;
-  onFilterChange: (filter: Filter) => void;
 }) => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const buildHref = (filterValue: Filter) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (filterValue === "all") {
+      params.delete("filter");
+    } else {
+      params.set("filter", filterValue);
+    }
+
+    const query = params.toString();
+    return query ? `${pathname}?${query}` : pathname;
+  };
+
+  const buildYearHref = (selectedYear: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    const query = params.toString();
+    const yearPath = `/books/${selectedYear}`;
+    return query ? `${yearPath}?${query}` : yearPath;
+  };
+
   const currentYear = new Date().getFullYear();
   const getWeeksPassed = () => {
     if (year < currentYear)
@@ -47,33 +68,30 @@ const BooksHeader = ({
             <div className="flex flex-wrap items-center justify-between gap-4 text-base/7 font-semibold text-white">
               <div className="flex flex-wrap gap-x-8 gap-y-3 lg:gap-x-10">
                 {years.map((y) => (
-                  <Link key={y} href={`/books/${y}`} className={`${year === y ? 'underline font-semibold' : ''} hover:underline`}>
+                  <Link key={y} href={buildYearHref(y)} className={`${year === y ? 'underline font-semibold' : ''} hover:underline`}>
                     {y} <span aria-hidden="true">&rarr;</span>
                   </Link>
                 ))}
               </div>
               <div className="flex items-center gap-x-5">
-                <button
-                  type="button"
-                  onClick={() => onFilterChange("all")}
+                <Link
+                  href={buildHref("all")}
                   className={`${filter === "all" ? "underline" : ""} hover:underline`}
                 >
                   All
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onFilterChange(Category.Fiction)}
-                  className={`${filter === Category.Fiction ? "underline" : ""} hover:underline`}
+                </Link>
+                <Link
+                  href={buildHref("fiction")}
+                  className={`${filter === "fiction" ? "underline" : ""} hover:underline`}
                 >
                   Fiction
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onFilterChange(Category.NonFiction)}
-                  className={`${filter === Category.NonFiction ? "underline" : ""} hover:underline`}
+                </Link>
+                <Link
+                  href={buildHref("nonfiction")}
+                  className={`${filter === "nonfiction" ? "underline" : ""} hover:underline`}
                 >
                   Non-Fiction
-                </button>
+                </Link>
               </div>
             </div>
           </div>

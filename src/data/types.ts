@@ -7,6 +7,10 @@ export interface Book {
   title: string;
   year: number;
   category: Category;
-  href: string;
+  href?: string;
+  openLibraryHref?: string;
+  author?: string;
+  isbn?: string;
+  isbn13?: string;
   image?: string;
 }

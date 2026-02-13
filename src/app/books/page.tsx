@@ -1,8 +1,8 @@
 import Bookshelf from "@/data/bookService";
 import BooksShell from "@/components/books/BooksShell";
 
-export default function CurrentBooksPage() {
-  const books = Bookshelf.getCurrentYear();
+export default async function CurrentBooksPage() {
+  const books = await Bookshelf.getCurrentYearWithOpenLibrary();
   const years = Bookshelf.getYearList();
 
   return (

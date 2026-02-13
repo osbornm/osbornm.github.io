@@ -1,9 +1,9 @@
 import { Book, Category } from "./types";
-
 export const books: Array<Book> = [
   /* 2026 */
   {
     title: "Exiles",
+    isbn: "0593851633",
     year: 2026,
     category: Category.Fiction,
     href: "https://a.co/d/0gUIzamH",
@@ -11,11 +11,13 @@ export const books: Array<Book> = [
   {
     title: "Ground State: Expeditionary Force, Book 19",
     year: 2026,
+    isbn13: "979-8245598000",
     category: Category.Fiction,
     href: "https://a.co/d/0eol8NqL",
   },
   {
     title: "Fire and Fury: Ruins of the Earth, Book 6",
+    isbn13: "979-8792753204",
     year: 2026,
     category: Category.Fiction,
     href: "https://a.co/d/03KS3wGy",
@@ -23,60 +25,70 @@ export const books: Array<Book> = [
   /* 2025 */
   {
     title: "The Money Trap: Lost Illusions Inside the Tech Bubble",
+    isbn13: "978-1250332851",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/53bDDH4",
   },
   {
     title: "Valley of the Dead: Ruins of the Earth, Book 5",
+    isbn13: "979-8537637967",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/bWm9GT7",
   },
   {
     title: "Decayed Legacy: Ruins of the Earth, Book 4",
+    isbn13: "979-8744227951",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/fNPesy3",
   },
   {
     title: "Phantom Deadfall: Ruins of the Earth, Book 3",
+    isbn: "9798710382547",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/5GQOgOV",
   },
   {
     title: "Gods and Men: Ruins of the Earth, Book 2",
+    isbn: "1087945259",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/1qZLH6E",
   },
   {
     title: "Scorpio: Frontlines: Evolution, Book 1",
+    isbn: "154203549X",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/93gJk5A",
   },
   {
     title: "The Shattering Peace: Old Man's War Book 7",
+    isbn: "9780765389206",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/eQSTV6u",
   },
   {
     title: "Infinite Powers: How Calculus Reveals the Secrets of the Universe",
+    isbn: "9781786492975",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/diwojsL",
   },
   {
     title: "Ruins of the Earth: Ruins of the Earth, Book 1",
+    isbn: "9798686000995",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/aXtt2ns",
   },
   {
     title: "Paradox: The Nine Greatest Enigmas in Physics",
+    isbn: "9780307986795",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/c3O9EGj",
@@ -84,6 +96,7 @@ export const books: Array<Book> = [
   {
     title:
       "Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets",
+    isbn: "159659201X",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/f9EwP2Q",
@@ -91,6 +104,7 @@ export const books: Array<Book> = [
   {
     title:
       "Gambling Man: The Secret Story of the World's Greatest Disruptor, Masayoshi Son",
+    isbn: "166807074X",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/03B7KVM",
@@ -98,6 +112,7 @@ export const books: Array<Book> = [
   {
     title:
       "The 5 Types of Wealth: A Transformative Guide to Design Your Dream Life",
+    isbn: "9780593723197",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/jfkuOc2",
@@ -110,90 +125,105 @@ export const books: Array<Book> = [
   },
   {
     title: "Project Hail Mary",
+    isbn: "9780593355275",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/5QPPKjl",
   },
   {
     title: "Earth Below, Sky Above: The Human Division, Episode 13",
+    isbn: "9781466830622",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/dakdOwk",
   },
   {
     title: "The Gentle Art of Cracking Heads : The Human Division, Episode 12",
+    isbn: "9781466830615",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/d709tsu",
   },
   {
     title: "A Problem of Porportion: The Human Division, Episode 11",
+    isbn: "9781466830608",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/iKspf85",
   },
   {
     title: "This Must be the Place: The Human Division, Episode 10",
+    isbn: "9781466830592",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/iD4CRSx",
   },
   {
     title: "The Observers: The Human Division, Episode 9",
+    isbn: "9781466830585",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/bVhTttM",
   },
   {
     title: "The Sound of Rebellion: The Human Division, Episode 8",
+    isbn: "9781466830578",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
   {
     title: "The Dog King: The Human Division, Episode 7",
+    isbn: "9781466830639",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
   {
     title: "The Back Channel: The Human Division, Episode 6",
+    isbn: "9781466830561",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
   {
     title: "Tales from the Clarke: The Human Division, Episode 5",
+    isbn: "9781466830554",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
   {
     title: "A Voice in the Wilderness: The Human Division, Episode 4",
+    isbn: "9781466830547",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
   {
     title: "We Only Need the Heads: The Human Division, Episode 3",
+    isbn: "9781466830530",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
   {
     title: "Walk the Plank: The Human Division, Episode 2",
+    isbn: "9781466830523",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
   {
     title: "The B-Team: The Human Division, Episode 1",
+    isbn: "9781466830516",
     year: 2025,
     category: Category.Fiction,
     href: "https://www.amazon.com/dp/B074CFW6P1?binding=kindle_edition&ref=dbs_m_mng_rwt_sft_tkin_taud&qid=1750949710&sr=8-1",
   },
   {
     title: "Descent: The Palladium Wars, Book 4",
+    isbn: "9781542036153",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/6IUpbrr",
@@ -201,96 +231,112 @@ export const books: Array<Book> = [
   {
     title:
       "Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger",
+    isbn: "1953953247",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/4yHkPDT",
   },
   {
     title: "12 Months to $1 Million",
+    isbn: "1948836955",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/7LkIKiy",
   },
   {
     title: "Forsaken Outpost, First Colony, Book 18",
+    isbn: "9781945223815",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/52dUcjf",
   },
   {
     title: "When the Moon Hits Your Eye",
+    isbn: "9780765389107",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/hdOvFbz",
   },
   {
     title: "System Collapse: The Murderbot Diaries, Book 7",
+    isbn: "1705041027",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/5fSd8Xt",
   },
   {
     title: "Gateway, Expeditionary Force, Book 18",
+    isbn: "9798315131137",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/9Hk4Pfp",
   },
   {
     title: "Developer Marketing Does Not Exist",
+    isbn: "9781737029601",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/aoIMsgE",
   },
   {
     title: "Fugitive Telemetry: The Murderbot Diaries, Book 6",
+    isbn: "1250765382",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/8iqnq85",
   },
   {
     title: "Network Effect: The Murderbot Diaries, Book 5",
+    isbn: "1664475915",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/5j6kscA",
   },
   {
     title: "Exit Strategy: The Murderbot Diaries, Book 4",
+    isbn: "1501999990",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/4Oemrjt",
   },
   {
     title: "Rogue Protocol: The Murderbot Diaries, Book 3",
+    isbn: "9781250191786",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/eClM3YK",
   },
   {
     title: "Artificial Condition: The Murderbot Diaries, Book 2",
+    isbn: "9786191934096",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/iI3Zk6d",
   },
   {
     title: "All Systems Red: The Murderbot Diaries, Book 1",
+    isbn: "6191933363",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/iKLld4u",
   },
   {
     title: "Source Code My Beginnings",
+    isbn: "059380158X",
     year: 2025,
     category: Category.NonFiction,
     href: "https://a.co/d/902xZk1",
   },
   {
     title: "The Kaiju Preservation Society",
+    isbn: "844501479X",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/drFcacJ",
   },
   {
     title: "Pathfinder First Colony, Book 17",
+    isbn: "1945223790",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/aH87Igh",
@@ -300,12 +346,14 @@ export const books: Array<Book> = [
     href: "https://a.co/d/3PBA2VD",
     title:
       "This Is How They Tell Me the World Ends: The Cyberweapons Arms Race",
+    isbn: "9781635576054",
     year: 2024,
     category: Category.NonFiction,
   },
   {
     href: "https://a.co/d/cvn7AhN",
     title: "Bad Blood: Secrets and Lies in a Silicon Valley Startup",
+    isbn: "0525431993",
     year: 2024,
     category: Category.NonFiction,
   },
@@ -313,6 +361,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/9akvtqn",
     title:
       "The Idea Factory: Bell Labs and the Great Age of American Innovation",
+    isbn: "1594203288",
     year: 2024,
     category: Category.NonFiction,
   },
@@ -320,6 +369,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/5AUwxSd",
     title:
       "The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution",
+    isbn: "073521798X",
     year: 2024,
     category: Category.NonFiction,
   },
@@ -327,6 +377,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/310PMiT",
     title:
       "The Effective Executive: The Definitive Guide to Getting the Right Things Done",
+    isbn: "0967298172",
     year: 2024,
     category: Category.NonFiction,
   },
@@ -334,6 +385,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/eRRU7Zf",
     title:
       "What If? 2: Additional Serious Scientific Answers to Absurd Hypothetical Questions",
+    isbn: "0525537112",
     year: 2024,
     category: Category.NonFiction,
   },
@@ -341,6 +393,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/eHbHQ8a",
     title:
       "The Fund: Ray Dalio, Bridgewater Associates, and the Unraveling of a Wall Street Legend",
+    isbn: "9781250276940",
     year: 2024,
     category: Category.NonFiction,
   },
@@ -348,6 +401,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/c7lj41W",
     title:
       "The Startup CTO's Handbook: Essential Skills and Best Practices for High Performing Engineering Teams",
+    isbn: "1955811563",
     year: 2024,
     category: Category.NonFiction,
   },
@@ -355,24 +409,28 @@ export const books: Array<Book> = [
     href: "https://a.co/d/1QVO1lD",
     title:
       "12 Months to $1 Million: How to Pick a Winning Product, Build a Real Business, and Become a Seven-Figure Entrepreneur",
+    isbn: "1948836955",
     year: 2024,
     category: Category.NonFiction,
   },
   {
     href: "https://a.co/d/fUvrhWt",
     title: "Private Equity: A Memoir",
+    isbn: "0593654994",
     year: 2024,
     category: Category.NonFiction,
   },
   {
     href: "https://a.co/d/9Sx3thE",
     title: "Extremely Hardcore: Inside Elon Musk's Twitter",
+    isbn: "0593716612",
     year: 2024,
     category: Category.NonFiction,
   },
   {
     href: "https://a.co/d/g9vAs7f",
     title: "Burn Book: A Tech Love Story",
+    isbn: "0349442126",
     year: 2024,
     category: Category.NonFiction,
   },
@@ -380,68 +438,78 @@ export const books: Array<Book> = [
     href: "https://a.co/d/6Vxf6OZ",
     title:
       "Start Small, Stay Small: A Developer's Guide to Launching a Startup",
+    isbn: "9780615373966",
     year: 2024,
     category: Category.NonFiction,
   },
   {
     href: "https://a.co/d/1f5GMdN",
     title: "Doom Guy: Life in First Person",
+    isbn: "1647005361",
     year: 2024,
     category: Category.NonFiction,
   },
   {
     href: "https://a.co/d/hbDFk6j",
     title: "Not Till We Are Lost: Bobiverse, Book 5",
+    isbn: "1668221659",
     year: 2024,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/fiE3CDE",
     title: "Task Force Hammer: Expeditionary Force, Book 17",
+    isbn13: "979-8336989861",
     year: 2024,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/ak6bUpw",
     title: "Travel by Bullet: The Dispatcher, Book 3",
+    isbn: "9781491555873",
     year: 2024,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/j2SEJSZ",
     title: "Resurgence: First Colony, Book 16",
+    isbn: "1945223731",
     year: 2024,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/gLms9UH",
     title: "Fallen Earth: First Colony, Book 15",
+    isbn: "1945223715",
     year: 2024,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/an57tNt",
     title: "Murder by Other Means: The Dispatcher, Book 2",
+    isbn: "1713620464",
     year: 2024,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/fcAzW55",
     title: "Starter Villain",
+    isbn: "1509835415",
     year: 2024,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/e9cZ20e",
     title: "Aftermath, Expeditionary Force, Book 16",
+    isbn: "9798876137494",
     year: 2024,
     category: Category.Fiction,
   },
-
   /* 2023 */
   {
     title:
       "The SaaS Playbook: Build a Multimillion-Dollar Startup Without Venture Capital",
+    isbn: "9798987746523",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/8P3A8SP",
@@ -449,12 +517,14 @@ export const books: Array<Book> = [
   {
     title:
       "The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail",
+    isbn: "9781504046701",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/6IjqJI6",
   },
   {
     title: "Going Infinite: The Rise and Fall of a New Tycoon",
+    isbn: "132410581X",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/7ISv9O3",
@@ -462,12 +532,14 @@ export const books: Array<Book> = [
   {
     title:
       "Founder vs Investor: The Honest Truth About Venture Capital from Startup to IPO",
+    isbn: "1400242762",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/7u6MlOa",
   },
   {
     title: "Elon Musk",
+    isbn: "9780062469670",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/ebY3CI3",
@@ -475,24 +547,28 @@ export const books: Array<Book> = [
   {
     title:
       "Hit Refresh: The Quest to Rediscover Microsoft's Soul and Imagine a Better Future for Everyone",
+    isbn: "0008247692",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/aKFABuK",
   },
   {
     title: "The Great CEO Within: The Tactical Guide to Company Building",
+    isbn: "0578599287",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/d56dtHs",
   },
   {
     title: "The Myths of Innovation",
+    isbn: "0596527055",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/hPkq5cN",
   },
   {
     title: "Scaling People: Tactics for Management and Company Building",
+    isbn: "9781953953254",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/flw2Jn2",
@@ -500,15 +576,16 @@ export const books: Array<Book> = [
   {
     title:
       "Angel: How to Invest in Technology Startups - Timeless Advice from an Angel Investor Who Turned $100,000 into $100,000,000",
+    isbn: "9780062560711",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/gcuBHaH",
   },
-
   {
     href: "https://a.co/d/2JVRepZ",
     title:
       "Zero to IPO: Over $1 Trillion of Actionable Advice from the World's Most Successful Entrepreneurs",
+    isbn: "0972832831",
     year: 2023,
     category: Category.NonFiction,
   },
@@ -516,6 +593,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/5p5KKu6",
     title:
       "Factfulness: Ten Reasons We're Wrong About the World - and Why Things Are Better Than You Think",
+    isbn: "9781250231987",
     year: 2023,
     category: Category.NonFiction,
   },
@@ -523,18 +601,21 @@ export const books: Array<Book> = [
     href: "https://a.co/d/fSMB4AW",
     title:
       "Thinking in Bets: Making Smarter Decisions When You Don't Have All the Facts",
+    isbn: "0735216355",
     year: 2023,
     category: Category.NonFiction,
   },
   {
     href: "https://a.co/d/3sp8fyh",
     title: "Disrupted: My Misadventure in the Start-Up Bubble",
+    isbn: "0316306088",
     year: 2023,
     category: Category.NonFiction,
   },
   {
     href: "https://a.co/d/7aGbNAT",
     title: "Hooked: How to Build Habit-Forming Products",
+    isbn: "9780615978628",
     year: 2023,
     category: Category.NonFiction,
   },
@@ -542,6 +623,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/dr7hH19",
     title:
       "The Delivery Man: The Art of Turning Ideas Into Products in Silicon Valley",
+    isbn13: "979-8987047422",
     year: 2023,
     category: Category.NonFiction,
   },
@@ -549,6 +631,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/94b2aLM",
     title:
       "The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses",
+    isbn: "9780307887894",
     year: 2023,
     category: Category.NonFiction,
   },
@@ -556,30 +639,35 @@ export const books: Array<Book> = [
     href: "https://a.co/d/93y89re",
     title:
       "The Rise of the Rest: How Entrepreneurs in Surprising Places Are Building the New American Dream",
+    isbn: "1982191848",
     year: 2023,
     category: Category.NonFiction,
   },
   {
     href: "https://a.co/d/3r96Mzt",
     title: "Centers of Gravity: Frontlines, Book 8",
+    isbn: "9781542032810",
     year: 2023,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/dyriGL9",
     title: "Orders of Battle: Frontlines, Book 7",
+    isbn: "1713530635",
     year: 2023,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/6rzsncY",
     title: "Failure Mode: Expeditionary Force, Book 15",
+    isbn: "9798371321725",
     year: 2023,
     category: Category.Fiction,
   },
   {
     href: "https://a.co/d/9ny7QcB",
     title: "Expedition Earth: First Colony, Book 14",
+    isbn: "9781945223549",
     year: 2023,
     category: Category.Fiction,
   },
