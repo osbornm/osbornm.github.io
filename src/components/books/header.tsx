@@ -2,7 +2,7 @@ import Bookshelf from "@/data/bookService";
 import { Category } from "@/data/types";
 import Link from "next/link";
 
-const BookshelfHeader = ({ year }: { year: number }) => {
+const BooksHeader = ({ year }: { year: number }) => {
   const books = Bookshelf.getYear(year.toString());
   const years = Bookshelf.getYearList();
   const currentYear = new Date().getFullYear();
@@ -24,7 +24,7 @@ const BookshelfHeader = ({ year }: { year: number }) => {
       <div className="relative isolate overflow-hidden py-20 sm:py-24 pb-10 sm:pb-14">
         <div className="mx-auto px-6 lg:px-20">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">{year} Bookshelf</h2>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">{year} Books</h2>
             <p className="mt-6 text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
               Every year I set a goal for myself to consume, read or listen to, one book a week. I believe that it is important to continue to learn and grow and I find reading one of the best ways to do that.
             </p>
@@ -32,7 +32,7 @@ const BookshelfHeader = ({ year }: { year: number }) => {
           <div className="mx-auto mt-5 max-w-2xl lg:mx-0 lg:max-w-none">
             <div className="grid grid-cols-3 gap-x-8 gap-y-6 text-base/7 font-semibold text-white md:flex lg:gap-x-10">
               {years.map((y) => (
-                <Link key={y} href={`/bookshelf/${y}`} className={`${year === y ? 'underline font-semibold' : ''} hover:underline`}>
+                <Link key={y} href={`/books/${y}`} className={`${year === y ? 'underline font-semibold' : ''} hover:underline`}>
                   {y} <span aria-hidden="true">&rarr;</span>
                 </Link>
               ))}
@@ -67,4 +67,4 @@ const BookshelfHeader = ({ year }: { year: number }) => {
   );
 }
 
-export default BookshelfHeader;
+export default BooksHeader;

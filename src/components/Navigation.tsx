@@ -38,7 +38,7 @@ export default function Navigation() {
                 <Link href="/blog" className="">Blog</Link>
               </li>
               <li>
-                <Link href="/bookshelf" className="">Bookshelf</Link>
+                <Link href="/books" className="">Books</Link>
               </li>
               <li>
                 <Link href="/talks" className="">Talks</Link>
@@ -54,7 +54,7 @@ export default function Navigation() {
                 <Link href="/blog" className="">Blog</Link>
               </li>
               <li>
-                <Link href="/bookshelf" className="">Bookshelf</Link>
+                <Link href="/books" className="">Books</Link>
               </li>
               <li>
                 <Link href="/talks" className="">Talks</Link>

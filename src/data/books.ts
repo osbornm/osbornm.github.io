@@ -180,12 +180,6 @@ export const books: Array<Book> = [
     href: "https://a.co/d/6IUpbrr",
   },
   {
-    title: "Descent: The Palladium Wars, Book 4",
-    year: 2025,
-    category: Category.Fiction,
-    href: "https://a.co/d/6IUpbrr",
-  },
-  {
     title:
       "Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger",
     year: 2025,

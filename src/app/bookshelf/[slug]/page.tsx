@@ -1,29 +1,17 @@
+import ClientRedirect from "@/components/ClientRedirect";
 import Bookshelf from "@/data/bookService";
-import BookList from "@/components/bookshelf/BookList";
-import BookshelfHeader from "@/components/bookshelf/header";
 
-export default async function BookshelfYearPage({
+export default async function BookshelfYearRedirectPage({
   params,
 }: {
   params: Promise<{ slug: string }>
 }) {
-  const slug = (await params).slug
-  const books = Bookshelf.getYear(slug);
-
-  return (
-    <>
-      <BookshelfHeader year={parseInt(slug)} />
-      <div className="flex flex-col items-center justify-center">
-        <BookList books={books} />
-      </div>
-    </>
-  );
+  const slug = (await params).slug;
+  return <ClientRedirect to={`/books/${slug}`} />;
 }
 
-export async function generateStaticParams() {
-  const result = (Bookshelf.getYearList()).map((year) => ({
+export function generateStaticParams() {
+  return Bookshelf.getYearList().map((year) => ({
     slug: year.toString(),
   }));
-  console.log(result);
-  return result;
 }
