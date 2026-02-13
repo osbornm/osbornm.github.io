@@ -6,7 +6,7 @@ import BooksHeader from "@/components/books/header";
 import { Book, Category } from "@/data/types";
 import { useSearchParams } from "next/navigation";
 
-type Filter = "all" | "fiction" | "nonfiction";
+export type Filter = "all" | "fiction" | "nonfiction";
 
 function parseFilter(value: string | null): Filter {
   if (value === "fiction" || value === "nonfiction") {

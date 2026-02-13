@@ -1,5 +1,6 @@
 import Bookshelf from "@/data/bookService";
 import BooksShell from "@/components/books/BooksShell";
+import { Suspense } from "react";
 
 export default async function BooksYearPage({
   params,
@@ -11,7 +12,13 @@ export default async function BooksYearPage({
   const years = Bookshelf.getYearList();
 
   return (
-    <BooksShell books={books} year={Number.parseInt(slug, 10)} years={years} />
+    <Suspense fallback={null}>
+      <BooksShell
+        books={books}
+        year={Number.parseInt(slug, 10)}
+        years={years}
+      />
+    </Suspense>
   );
 }
 

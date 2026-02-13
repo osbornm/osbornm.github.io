@@ -3,9 +3,8 @@
 import { Category } from "@/data/types";
 import Link from "next/link";
 import { Book } from "@/data/types";
+import { Filter } from "./BooksShell";
 import { usePathname, useSearchParams } from "next/navigation";
-
-type Filter = "all" | "fiction" | "nonfiction";
 
 const BooksHeader = ({
   year,
@@ -34,9 +33,9 @@ const BooksHeader = ({
   };
 
   const buildYearHref = (selectedYear: number) => {
+    const yearPath = `/books/${selectedYear}`;
     const params = new URLSearchParams(searchParams.toString());
     const query = params.toString();
-    const yearPath = `/books/${selectedYear}`;
     return query ? `${yearPath}?${query}` : yearPath;
   };
 
