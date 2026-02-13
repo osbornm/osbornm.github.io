@@ -1,6 +1,25 @@
 import { Book, Category } from "./types";
 
 export const books: Array<Book> = [
+  /* 2026 */
+  {
+    title: "Exiles",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://a.co/d/0gUIzamH",
+  },
+  {
+    title: "Ground State: Expeditionary Force, Book 19",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://a.co/d/0eol8NqL",
+  },
+  {
+    title: "Fire and Fury: Ruins of the Earth, Book 6",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://a.co/d/03KS3wGy",
+  },
   /* 2025 */
   {
     title: "The Money Trap: Lost Illusions Inside the Tech Bubble",
