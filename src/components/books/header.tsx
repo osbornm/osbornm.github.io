@@ -1,10 +1,24 @@
-import Bookshelf from "@/data/bookService";
+'use client';
+
 import { Category } from "@/data/types";
 import Link from "next/link";
+import { Book } from "@/data/types";
 
-const BooksHeader = ({ year }: { year: number }) => {
-  const books = Bookshelf.getYear(year.toString());
-  const years = Bookshelf.getYearList();
+type Filter = "all" | Category.Fiction | Category.NonFiction;
+
+const BooksHeader = ({
+  year,
+  years,
+  books,
+  filter,
+  onFilterChange,
+}: {
+  year: number;
+  years: Array<number>;
+  books: Array<Book>;
+  filter: Filter;
+  onFilterChange: (filter: Filter) => void;
+}) => {
   const currentYear = new Date().getFullYear();
   const getWeeksPassed = () => {
     if (year < currentYear)
@@ -30,12 +44,37 @@ const BooksHeader = ({ year }: { year: number }) => {
             </p>
           </div>
           <div className="mx-auto mt-5 max-w-2xl lg:mx-0 lg:max-w-none">
-            <div className="grid grid-cols-3 gap-x-8 gap-y-6 text-base/7 font-semibold text-white md:flex lg:gap-x-10">
-              {years.map((y) => (
-                <Link key={y} href={`/books/${y}`} className={`${year === y ? 'underline font-semibold' : ''} hover:underline`}>
-                  {y} <span aria-hidden="true">&rarr;</span>
-                </Link>
-              ))}
+            <div className="flex flex-wrap items-center justify-between gap-4 text-base/7 font-semibold text-white">
+              <div className="flex flex-wrap gap-x-8 gap-y-3 lg:gap-x-10">
+                {years.map((y) => (
+                  <Link key={y} href={`/books/${y}`} className={`${year === y ? 'underline font-semibold' : ''} hover:underline`}>
+                    {y} <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                ))}
+              </div>
+              <div className="flex items-center gap-x-5">
+                <button
+                  type="button"
+                  onClick={() => onFilterChange("all")}
+                  className={`${filter === "all" ? "underline" : ""} hover:underline`}
+                >
+                  All
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onFilterChange(Category.Fiction)}
+                  className={`${filter === Category.Fiction ? "underline" : ""} hover:underline`}
+                >
+                  Fiction
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onFilterChange(Category.NonFiction)}
+                  className={`${filter === Category.NonFiction ? "underline" : ""} hover:underline`}
+                >
+                  Non-Fiction
+                </button>
+              </div>
             </div>
           </div>
           <div className="hidden md:block mx-auto mt-5 max-w-2xl lg:mx-0 lg:max-w-none">

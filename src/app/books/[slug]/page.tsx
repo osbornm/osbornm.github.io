@@ -1,6 +1,5 @@
 import Bookshelf from "@/data/bookService";
-import BookList from "@/components/books/BookList";
-import BooksHeader from "@/components/books/header";
+import BooksShell from "@/components/books/BooksShell";
 
 export default async function BooksYearPage({
   params,
@@ -9,14 +8,10 @@ export default async function BooksYearPage({
 }) {
   const slug = (await params).slug;
   const books = Bookshelf.getYear(slug);
+  const years = Bookshelf.getYearList();
 
   return (
-    <>
-      <BooksHeader year={Number.parseInt(slug, 10)} />
-      <div className="flex flex-col items-center justify-center">
-        <BookList books={books} />
-      </div>
-    </>
+    <BooksShell books={books} year={Number.parseInt(slug, 10)} years={years} />
   );
 }
 

@@ -1,16 +1,11 @@
 import Bookshelf from "@/data/bookService";
-import BookList from "@/components/books/BookList";
-import BooksHeader from "@/components/books/header";
+import BooksShell from "@/components/books/BooksShell";
 
 export default function CurrentBooksPage() {
   const books = Bookshelf.getCurrentYear();
+  const years = Bookshelf.getYearList();
 
   return (
-    <>
-      <BooksHeader year={new Date().getFullYear()} />
-      <div className="flex flex-col items-center justify-center">
-        <BookList books={books} />
-      </div>
-    </>
+    <BooksShell books={books} year={new Date().getFullYear()} years={years} />
   );
 }
