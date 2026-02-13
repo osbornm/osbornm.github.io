@@ -44,6 +44,9 @@ class BookShelf {
     const enrichedBooks = await this.getEnrichedBooks();
     return enrichedBooks.filter((book) => book.year === new Date().getFullYear());
   }
+  async getAllWithOpenLibrary() {
+    return this.getEnrichedBooks();
+  }
 }
 
 const shelf = new BookShelf();

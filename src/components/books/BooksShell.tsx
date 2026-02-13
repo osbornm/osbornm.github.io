@@ -21,7 +21,7 @@ export default function BooksShell({
   years,
 }: {
   books: Array<Book>;
-  year: number;
+  year?: number;
   years: Array<number>;
 }) {
   const searchParams = useSearchParams();

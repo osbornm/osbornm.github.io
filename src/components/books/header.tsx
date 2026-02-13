@@ -12,13 +12,14 @@ const BooksHeader = ({
   books,
   filter,
 }: {
-  year: number;
+  year?: number;
   years: Array<number>;
   books: Array<Book>;
   filter: Filter;
 }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const isAllPage = pathname === "/books/all";
 
   const buildHref = (filterValue: Filter) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -39,8 +40,17 @@ const BooksHeader = ({
     return query ? `${yearPath}?${query}` : yearPath;
   };
 
+  const buildAllBooksHref = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    const query = params.toString();
+    return query ? `/books/all?${query}` : "/books/all";
+  };
+
   const currentYear = new Date().getFullYear();
   const getWeeksPassed = () => {
+    if (year === undefined) {
+      return 52;
+    }
     if (year < currentYear)
       return 52;
     const start = new Date(currentYear, 0, 1);
@@ -58,7 +68,7 @@ const BooksHeader = ({
       <div className="relative isolate overflow-hidden py-20 sm:py-24 pb-10 sm:pb-14">
         <div className="mx-auto px-6 lg:px-20">
           <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">{year} Books</h2>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">{year === undefined ? "All Books" : `${year} Books`}</h2>
             <p className="mt-6 text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
               Every year I set a goal for myself to consume, read or listen to, one book a week. I believe that it is important to continue to learn and grow and I find reading one of the best ways to do that.
             </p>
@@ -71,6 +81,9 @@ const BooksHeader = ({
                     {y} <span aria-hidden="true">&rarr;</span>
                   </Link>
                 ))}
+                <Link href={buildAllBooksHref()} className={`${isAllPage ? 'underline font-semibold' : ''} hover:underline`}>
+                  All <span aria-hidden="true">&rarr;</span>
+                </Link>
               </div>
               <div className="flex items-center gap-x-5">
                 <Link
@@ -112,8 +125,8 @@ const BooksHeader = ({
               </div>
 
               <div className="flex flex-col-reverse gap-1">
-                <dt className="text-base/7 text-gray-300">Books per Week</dt>
-                <dd className="text-4xl font-semibold tracking-tight text-white">{weeklyAverage}</dd>
+                <dt className="text-base/7 text-gray-300">{year === undefined ? "Years" : "Books per Week"}</dt>
+                <dd className="text-4xl font-semibold tracking-tight text-white">{year === undefined ? years.length : weeklyAverage}</dd>
               </div>
             </dl>
           </div>

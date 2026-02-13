@@ -3,6 +3,7 @@
 import { Book } from "@/data/types";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 
 function toSlug(value: string) {
   return value
@@ -24,6 +25,8 @@ function normalizeIsbn(value?: string) {
 
 const BookList = ({ books = [] }: { books: Array<Book> }) => {
   const [activeHash, setActiveHash] = useState("");
+  const pathname = usePathname();
+  const isAllPage = pathname === "/books/all";
 
   const booksWithIds = useMemo(() => {
     return books.map((book) => {
@@ -98,6 +101,9 @@ const BookList = ({ books = [] }: { books: Array<Book> }) => {
                   {book.category}
                 </div>
                 <h5 className="mb-2 mt-2 text-lg font-bold lg:text-xl">{book.title}</h5>
+                {isAllPage && (
+                  <p className="mb-2 text-sm text-gray-300">Year read: {book.year}</p>
+                )}
                 {book.author && (
                   <p className="mb-3 text-sm text-gray-300">{book.author}</p>
                 )}
