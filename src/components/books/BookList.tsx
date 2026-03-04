@@ -4,6 +4,7 @@ import { Book } from "@/data/types";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
+import CoverImage from "@/components/books/CoverImage";
 
 function toSlug(value: string) {
   return value
@@ -83,18 +84,13 @@ const BookList = ({ books = [] }: { books: Array<Book> }) => {
               }`}
             >
               <div className="w-24 md:w-28 shrink-0 overflow-hidden rounded-md bg-white/5 aspect-[2/3]">
-                {book.image ? (
-                  <img
-                    src={book.image}
-                    alt={`Cover of ${book.title}`}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-center"
-                  />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center px-2 text-center text-sm text-gray-400">
-                    No cover art avalible
-                  </div>
-                )}
+                <CoverImage
+                  src={book.image}
+                  alt={`Cover of ${book.title}`}
+                  className="h-full w-full object-cover object-center"
+                  fallbackText="No cover art available"
+                  fallbackClassName="flex h-full w-full items-center justify-center px-2 text-center text-sm text-gray-400"
+                />
               </div>
               <div className="relative z-10 flex-1">
                 <div className="flex items-center gap-x-4 text-xs">
