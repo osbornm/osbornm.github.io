@@ -84,6 +84,9 @@ const BooksHeader = ({
                 <Link href={buildAllBooksHref()} className={`${isAllPage ? 'underline font-semibold' : ''} hover:underline`}>
                   All <span aria-hidden="true">&rarr;</span>
                 </Link>
+                <Link href="/books/collections" className="hover:underline">
+                  Collections <span aria-hidden="true">&rarr;</span>
+                </Link>
               </div>
               <div className="flex items-center gap-x-5">
                 <Link

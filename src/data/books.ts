@@ -2,6 +2,13 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2026 */
   {
+    title: "The Thursday Murder Club",
+    isbn13: "978-1984880987",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://a.co/d/0d4s9Rhr",
+  },
+  {
     title: "Exiles",
     isbn: "0593851633",
     year: 2026,
@@ -670,5 +677,126 @@ export const books: Array<Book> = [
     isbn: "9781945223549",
     year: 2023,
     category: Category.Fiction,
+  },
+  /* 2022 */
+  {
+    title: "Columbus Day: Expeditionary Force, Book 1",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "SpecOps: Expeditionary Force, Book 2",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Paradise: Expeditionary Force, Book 3",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Black Ops: Expeditionary Force, Book 4",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Zero Hour: Expeditionary Force, Book 5",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Mavericks: Expeditionary Force, Book 6",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Renegades: Expeditionary Force, Book 7",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Armageddon: Expeditionary Force, Book 8",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Valkyrie: Expeditionary Force, Book 9",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Critical Mass: Expeditionary Force, Book 10",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Brushfire: Expeditionary Force, Book 11",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Breakaway: Expeditionary Force, Book 12",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Fallout: Expeditionary Force, Book 13",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Match Game: Expeditionary Force, Book 14",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Old Man's War, Book 1",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "The Ghost Brigades: Old Man's War, Book 2",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "The Last Colony: Old Man's War, Book 3",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "Zoe's Tale: Old Man's War, Book 4",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "The Human Division: Old Man's War, Book 5",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
+  },
+  {
+    title: "The End of All Things: Old Man's War, Book 6",
+    year: 2022,
+    category: Category.Fiction,
+    seriesOnly: true,
   },
 ];
