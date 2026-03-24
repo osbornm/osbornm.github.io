@@ -43,6 +43,9 @@ export default function Navigation() {
               <li>
                 <Link href="/talks" className="">Talks</Link>
               </li>
+              <li>
+                <Link href="https://osborncap.com" className="">Osborn Capital</Link>
+              </li>
             </ul>
           </div>
           <div className={`${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} md:hidden overflow-hidden transition-all duration-400 ease-in-out justify-between w-full`}>
@@ -58,6 +61,9 @@ export default function Navigation() {
               </li>
               <li>
                 <Link href="/talks" className="">Talks</Link>
+              </li>
+              <li>
+                <Link href="https://osborncap.com" className="">Osborn Capital</Link>
               </li>
             </ul>
           </div>
