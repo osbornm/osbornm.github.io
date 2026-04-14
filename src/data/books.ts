@@ -2,6 +2,20 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2026 */
   {
+    title: "Runnin' Down a Dream",
+    author: "Bill Gurley",
+    isbn13: "9780593799666",
+    year: 2026,
+    category: Category.NonFiction,
+  },
+  {
+    title: "Shattered Nexus",
+    author: "Ken Lozito",
+    isbn13: "9781945223839",
+    year: 2026,
+    category: Category.Fiction,
+  },
+  {
     title: "The Thursday Murder Club",
     isbn13: "978-1984880987",
     year: 2026,
