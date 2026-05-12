@@ -303,10 +303,16 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
         return {
           ...book,
           openLibraryHref: isbnResult.url ?? book.openLibraryHref,
-          author: isbnResult.authors?.[0]?.name ?? book.author,
+          author: book.author ?? isbnResult.authors?.[0]?.name,
           image,
         };
       }
+
+      const image = await persistCoverImageLocally(book, googleImage ?? book.image);
+      return {
+        ...book,
+        image,
+      };
     }
 
     const doc = await searchOpenLibrary("title", book.title);
@@ -326,7 +332,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
     return {
       ...book,
       openLibraryHref,
-      author,
+      author: book.author ?? author,
       image,
     };
   } catch {

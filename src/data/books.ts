@@ -2,11 +2,20 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2026 */
   {
+    title: "Legacy of the Fallen: Ruins of the Earth, Book 7",
+    asin: "B0GHP6CPD9",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.amazon.com/gp/product/B0GHP6CPD9",
+  },
+  {
     title: "Runnin' Down a Dream",
     author: "Bill Gurley",
     isbn13: "9780593799666",
     year: 2026,
     category: Category.NonFiction,
+    href: "https://www.penguinrandomhouse.com/books/769256/runnin-down-a-dream-by-bill-gurley/",
+    image: "/img/book-covers/isbn-9780593799666-18660dcfd210.jpg",
   },
   {
     title: "Shattered Nexus",
