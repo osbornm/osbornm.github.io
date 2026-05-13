@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "BOOK_COVER_WRITE=1 next build",
+    "build:ci": "BOOK_REMOTE_ENRICHMENT=0 next build",
     "start": "next start",
     "lint": "next lint"
   },

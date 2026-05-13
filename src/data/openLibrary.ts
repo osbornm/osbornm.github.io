@@ -1,6 +1,6 @@
 import { Book } from "./types";
 import { createHash } from "crypto";
-import { mkdir, stat, writeFile } from "fs/promises";
+import { mkdir, readdir, stat, writeFile } from "fs/promises";
 import path from "path";
 
 type OpenLibraryDoc = {
@@ -60,6 +60,8 @@ const LOCAL_COVER_EXTENSIONS = [
   ".avif",
 ];
 const SHOULD_WRITE_COVERS = process.env.BOOK_COVER_WRITE === "1";
+const SHOULD_REMOTE_ENRICH = process.env.BOOK_REMOTE_ENRICHMENT !== "0";
+let localCoverFilesPromise: Promise<string[]> | undefined;
 
 function toSlug(value: string) {
   return value
@@ -162,8 +164,37 @@ async function getExistingCoverFilePath(stem: string) {
   return undefined;
 }
 
+async function getLocalCoverFiles() {
+  localCoverFilesPromise ??= readdir(LOCAL_COVER_DIR).catch(() => []);
+  return localCoverFilesPromise;
+}
+
+async function getExistingCoverFilePathByKey(key: string) {
+  const files = await getLocalCoverFiles();
+  const filename = files
+    .filter((file) => {
+      const extension = path.extname(file).toLowerCase();
+      return (
+        file.startsWith(`${key}-`) &&
+        LOCAL_COVER_EXTENSIONS.includes(extension)
+      );
+    })
+    .sort()[0];
+
+  return filename ? path.join(LOCAL_COVER_DIR, filename) : undefined;
+}
+
 function getPublicCoverPath(filePath: string) {
   return `${LOCAL_COVER_PREFIX}/${path.basename(filePath)}`;
+}
+
+async function getLocalCoverImage(book: Book) {
+  if (book.image) {
+    return book.image;
+  }
+
+  const coverPath = await getExistingCoverFilePathByKey(getBookCoverKey(book));
+  return coverPath ? getPublicCoverPath(coverPath) : undefined;
 }
 
 async function persistCoverImageLocally(book: Book, imageUrl?: string) {
@@ -283,6 +314,15 @@ async function fetchByIsbn(isbn: string) {
 
 export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
   try {
+    const localImage = await getLocalCoverImage(book);
+
+    if (!SHOULD_REMOTE_ENRICH || (localImage && !SHOULD_WRITE_COVERS)) {
+      return {
+        ...book,
+        image: localImage,
+      };
+    }
+
     const isbn = normalizeIsbn(book.isbn13 ?? book.isbn);
     const googleImage = isbn
       ? await fetchGoogleBooksImage(`isbn:${isbn}`)
@@ -297,7 +337,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
             isbnResult.cover?.large ??
             isbnResult.cover?.medium ??
             isbnResult.cover?.small ??
-            book.image,
+            localImage,
         );
 
         return {
@@ -308,7 +348,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
         };
       }
 
-      const image = await persistCoverImageLocally(book, googleImage ?? book.image);
+      const image = await persistCoverImageLocally(book, googleImage ?? localImage);
       return {
         ...book,
         image,
@@ -317,7 +357,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
 
     const doc = await searchOpenLibrary("title", book.title);
     if (!doc) {
-      const image = await persistCoverImageLocally(book, googleImage ?? book.image);
+      const image = await persistCoverImageLocally(book, googleImage ?? localImage);
       return {
         ...book,
         image,
@@ -325,7 +365,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
     }
 
     const openLibraryHref = doc.key ? `https://openlibrary.org${doc.key}` : undefined;
-    const remoteImage = googleImage ?? (doc.cover_i ? buildCoverUrl(doc.cover_i) : book.image);
+    const remoteImage = googleImage ?? (doc.cover_i ? buildCoverUrl(doc.cover_i) : localImage);
     const image = await persistCoverImageLocally(book, remoteImage);
     const author = doc.author_name?.[0] ?? book.author;
 
