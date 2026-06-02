@@ -2,6 +2,14 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2026 */
   {
+    title: "The Infinity Machine",
+    author: "Sebastian Mallaby",
+    isbn13: "9780593831847",
+    year: 2026,
+    category: Category.NonFiction,
+    href: "https://www.penguinrandomhouse.com/books/752231/the-infinity-machine-by-sebastian-mallaby/",
+  },
+  {
     title: "Legacy of the Fallen: Ruins of the Earth, Book 7",
     asin: "B0GHP6CPD9",
     year: 2026,
