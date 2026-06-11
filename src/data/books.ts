@@ -2,6 +2,14 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2026 */
   {
+    title: "Boards That Lead",
+    author: "Ram Charan, Dennis Carey, Michael Useem",
+    isbn13: "9781422144053",
+    year: 2026,
+    category: Category.NonFiction,
+    href: "https://www.amazon.com/Boards-That-Lead-Charge-Partner/dp/1422144054",
+  },
+  {
     title: "The Infinity Machine",
     author: "Sebastian Mallaby",
     isbn13: "9780593831847",
