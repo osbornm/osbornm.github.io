@@ -2,6 +2,38 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2026 */
   {
+    title: "The Dungeon Anarchist's Cookbook: Dungeon Crawler Carl, Book 3",
+    author: "Matt Dinniman",
+    asin: "B094XCNV6G",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.audible.com/pd/The-Dungeon-Anarchists-Cookbook-Audiobook/B094XCNV6G",
+  },
+  {
+    title: "Carl's Doomsday Scenario: Dungeon Crawler Carl, Book 2",
+    author: "Matt Dinniman",
+    asin: "B0934GTSGT",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.audible.com/pd/Carls-Doomsday-Scenario-Audiobook/B0934GTSGT",
+  },
+  {
+    title: "Dungeon Crawler Carl: A LitRPG/Gamelit Adventure",
+    author: "Matt Dinniman",
+    asin: "B08V8B2CGV",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.audible.com/pd/Dungeon-Crawler-Carl-Audiobook/B08V8B2CGV",
+  },
+  {
+    title: "Platform Decay",
+    author: "Martha Wells",
+    asin: "B0GJ6MQLKJ",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.audible.com/pd/Platform-Decay-Audiobook/B0GJ6MQLKJ",
+  },
+  {
     title: "Boards That Lead",
     author: "Ram Charan, Dennis Carey, Michael Useem",
     isbn13: "9781422144053",
