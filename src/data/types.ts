@@ -6,12 +6,15 @@ export enum Category {
 export interface BookSynopsis {
   text: string;
   sourceUrl: string;
+  sourceName?: string;
   author?: string;
 }
 
 export interface Book {
   // Permanent URL identifier. Reuse this slug when recording a reread.
   slug: string;
+  // Preserve previously shared list fragments when correcting an ISBN or title.
+  legacyFragmentId?: string;
   title: string;
   year: number;
   category: Category;

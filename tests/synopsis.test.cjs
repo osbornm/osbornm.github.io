@@ -5,6 +5,7 @@ const path = require("node:path");
 const { after, before, test } = require("node:test");
 const {
   readBookSynopsis,
+  bookSearchTitle,
   matchesBookTitleAndAuthor,
   selectGoogleBooksVolume,
   synopsisFromDescription,
@@ -258,18 +259,38 @@ test("title fallback selects a unique work matching the known author", async () 
   assert.deepEqual(result.synopsis, { text: "The matching book.", sourceUrl: "https://openlibrary.org/works/OL2W", author: "Jane Doe" });
 });
 
-test("ambiguous Open Library works are omitted instead of selecting the first", async () => {
+test("duplicate Open Library works are tried until a description is found", async () => {
+  const seen = [];
   global.fetch = async (url) => {
+    seen.push(url);
     if (url.includes("googleapis.com")) return new Response(JSON.stringify({ items: [] }));
-    assert.ok(url.includes("/search.json"));
-    return new Response(JSON.stringify({ docs: [
+    if (url.includes("/search.json")) return new Response(JSON.stringify({ docs: [
       { key: "/works/OL1W", title: "A Book", author_name: ["Jane Doe"] },
       { key: "/works/OL2W", title: "A Book", author_name: ["Jane Doe"] },
     ] }));
+    if (url.endsWith("/OL2W.json")) return new Response(JSON.stringify({ description: "A duplicate with a description." }));
+    return new Response(JSON.stringify({}));
   };
-  const result = await loadEnrichment({ write: "1" })({ ...book, slug: "ambiguous" });
+  const result = await loadEnrichment({ write: "1" })({ ...book, slug: "duplicate-works" });
+  assert.equal(result.synopsis.text, "A duplicate with a description.");
+  assert.equal(result.synopsis.sourceUrl, "https://openlibrary.org/works/OL2W");
+  assert.ok(seen.includes("https://openlibrary.org/works/OL1W.json"));
+  assert.ok(seen.includes("https://openlibrary.org/works/OL2W.json"));
+});
+
+test("Open Library rejects matching titles by different authors when identity is unknown", async () => {
+  const seen = [];
+  global.fetch = async (url) => {
+    seen.push(url);
+    if (url.includes("googleapis.com")) return new Response(JSON.stringify({ items: [] }));
+    return new Response(JSON.stringify({ docs: [
+      { key: "/works/OL1W", title: "A Book", author_name: ["Jane Doe"] },
+      { key: "/works/OL2W", title: "A Book", author_name: ["Another Author"] },
+    ] }));
+  };
+  const result = await loadEnrichment({ write: "1" })({ ...book, author: undefined, slug: "ambiguous-authors" });
   assert.equal(result.synopsis, undefined);
-  assert.equal(result.image, "/img/book-covers/title-a-book-123.jpg");
+  assert.ok(seen.every((url) => !url.includes("/works/")));
 });
 
 test("Open Library cannot substitute an unrelated base title when the author is unknown", async () => {
@@ -381,4 +402,141 @@ test("failed author refresh preserves the exact saved synopsis", async () => {
   assert.deepEqual(result.synopsis, synopsis);
   assert.deepEqual(await readBookSynopsis("unavailable-author"), synopsis);
   assert.equal(result.author, undefined);
+});
+
+
+test("series suffixes are removed only after the author is known", () => {
+  assert.equal(bookSearchTitle({ ...book, title: "Aces, Book 1" }), "Aces");
+  assert.equal(bookSearchTitle({ ...book, title: "Forsaken Outpost, First Colony, Book 18" }), "Forsaken Outpost");
+  assert.equal(bookSearchTitle({ ...book, title: "Earth Below, Sky Above: The Human Division, Episode 13" }), "Earth Below, Sky Above");
+  const unknown = { ...book, title: "Renegades: Expeditionary Force, Book 7", author: undefined };
+  assert.equal(bookSearchTitle(unknown), unknown.title);
+  assert.equal(matchesBookTitleAndAuthor({ ...unknown, author: "Craig Alanson" }, "Renegades", ["Marissa Meyer"]), false);
+  assert.equal(matchesBookTitleAndAuthor({ ...unknown, author: "Craig Alanson" }, "Renegades", ["Craig Alanson"]), true);
+});
+
+test("Google ISBN descriptions fall back to title and the verified ISBN author", async () => {
+  const queries = [];
+  global.fetch = async (url) => {
+    const query = new URL(url).searchParams.get("q");
+    queries.push(query);
+    if (query.startsWith("isbn:")) return new Response(JSON.stringify({ items: [volume("exact-isbn", {
+      description: undefined, industryIdentifiers: [{ identifier: "9780593135204" }],
+    })] }));
+    return new Response(JSON.stringify({ items: [volume("other-edition")] }));
+  };
+  const result = await loadEnrichment({ write: "1" })({ ...book, slug: "google-isbn-fallback", author: undefined, isbn13: "9780593135204", image: "/img/existing.jpg" });
+  assert.deepEqual(queries, ["isbn:9780593135204", "intitle:A Book inauthor:Jane Doe"]);
+  assert.equal(result.synopsis.sourceUrl, "https://books.google.com/books?id=other-edition");
+});
+
+test("Open Library ISBN misses fall back to title and the verified ISBN author", async () => {
+  const queries = [];
+  global.fetch = async (url) => {
+    queries.push(url);
+    if (url.includes("googleapis.com")) return new Response(JSON.stringify({ items: [] }));
+    if (url.includes("/api/books?")) return new Response(JSON.stringify({ "ISBN:9780593135204": { authors: [{ name: "Jane Doe" }] } }));
+    if (url.includes("/isbn/")) return new Response(JSON.stringify({}));
+    if (url.includes("/search.json")) return new Response(JSON.stringify({ docs: [
+      { key: "/works/OL9W", title: "A Book", author_name: ["Jane Doe"] },
+    ] }));
+    return new Response(JSON.stringify({ description: "The title fallback description." }));
+  };
+  const result = await loadEnrichment({ write: "1" })({ ...book, slug: "ol-isbn-title-fallback", author: undefined, isbn13: "9780593135204" });
+  assert.equal(result.synopsis.text, "The title fallback description.");
+  const searchUrl = new URL(queries.find((url) => url.includes("/search.json")));
+  assert.equal(searchUrl.searchParams.get("author"), "Jane Doe");
+  assert.equal(searchUrl.searchParams.get("title"), "A Book");
+});
+
+test("works without descriptions try English editions and retain the edition source", async () => {
+  const seen = [];
+  global.fetch = async (url) => {
+    seen.push(url);
+    if (url.includes("googleapis.com")) return new Response(JSON.stringify({ items: [] }));
+    if (url.includes("/search.json")) return new Response(JSON.stringify({ docs: [
+      { key: "/works/OL10W", title: "A Book", author_name: ["Jane Doe"] },
+    ] }));
+    if (url.includes("/editions.json")) return new Response(JSON.stringify({ entries: [
+      { key: "/books/OL11M", description: "Un livre.", languages: [{ key: "/languages/fre" }] },
+      { key: "/books/OL12M", languages: [{ key: "/languages/eng" }] },
+    ] }));
+    if (url.endsWith("/books/OL12M.json")) return new Response(JSON.stringify({ description: "The English edition." }));
+    return new Response(JSON.stringify({}));
+  };
+  const result = await loadEnrichment({ write: "1" })({ ...book, slug: "english-edition" });
+  assert.equal(result.synopsis.text, "The English edition.");
+  assert.equal(result.synopsis.sourceUrl, "https://openlibrary.org/books/OL12M");
+  assert.ok(!seen.includes("https://openlibrary.org/books/OL11M.json"));
+});
+
+test("existing source attribution survives reads and author refresh", async () => {
+  const attributed = { ...synopsis, sourceName: "Author website" };
+  await writeBookSynopsis("attributed-source", attributed);
+  global.fetch = async () => new Response(JSON.stringify({ items: [volume("metadata", { description: undefined })] }));
+  const result = await loadEnrichment({ write: "1" })({ ...book, slug: "attributed-source", author: undefined });
+  assert.deepEqual(result.synopsis, { ...attributed, author: "Jane Doe" });
+  assert.deepEqual(await readBookSynopsis("attributed-source"), result.synopsis);
+});
+
+test("title fallback rejects explicitly different installments by the same author", () => {
+  const first = { ...book, title: "Aces, Book 1" };
+  assert.equal(matchesBookTitleAndAuthor(first, "Aces, Book 2", ["Jane Doe"]), false);
+  assert.equal(matchesBookTitleAndAuthor(first, "Aces", ["Jane Doe"]), true);
+  const seventh = { ...book, title: "A Book: Adventures, Episode 7" };
+  assert.equal(matchesBookTitleAndAuthor(seventh, "A Book: Adventures, Episode 8", ["Jane Doe"]), false);
+  assert.equal(selectGoogleBooksVolume(first, [volume("wrong-installment", { title: "Aces, Book 2" })]), undefined);
+});
+
+test("an omnibus ISBN cannot use one of its component works as the synopsis", async () => {
+  const seen = [];
+  global.fetch = async (url) => {
+    seen.push(url);
+    if (url.includes("googleapis.com")) return new Response(JSON.stringify({ items: [] }));
+    if (url.includes("/isbn/")) return new Response(JSON.stringify({ works: [{ key: "/works/OL1W" }, { key: "/works/OL2W" }] }));
+    if (url.includes("/search.json")) return new Response(JSON.stringify({ docs: [] }));
+    return new Response(JSON.stringify({ description: "A component, not the requested omnibus." }));
+  };
+  const result = await loadEnrichment({ write: "1" })({ ...book, slug: "omnibus", isbn13: "9780593135204", image: "/img/existing.jpg" });
+  assert.equal(result.synopsis, undefined);
+  assert.ok(seen.every((url) => !url.includes("/works/")));
+});
+
+test("Google descriptions with a known non-English language are not imported", () => {
+  assert.equal(synopsisFromGoogleVolume(volume("translated", { language: "es", description: "Una descripción." })), undefined);
+  const english = volume("english", { language: "en" });
+  assert.equal(selectGoogleBooksVolume(book, [volume("spanish", { language: "es" }), english]), english);
+});
+
+test("English edition detail redirects to another work cannot replace the matched book", async () => {
+  global.fetch = async (url) => {
+    if (url.includes("googleapis.com")) return new Response(JSON.stringify({ items: [] }));
+    if (url.includes("/search.json")) return new Response(JSON.stringify({ docs: [
+      { key: "/works/OL10W", title: "A Book", author_name: ["Jane Doe"] },
+    ] }));
+    if (url.includes("/editions.json")) return new Response(JSON.stringify({ entries: [
+      { key: "/books/OL12M", languages: [{ key: "/languages/eng" }] },
+    ] }));
+    if (url.endsWith("/books/OL12M.json")) return new Response(JSON.stringify({ description: "A different book.", works: [{ key: "/works/OL99W" }] }));
+    return new Response(JSON.stringify({}));
+  };
+  const result = await loadEnrichment({ write: "1" })({ ...book, slug: "redirected-edition" });
+  assert.equal(result.synopsis, undefined);
+});
+
+test("author backfill preserves title, ISBN, and ASIN local cover discovery", async () => {
+  const cases = [
+    [{ ...book, slug: "cover-title" }, "title-a-book-123.jpg"],
+    [{ ...book, slug: "cover-isbn", isbn13: "9780593135204" }, "isbn-9780593135204-123.jpg"],
+    [{ ...book, slug: "cover-asin", asin: "B012345678" }, "asin-b012345678-123.jpg"],
+  ];
+  for (const [, file] of cases) await fs.writeFile(path.join(fixture, "public/img/book-covers", file), "cover");
+  global.fetch = async () => { assert.fail("offline covers must not fetch"); };
+  const enrich = loadEnrichment({ remote: "0" });
+  for (const [record, file] of cases) {
+    const original = await enrich({ ...record, author: undefined });
+    const attributed = await enrich(record);
+    assert.equal(original.image, `/img/book-covers/${file}`);
+    assert.equal(attributed.image, original.image);
+  }
 });

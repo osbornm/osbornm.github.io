@@ -12,6 +12,7 @@ export type GoogleBooksVolume = {
     subtitle?: string;
     authors?: string[];
     description?: string;
+    language?: string;
     industryIdentifiers?: Array<{ identifier?: string }>;
     imageLinks?: { thumbnail?: string; smallThumbnail?: string };
   };
@@ -41,12 +42,24 @@ function normalizeName(value: string) {
     .replace(/[^a-z0-9]/g, "");
 }
 
+export function bookSearchTitle(book: Pick<Book, "title" | "author">) {
+  if (!book.author) return book.title;
+  return book.title.split(":")[0]
+    .replace(/,\s*(?:[^,]+,\s*)?(?:Book|Episode)\s+\d+\s*$/i, "")
+    .trim();
+}
+
 export function matchesBookTitleAndAuthor(book: Book, title?: string, authors?: string[]) {
-  const expectedTitle = book.author ? book.title.split(":")[0] : book.title;
-  const candidateTitle = book.author ? title?.split(":")[0] : title;
+  const expectedTitle = bookSearchTitle(book);
+  const candidateTitle = title ? bookSearchTitle({ title, author: book.author }) : undefined;
   if (!candidateTitle || normalizeName(candidateTitle) !== normalizeName(expectedTitle)) {
     return false;
   }
+  // A stripped catalog suffix must not merge explicitly different installments.
+  const installment = /\b(?:Book|Episode)\s+(\d+)\b/i;
+  const expectedNumber = book.title.match(installment)?.[1];
+  const candidateNumber = title?.match(installment)?.[1];
+  if (expectedNumber && candidateNumber && Number(expectedNumber) !== Number(candidateNumber)) return false;
   const candidateAuthors = authors?.map(normalizeName) ?? [];
   const expectedAuthors = book.author?.split(/,| & | and /).map(normalizeName);
   return candidateAuthors.length > 0 &&
@@ -61,7 +74,8 @@ export function selectGoogleBooksVolume(book: Book, volumes: GoogleBooksVolume[]
         (identifier) => comparableIsbn(identifier.identifier) === isbn,
       ),
     );
-    return matches.find((volume) => volume.volumeInfo?.description) ?? matches[0];
+    return matches.find((volume) => volume.volumeInfo?.description &&
+      (!volume.volumeInfo.language || volume.volumeInfo.language === "en")) ?? matches[0];
   }
 
   const matches = volumes.filter(({ volumeInfo: info }) =>
@@ -71,11 +85,13 @@ export function selectGoogleBooksVolume(book: Book, volumes: GoogleBooksVolume[]
     matches.map((volume) => volume.volumeInfo!.authors!.map(normalizeName).sort().join(",")),
   );
   if (distinctAuthors.size !== 1) return undefined;
-  return matches.find((volume) => volume.volumeInfo?.description) ?? matches[0];
+  return matches.find((volume) => volume.volumeInfo?.description &&
+      (!volume.volumeInfo.language || volume.volumeInfo.language === "en")) ?? matches[0];
 }
 
 export function synopsisFromGoogleVolume(volume?: GoogleBooksVolume): BookSynopsis | undefined {
-  if (!volume?.id || !volume.volumeInfo?.description) return undefined;
+  if (!volume?.id || !volume.volumeInfo?.description ||
+      (volume.volumeInfo.language && volume.volumeInfo.language !== "en")) return undefined;
   return synopsisFromDescription(
     volume.volumeInfo.description,
     `https://books.google.com/books?id=${encodeURIComponent(volume.id)}`,
@@ -108,6 +124,7 @@ export async function readBookSynopsis(slug: string): Promise<BookSynopsis | und
         text: synopsis.text,
         sourceUrl: synopsis.sourceUrl,
         ...(typeof synopsis.author === "string" && synopsis.author.trim() ? { author: synopsis.author } : {}),
+        ...(typeof synopsis.sourceName === "string" && synopsis.sourceName.trim() ? { sourceName: synopsis.sourceName } : {}),
       };
     }
   } catch {

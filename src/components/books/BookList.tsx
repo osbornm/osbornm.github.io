@@ -49,9 +49,9 @@ const BookList = ({ books = [] }: { books: Array<Book> }) => {
       <div className="grid gap-6 md:grid-cols-2 lg:gap-6 lg:grid-cols-3 p-6 md:p-8 px-6 md:px-16 lg:px-20">
         {books.map((book) => {
           const bookIsbn = normalizeIsbn(book.isbn13 ?? book.isbn);
-          const id = bookIsbn
+          const id = book.legacyFragmentId ?? (bookIsbn
             ? `book-${bookIsbn}`
-            : `book-${toSlug(`${book.year}-${book.title}`)}`;
+            : `book-${toSlug(`${book.year}-${book.title}`)}`);
           return (
             <article
               id={id}

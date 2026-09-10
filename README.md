@@ -32,10 +32,22 @@ the static site. It fetches missing Google Books synopses, with Open Library as 
 fallback, and saves them under `src/data/book-synopses/`. Open Library requests
 are spaced one second apart. Commit those JSON files alongside book changes so the
 offline `npm run build:ci` deployment includes the descriptions. Each snapshot
-contains plain text, a link to its source, and the author when available; unmatched books keep a usable page
-without a synopsis. Run `npm run books:sync` to fetch missing synopses without
-refreshing existing covers. Delete a book's snapshot and run that command to
-refresh it.
+contains plain text, `sourceUrl`, `author`, and an optional `sourceName` displayed
+with the attribution. Saved descriptions are retained when a lookup fails.
+
+Run `npm run books:sync` to fetch missing synopses without refreshing existing
+covers, or `npm run books:sync -- --slugs=slug-one,slug-two` to retry selected
+books. The report distinguishes new and retained snapshots, lists unresolved
+books and request errors, and counts valid snapshots on disk.
+
+The importer tries the ISBN first, then the title with a verified author. It
+checks duplicate works and English editions when a matching record has no
+description. Verify missing authors and incorrect ISBNs in `books.ts` before
+retrying; matching never substitutes a different author to fill a gap. If the
+services have no description, add a short original synopsis grounded in the
+author's or publisher's book page, with its URL and name as the source. Keep
+these curated snapshots when rerunning the import. New books without a verified
+description remain usable and display “Synopsis unavailable.”
 
 Run `npm test` for book identity, synopsis, and offline enrichment checks.
 

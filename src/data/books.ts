@@ -2,6 +2,33 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2026 */
   {
+    slug: "the-eye-of-the-bedlam-bride-dungeon-crawler-carl-book-6",
+    title: "The Eye of the Bedlam Bride: Dungeon Crawler Carl, Book 6",
+    author: "Matt Dinniman",
+    isbn13: "9780593956014",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.penguinrandomhouse.com/books/788703/the-eye-of-the-bedlam-bride-by-matt-dinniman/9780593956014/",
+  },
+  {
+    slug: "the-butcher-s-masquerade-dungeon-crawler-carl-book-5",
+    title: "The Butcher's Masquerade: Dungeon Crawler Carl, Book 5",
+    author: "Matt Dinniman",
+    isbn13: "9780593955994",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.penguinrandomhouse.com/books/788552/the-butchers-masquerade-by-matt-dinniman/",
+  },
+  {
+    slug: "the-gate-of-the-feral-gods-dungeon-crawler-carl-book-4",
+    title: "The Gate of the Feral Gods: Dungeon Crawler Carl, Book 4",
+    author: "Matt Dinniman",
+    isbn13: "9780593955970",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.penguinrandomhouse.com/books/788551/the-gate-of-the-feral-gods-by-matt-dinniman/",
+  },
+  {
     slug: "the-dungeon-anarchist-s-cookbook-dungeon-crawler-carl-book-3",
     title: "The Dungeon Anarchist's Cookbook: Dungeon Crawler Carl, Book 3",
     author: "Matt Dinniman",
@@ -58,6 +85,7 @@ export const books: Array<Book> = [
   {
     slug: "legacy-of-the-fallen-ruins-of-the-earth-book-7",
     title: "Legacy of the Fallen: Ruins of the Earth, Book 7",
+    author: "Christopher Hopper, J.N. Chaney",
     asin: "B0GHP6CPD9",
     year: 2026,
     category: Category.Fiction,
@@ -84,6 +112,7 @@ export const books: Array<Book> = [
   {
     slug: "the-thursday-murder-club",
     title: "The Thursday Murder Club",
+    author: "Richard Osman",
     isbn13: "978-1984880987",
     year: 2026,
     category: Category.Fiction,
@@ -92,6 +121,7 @@ export const books: Array<Book> = [
   {
     slug: "exiles",
     title: "Exiles",
+    author: "Mason Coile",
     isbn: "0593851633",
     year: 2026,
     category: Category.Fiction,
@@ -100,6 +130,7 @@ export const books: Array<Book> = [
   {
     slug: "ground-state-expeditionary-force-book-19",
     title: "Ground State: Expeditionary Force, Book 19",
+    author: "Craig Alanson",
     year: 2026,
     isbn13: "979-8245598000",
     category: Category.Fiction,
@@ -108,6 +139,7 @@ export const books: Array<Book> = [
   {
     slug: "fire-and-fury-ruins-of-the-earth-book-6",
     title: "Fire and Fury: Ruins of the Earth, Book 6",
+    author: "Christopher Hopper, J.N. Chaney",
     isbn13: "979-8792753204",
     year: 2026,
     category: Category.Fiction,
@@ -117,6 +149,7 @@ export const books: Array<Book> = [
   {
     slug: "the-money-trap-lost-illusions-inside-the-tech-bubble",
     title: "The Money Trap: Lost Illusions Inside the Tech Bubble",
+    author: "Alok Sama",
     isbn13: "978-1250332851",
     year: 2025,
     category: Category.NonFiction,
@@ -125,6 +158,7 @@ export const books: Array<Book> = [
   {
     slug: "valley-of-the-dead-ruins-of-the-earth-book-5",
     title: "Valley of the Dead: Ruins of the Earth, Book 5",
+    author: "Christopher Hopper, J.N. Chaney",
     isbn13: "979-8537637967",
     year: 2025,
     category: Category.Fiction,
@@ -133,6 +167,7 @@ export const books: Array<Book> = [
   {
     slug: "decayed-legacy-ruins-of-the-earth-book-4",
     title: "Decayed Legacy: Ruins of the Earth, Book 4",
+    author: "Christopher Hopper, J.N. Chaney",
     isbn13: "979-8744227951",
     year: 2025,
     category: Category.Fiction,
@@ -141,6 +176,7 @@ export const books: Array<Book> = [
   {
     slug: "phantom-deadfall-ruins-of-the-earth-book-3",
     title: "Phantom Deadfall: Ruins of the Earth, Book 3",
+    author: "Christopher Hopper, J.N. Chaney",
     isbn: "9798710382547",
     year: 2025,
     category: Category.Fiction,
@@ -149,6 +185,7 @@ export const books: Array<Book> = [
   {
     slug: "gods-and-men-ruins-of-the-earth-book-2",
     title: "Gods and Men: Ruins of the Earth, Book 2",
+    author: "Christopher Hopper, J.N. Chaney",
     isbn: "1087945259",
     year: 2025,
     category: Category.Fiction,
@@ -157,6 +194,7 @@ export const books: Array<Book> = [
   {
     slug: "scorpio-frontlines-evolution-book-1",
     title: "Scorpio: Frontlines: Evolution, Book 1",
+    author: "Marko Kloos",
     isbn: "154203549X",
     year: 2025,
     category: Category.Fiction,
@@ -165,6 +203,7 @@ export const books: Array<Book> = [
   {
     slug: "the-shattering-peace-old-man-s-war-book-7",
     title: "The Shattering Peace: Old Man's War Book 7",
+    author: "John Scalzi",
     isbn: "9780765389206",
     year: 2025,
     category: Category.Fiction,
@@ -173,6 +212,7 @@ export const books: Array<Book> = [
   {
     slug: "infinite-powers-how-calculus-reveals-the-secrets-of-the-universe",
     title: "Infinite Powers: How Calculus Reveals the Secrets of the Universe",
+    author: "Steven H. Strogatz",
     isbn: "9781786492975",
     year: 2025,
     category: Category.NonFiction,
@@ -181,6 +221,7 @@ export const books: Array<Book> = [
   {
     slug: "ruins-of-the-earth-ruins-of-the-earth-book-1",
     title: "Ruins of the Earth: Ruins of the Earth, Book 1",
+    author: "Christopher Hopper, J.N. Chaney",
     isbn: "9798686000995",
     year: 2025,
     category: Category.Fiction,
@@ -189,6 +230,7 @@ export const books: Array<Book> = [
   {
     slug: "paradox-the-nine-greatest-enigmas-in-physics",
     title: "Paradox: The Nine Greatest Enigmas in Physics",
+    author: "Jim Al-Khalili",
     isbn: "9780307986795",
     year: 2025,
     category: Category.NonFiction,
@@ -198,6 +240,7 @@ export const books: Array<Book> = [
     slug: "fooled-by-randomness-the-hidden-role-of-chance-in-life-and-in-the-markets",
     title:
       "Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets",
+    author: "Nassim Nicholas Taleb",
     isbn: "159659201X",
     year: 2025,
     category: Category.NonFiction,
@@ -207,6 +250,7 @@ export const books: Array<Book> = [
     slug: "gambling-man-the-secret-story-of-the-world-s-greatest-disruptor-masayoshi-son",
     title:
       "Gambling Man: The Secret Story of the World's Greatest Disruptor, Masayoshi Son",
+    author: "Lionel Barber",
     isbn: "166807074X",
     year: 2025,
     category: Category.NonFiction,
@@ -216,6 +260,7 @@ export const books: Array<Book> = [
     slug: "the-5-types-of-wealth-a-transformative-guide-to-design-your-dream-life",
     title:
       "The 5 Types of Wealth: A Transformative Guide to Design Your Dream Life",
+    author: "Sahil Bloom",
     isbn: "9780593723197",
     year: 2025,
     category: Category.NonFiction,
@@ -224,6 +269,7 @@ export const books: Array<Book> = [
   {
     slug: "aces-book-1",
     title: "Aces, Book 1",
+    author: "Craig Alanson",
     year: 2025,
     category: Category.Fiction,
     href: "https://a.co/d/0s5wXvp",
@@ -231,6 +277,7 @@ export const books: Array<Book> = [
   {
     slug: "project-hail-mary",
     title: "Project Hail Mary",
+    author: "Andy Weir",
     isbn: "9780593355275",
     year: 2025,
     category: Category.Fiction,
@@ -239,6 +286,7 @@ export const books: Array<Book> = [
   {
     slug: "earth-below-sky-above-the-human-division-episode-13",
     title: "Earth Below, Sky Above: The Human Division, Episode 13",
+    author: "John Scalzi",
     isbn: "9781466830622",
     year: 2025,
     category: Category.Fiction,
@@ -246,7 +294,8 @@ export const books: Array<Book> = [
   },
   {
     slug: "the-gentle-art-of-cracking-heads-the-human-division-episode-12",
-    title: "The Gentle Art of Cracking Heads : The Human Division, Episode 12",
+    title: "The Gentle Art of Cracking Heads: The Human Division, Episode 12",
+    author: "John Scalzi",
     isbn: "9781466830615",
     year: 2025,
     category: Category.Fiction,
@@ -254,7 +303,8 @@ export const books: Array<Book> = [
   },
   {
     slug: "a-problem-of-porportion-the-human-division-episode-11",
-    title: "A Problem of Porportion: The Human Division, Episode 11",
+    title: "A Problem of Proportion: The Human Division, Episode 11",
+    author: "John Scalzi",
     isbn: "9781466830608",
     year: 2025,
     category: Category.Fiction,
@@ -263,6 +313,7 @@ export const books: Array<Book> = [
   {
     slug: "this-must-be-the-place-the-human-division-episode-10",
     title: "This Must be the Place: The Human Division, Episode 10",
+    author: "John Scalzi",
     isbn: "9781466830592",
     year: 2025,
     category: Category.Fiction,
@@ -271,6 +322,7 @@ export const books: Array<Book> = [
   {
     slug: "the-observers-the-human-division-episode-9",
     title: "The Observers: The Human Division, Episode 9",
+    author: "John Scalzi",
     isbn: "9781466830585",
     year: 2025,
     category: Category.Fiction,
@@ -279,6 +331,7 @@ export const books: Array<Book> = [
   {
     slug: "the-sound-of-rebellion-the-human-division-episode-8",
     title: "The Sound of Rebellion: The Human Division, Episode 8",
+    author: "John Scalzi",
     isbn: "9781466830578",
     year: 2025,
     category: Category.Fiction,
@@ -287,6 +340,7 @@ export const books: Array<Book> = [
   {
     slug: "the-dog-king-the-human-division-episode-7",
     title: "The Dog King: The Human Division, Episode 7",
+    author: "John Scalzi",
     isbn: "9781466830639",
     year: 2025,
     category: Category.Fiction,
@@ -295,6 +349,7 @@ export const books: Array<Book> = [
   {
     slug: "the-back-channel-the-human-division-episode-6",
     title: "The Back Channel: The Human Division, Episode 6",
+    author: "John Scalzi",
     isbn: "9781466830561",
     year: 2025,
     category: Category.Fiction,
@@ -303,6 +358,7 @@ export const books: Array<Book> = [
   {
     slug: "tales-from-the-clarke-the-human-division-episode-5",
     title: "Tales from the Clarke: The Human Division, Episode 5",
+    author: "John Scalzi",
     isbn: "9781466830554",
     year: 2025,
     category: Category.Fiction,
@@ -311,6 +367,7 @@ export const books: Array<Book> = [
   {
     slug: "a-voice-in-the-wilderness-the-human-division-episode-4",
     title: "A Voice in the Wilderness: The Human Division, Episode 4",
+    author: "John Scalzi",
     isbn: "9781466830547",
     year: 2025,
     category: Category.Fiction,
@@ -319,6 +376,7 @@ export const books: Array<Book> = [
   {
     slug: "we-only-need-the-heads-the-human-division-episode-3",
     title: "We Only Need the Heads: The Human Division, Episode 3",
+    author: "John Scalzi",
     isbn: "9781466830530",
     year: 2025,
     category: Category.Fiction,
@@ -327,6 +385,7 @@ export const books: Array<Book> = [
   {
     slug: "walk-the-plank-the-human-division-episode-2",
     title: "Walk the Plank: The Human Division, Episode 2",
+    author: "John Scalzi",
     isbn: "9781466830523",
     year: 2025,
     category: Category.Fiction,
@@ -335,6 +394,7 @@ export const books: Array<Book> = [
   {
     slug: "the-b-team-the-human-division-episode-1",
     title: "The B-Team: The Human Division, Episode 1",
+    author: "John Scalzi",
     isbn: "9781466830516",
     year: 2025,
     category: Category.Fiction,
@@ -343,6 +403,7 @@ export const books: Array<Book> = [
   {
     slug: "descent-the-palladium-wars-book-4",
     title: "Descent: The Palladium Wars, Book 4",
+    author: "Marko Kloos",
     isbn: "9781542036153",
     year: 2025,
     category: Category.Fiction,
@@ -352,6 +413,7 @@ export const books: Array<Book> = [
     slug: "poor-charlie-s-almanack-the-essential-wit-and-wisdom-of-charles-t-munger",
     title:
       "Poor Charlie’s Almanack: The Essential Wit and Wisdom of Charles T. Munger",
+    author: "Charles T. Munger; edited by Peter D. Kaufman",
     isbn: "1953953247",
     year: 2025,
     category: Category.NonFiction,
@@ -360,6 +422,7 @@ export const books: Array<Book> = [
   {
     slug: "12-months-to-1-million",
     title: "12 Months to $1 Million",
+    author: "Ryan Daniel Moran",
     isbn: "1948836955",
     year: 2025,
     category: Category.NonFiction,
@@ -368,6 +431,7 @@ export const books: Array<Book> = [
   {
     slug: "forsaken-outpost-first-colony-book-18",
     title: "Forsaken Outpost, First Colony, Book 18",
+    author: "Ken Lozito",
     isbn: "9781945223815",
     year: 2025,
     category: Category.Fiction,
@@ -376,6 +440,7 @@ export const books: Array<Book> = [
   {
     slug: "when-the-moon-hits-your-eye",
     title: "When the Moon Hits Your Eye",
+    author: "John Scalzi",
     isbn: "9780765389107",
     year: 2025,
     category: Category.Fiction,
@@ -384,6 +449,7 @@ export const books: Array<Book> = [
   {
     slug: "system-collapse-the-murderbot-diaries-book-7",
     title: "System Collapse: The Murderbot Diaries, Book 7",
+    author: "Martha Wells",
     isbn: "1705041027",
     year: 2025,
     category: Category.Fiction,
@@ -392,6 +458,7 @@ export const books: Array<Book> = [
   {
     slug: "gateway-expeditionary-force-book-18",
     title: "Gateway, Expeditionary Force, Book 18",
+    author: "Craig Alanson",
     isbn: "9798315131137",
     year: 2025,
     category: Category.Fiction,
@@ -400,6 +467,7 @@ export const books: Array<Book> = [
   {
     slug: "developer-marketing-does-not-exist",
     title: "Developer Marketing Does Not Exist",
+    author: "Adam DuVander",
     isbn: "9781737029601",
     year: 2025,
     category: Category.NonFiction,
@@ -408,6 +476,7 @@ export const books: Array<Book> = [
   {
     slug: "fugitive-telemetry-the-murderbot-diaries-book-6",
     title: "Fugitive Telemetry: The Murderbot Diaries, Book 6",
+    author: "Martha Wells",
     isbn: "1250765382",
     year: 2025,
     category: Category.Fiction,
@@ -416,6 +485,7 @@ export const books: Array<Book> = [
   {
     slug: "network-effect-the-murderbot-diaries-book-5",
     title: "Network Effect: The Murderbot Diaries, Book 5",
+    author: "Martha Wells",
     isbn: "1664475915",
     year: 2025,
     category: Category.Fiction,
@@ -424,6 +494,7 @@ export const books: Array<Book> = [
   {
     slug: "exit-strategy-the-murderbot-diaries-book-4",
     title: "Exit Strategy: The Murderbot Diaries, Book 4",
+    author: "Martha Wells",
     isbn: "1501999990",
     year: 2025,
     category: Category.Fiction,
@@ -432,6 +503,7 @@ export const books: Array<Book> = [
   {
     slug: "rogue-protocol-the-murderbot-diaries-book-3",
     title: "Rogue Protocol: The Murderbot Diaries, Book 3",
+    author: "Martha Wells",
     isbn: "9781250191786",
     year: 2025,
     category: Category.Fiction,
@@ -440,6 +512,7 @@ export const books: Array<Book> = [
   {
     slug: "artificial-condition-the-murderbot-diaries-book-2",
     title: "Artificial Condition: The Murderbot Diaries, Book 2",
+    author: "Martha Wells",
     isbn: "9786191934096",
     year: 2025,
     category: Category.Fiction,
@@ -448,6 +521,7 @@ export const books: Array<Book> = [
   {
     slug: "all-systems-red-the-murderbot-diaries-book-1",
     title: "All Systems Red: The Murderbot Diaries, Book 1",
+    author: "Martha Wells",
     isbn: "6191933363",
     year: 2025,
     category: Category.Fiction,
@@ -456,6 +530,7 @@ export const books: Array<Book> = [
   {
     slug: "source-code-my-beginnings",
     title: "Source Code My Beginnings",
+    author: "Bill Gates",
     isbn: "059380158X",
     year: 2025,
     category: Category.NonFiction,
@@ -464,6 +539,7 @@ export const books: Array<Book> = [
   {
     slug: "the-kaiju-preservation-society",
     title: "The Kaiju Preservation Society",
+    author: "John Scalzi",
     isbn: "844501479X",
     year: 2025,
     category: Category.Fiction,
@@ -472,6 +548,7 @@ export const books: Array<Book> = [
   {
     slug: "pathfinder-first-colony-book-17",
     title: "Pathfinder First Colony, Book 17",
+    author: "Ken Lozito",
     isbn: "1945223790",
     year: 2025,
     category: Category.Fiction,
@@ -483,6 +560,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/3PBA2VD",
     title:
       "This Is How They Tell Me the World Ends: The Cyberweapons Arms Race",
+    author: "Nicole Perlroth",
     isbn: "9781635576054",
     year: 2024,
     category: Category.NonFiction,
@@ -491,6 +569,7 @@ export const books: Array<Book> = [
     slug: "bad-blood-secrets-and-lies-in-a-silicon-valley-startup",
     href: "https://a.co/d/cvn7AhN",
     title: "Bad Blood: Secrets and Lies in a Silicon Valley Startup",
+    author: "John Carreyrou",
     isbn: "0525431993",
     year: 2024,
     category: Category.NonFiction,
@@ -500,6 +579,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/9akvtqn",
     title:
       "The Idea Factory: Bell Labs and the Great Age of American Innovation",
+    author: "Jon Gertner",
     isbn: "1594203288",
     year: 2024,
     category: Category.NonFiction,
@@ -509,6 +589,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/5AUwxSd",
     title:
       "The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution",
+    author: "Gregory Zuckerman",
     isbn: "073521798X",
     year: 2024,
     category: Category.NonFiction,
@@ -518,7 +599,9 @@ export const books: Array<Book> = [
     href: "https://a.co/d/310PMiT",
     title:
       "The Effective Executive: The Definitive Guide to Getting the Right Things Done",
-    isbn: "0967298172",
+    author: "Peter F. Drucker",
+    isbn13: "9780060833459",
+    legacyFragmentId: "book-0967298172",
     year: 2024,
     category: Category.NonFiction,
   },
@@ -527,6 +610,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/eRRU7Zf",
     title:
       "What If? 2: Additional Serious Scientific Answers to Absurd Hypothetical Questions",
+    author: "Randall Munroe",
     isbn: "0525537112",
     year: 2024,
     category: Category.NonFiction,
@@ -536,6 +620,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/eHbHQ8a",
     title:
       "The Fund: Ray Dalio, Bridgewater Associates, and the Unraveling of a Wall Street Legend",
+    author: "Rob Copeland",
     isbn: "9781250276940",
     year: 2024,
     category: Category.NonFiction,
@@ -545,6 +630,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/c7lj41W",
     title:
       "The Startup CTO's Handbook: Essential Skills and Best Practices for High Performing Engineering Teams",
+    author: "Zach Goldberg",
     isbn: "1955811563",
     year: 2024,
     category: Category.NonFiction,
@@ -554,6 +640,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/1QVO1lD",
     title:
       "12 Months to $1 Million: How to Pick a Winning Product, Build a Real Business, and Become a Seven-Figure Entrepreneur",
+    author: "Ryan Daniel Moran",
     isbn: "1948836955",
     year: 2024,
     category: Category.NonFiction,
@@ -562,6 +649,7 @@ export const books: Array<Book> = [
     slug: "private-equity-a-memoir",
     href: "https://a.co/d/fUvrhWt",
     title: "Private Equity: A Memoir",
+    author: "Carrie Sun",
     isbn: "0593654994",
     year: 2024,
     category: Category.NonFiction,
@@ -570,6 +658,7 @@ export const books: Array<Book> = [
     slug: "extremely-hardcore-inside-elon-musk-s-twitter",
     href: "https://a.co/d/9Sx3thE",
     title: "Extremely Hardcore: Inside Elon Musk's Twitter",
+    author: "Zoë Schiffer",
     isbn: "0593716612",
     year: 2024,
     category: Category.NonFiction,
@@ -578,6 +667,7 @@ export const books: Array<Book> = [
     slug: "burn-book-a-tech-love-story",
     href: "https://a.co/d/g9vAs7f",
     title: "Burn Book: A Tech Love Story",
+    author: "Kara Swisher",
     isbn: "0349442126",
     year: 2024,
     category: Category.NonFiction,
@@ -587,6 +677,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/6Vxf6OZ",
     title:
       "Start Small, Stay Small: A Developer's Guide to Launching a Startup",
+    author: "Rob Walling",
     isbn: "9780615373966",
     year: 2024,
     category: Category.NonFiction,
@@ -595,6 +686,7 @@ export const books: Array<Book> = [
     slug: "doom-guy-life-in-first-person",
     href: "https://a.co/d/1f5GMdN",
     title: "Doom Guy: Life in First Person",
+    author: "John Romero",
     isbn: "1647005361",
     year: 2024,
     category: Category.NonFiction,
@@ -603,6 +695,7 @@ export const books: Array<Book> = [
     slug: "not-till-we-are-lost-bobiverse-book-5",
     href: "https://a.co/d/hbDFk6j",
     title: "Not Till We Are Lost: Bobiverse, Book 5",
+    author: "Dennis E. Taylor",
     isbn: "1668221659",
     year: 2024,
     category: Category.Fiction,
@@ -611,6 +704,7 @@ export const books: Array<Book> = [
     slug: "task-force-hammer-expeditionary-force-book-17",
     href: "https://a.co/d/fiE3CDE",
     title: "Task Force Hammer: Expeditionary Force, Book 17",
+    author: "Craig Alanson",
     isbn13: "979-8336989861",
     year: 2024,
     category: Category.Fiction,
@@ -619,6 +713,7 @@ export const books: Array<Book> = [
     slug: "travel-by-bullet-the-dispatcher-book-3",
     href: "https://a.co/d/ak6bUpw",
     title: "Travel by Bullet: The Dispatcher, Book 3",
+    author: "John Scalzi",
     isbn: "9781491555873",
     year: 2024,
     category: Category.Fiction,
@@ -627,6 +722,7 @@ export const books: Array<Book> = [
     slug: "resurgence-first-colony-book-16",
     href: "https://a.co/d/j2SEJSZ",
     title: "Resurgence: First Colony, Book 16",
+    author: "Ken Lozito",
     isbn: "1945223731",
     year: 2024,
     category: Category.Fiction,
@@ -635,6 +731,7 @@ export const books: Array<Book> = [
     slug: "fallen-earth-first-colony-book-15",
     href: "https://a.co/d/gLms9UH",
     title: "Fallen Earth: First Colony, Book 15",
+    author: "Ken Lozito",
     isbn: "1945223715",
     year: 2024,
     category: Category.Fiction,
@@ -643,6 +740,7 @@ export const books: Array<Book> = [
     slug: "murder-by-other-means-the-dispatcher-book-2",
     href: "https://a.co/d/an57tNt",
     title: "Murder by Other Means: The Dispatcher, Book 2",
+    author: "John Scalzi",
     isbn: "1713620464",
     year: 2024,
     category: Category.Fiction,
@@ -651,6 +749,7 @@ export const books: Array<Book> = [
     slug: "starter-villain",
     href: "https://a.co/d/fcAzW55",
     title: "Starter Villain",
+    author: "John Scalzi",
     isbn: "1509835415",
     year: 2024,
     category: Category.Fiction,
@@ -659,6 +758,7 @@ export const books: Array<Book> = [
     slug: "aftermath-expeditionary-force-book-16",
     href: "https://a.co/d/e9cZ20e",
     title: "Aftermath, Expeditionary Force, Book 16",
+    author: "Craig Alanson",
     isbn: "9798876137494",
     year: 2024,
     category: Category.Fiction,
@@ -668,6 +768,7 @@ export const books: Array<Book> = [
     slug: "the-saas-playbook-build-a-multimillion-dollar-startup-without-venture-capital",
     title:
       "The SaaS Playbook: Build a Multimillion-Dollar Startup Without Venture Capital",
+    author: "Rob Walling",
     isbn: "9798987746523",
     year: 2023,
     category: Category.NonFiction,
@@ -677,7 +778,9 @@ export const books: Array<Book> = [
     slug: "the-innovator-s-dilemma-when-new-technologies-cause-great-firms-to-fail",
     title:
       "The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail",
-    isbn: "9781504046701",
+    author: "Clayton M. Christensen",
+    isbn13: "9781633691780",
+    legacyFragmentId: "book-9781504046701",
     year: 2023,
     category: Category.NonFiction,
     href: "https://a.co/d/6IjqJI6",
@@ -685,6 +788,7 @@ export const books: Array<Book> = [
   {
     slug: "going-infinite-the-rise-and-fall-of-a-new-tycoon",
     title: "Going Infinite: The Rise and Fall of a New Tycoon",
+    author: "Michael Lewis",
     isbn: "132410581X",
     year: 2023,
     category: Category.NonFiction,
@@ -694,6 +798,7 @@ export const books: Array<Book> = [
     slug: "founder-vs-investor-the-honest-truth-about-venture-capital-from-startup-to-ipo",
     title:
       "Founder vs Investor: The Honest Truth About Venture Capital from Startup to IPO",
+    author: "Elizabeth Joy Zalman and Jerry Neumann",
     isbn: "1400242762",
     year: 2023,
     category: Category.NonFiction,
@@ -702,6 +807,7 @@ export const books: Array<Book> = [
   {
     slug: "elon-musk",
     title: "Elon Musk",
+    author: "Ashlee Vance",
     isbn: "9780062469670",
     year: 2023,
     category: Category.NonFiction,
@@ -711,6 +817,7 @@ export const books: Array<Book> = [
     slug: "hit-refresh-the-quest-to-rediscover-microsoft-s-soul-and-imagine-a-better-future-for-everyone",
     title:
       "Hit Refresh: The Quest to Rediscover Microsoft's Soul and Imagine a Better Future for Everyone",
+    author: "Satya Nadella",
     isbn: "0008247692",
     year: 2023,
     category: Category.NonFiction,
@@ -719,6 +826,7 @@ export const books: Array<Book> = [
   {
     slug: "the-great-ceo-within-the-tactical-guide-to-company-building",
     title: "The Great CEO Within: The Tactical Guide to Company Building",
+    author: "Matt Mochary",
     isbn: "0578599287",
     year: 2023,
     category: Category.NonFiction,
@@ -727,6 +835,7 @@ export const books: Array<Book> = [
   {
     slug: "the-myths-of-innovation",
     title: "The Myths of Innovation",
+    author: "Scott Berkun",
     isbn: "0596527055",
     year: 2023,
     category: Category.NonFiction,
@@ -735,6 +844,7 @@ export const books: Array<Book> = [
   {
     slug: "scaling-people-tactics-for-management-and-company-building",
     title: "Scaling People: Tactics for Management and Company Building",
+    author: "Claire Hughes Johnson",
     isbn: "9781953953254",
     year: 2023,
     category: Category.NonFiction,
@@ -744,6 +854,7 @@ export const books: Array<Book> = [
     slug: "angel-how-to-invest-in-technology-startups-timeless-advice-from-an-angel-investor-who-turned-100-000-into-100-000-000",
     title:
       "Angel: How to Invest in Technology Startups - Timeless Advice from an Angel Investor Who Turned $100,000 into $100,000,000",
+    author: "Jason Calacanis",
     isbn: "9780062560711",
     year: 2023,
     category: Category.NonFiction,
@@ -754,7 +865,10 @@ export const books: Array<Book> = [
     href: "https://a.co/d/2JVRepZ",
     title:
       "Zero to IPO: Over $1 Trillion of Actionable Advice from the World's Most Successful Entrepreneurs",
-    isbn: "0972832831",
+    author: "Frederic Kerrest",
+    isbn: "1264277660",
+    legacyFragmentId: "book-0972832831",
+    image: "/img/book-covers/zero-to-ipo-frederic-kerrest.png",
     year: 2023,
     category: Category.NonFiction,
   },
@@ -763,6 +877,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/5p5KKu6",
     title:
       "Factfulness: Ten Reasons We're Wrong About the World - and Why Things Are Better Than You Think",
+    author: "Hans Rosling, Ola Rosling, Anna Rosling Rönnlund",
     isbn: "9781250231987",
     year: 2023,
     category: Category.NonFiction,
@@ -772,6 +887,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/fSMB4AW",
     title:
       "Thinking in Bets: Making Smarter Decisions When You Don't Have All the Facts",
+    author: "Annie Duke",
     isbn: "0735216355",
     year: 2023,
     category: Category.NonFiction,
@@ -780,6 +896,7 @@ export const books: Array<Book> = [
     slug: "disrupted-my-misadventure-in-the-start-up-bubble",
     href: "https://a.co/d/3sp8fyh",
     title: "Disrupted: My Misadventure in the Start-Up Bubble",
+    author: "Dan Lyons",
     isbn: "0316306088",
     year: 2023,
     category: Category.NonFiction,
@@ -788,6 +905,7 @@ export const books: Array<Book> = [
     slug: "hooked-how-to-build-habit-forming-products",
     href: "https://a.co/d/7aGbNAT",
     title: "Hooked: How to Build Habit-Forming Products",
+    author: "Nir Eyal",
     isbn: "9780615978628",
     year: 2023,
     category: Category.NonFiction,
@@ -797,6 +915,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/dr7hH19",
     title:
       "The Delivery Man: The Art of Turning Ideas Into Products in Silicon Valley",
+    author: "Sebastien Taveau",
     isbn13: "979-8987047422",
     year: 2023,
     category: Category.NonFiction,
@@ -806,6 +925,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/94b2aLM",
     title:
       "The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses",
+    author: "Eric Ries",
     isbn: "9780307887894",
     year: 2023,
     category: Category.NonFiction,
@@ -815,6 +935,7 @@ export const books: Array<Book> = [
     href: "https://a.co/d/93y89re",
     title:
       "The Rise of the Rest: How Entrepreneurs in Surprising Places Are Building the New American Dream",
+    author: "Steve Case",
     isbn: "1982191848",
     year: 2023,
     category: Category.NonFiction,
@@ -823,6 +944,7 @@ export const books: Array<Book> = [
     slug: "centers-of-gravity-frontlines-book-8",
     href: "https://a.co/d/3r96Mzt",
     title: "Centers of Gravity: Frontlines, Book 8",
+    author: "Marko Kloos",
     isbn: "9781542032810",
     year: 2023,
     category: Category.Fiction,
@@ -831,6 +953,7 @@ export const books: Array<Book> = [
     slug: "orders-of-battle-frontlines-book-7",
     href: "https://a.co/d/dyriGL9",
     title: "Orders of Battle: Frontlines, Book 7",
+    author: "Marko Kloos",
     isbn: "1713530635",
     year: 2023,
     category: Category.Fiction,
@@ -839,6 +962,7 @@ export const books: Array<Book> = [
     slug: "failure-mode-expeditionary-force-book-15",
     href: "https://a.co/d/6rzsncY",
     title: "Failure Mode: Expeditionary Force, Book 15",
+    author: "Craig Alanson",
     isbn: "9798371321725",
     year: 2023,
     category: Category.Fiction,
@@ -847,6 +971,7 @@ export const books: Array<Book> = [
     slug: "expedition-earth-first-colony-book-14",
     href: "https://a.co/d/9ny7QcB",
     title: "Expedition Earth: First Colony, Book 14",
+    author: "Ken Lozito",
     isbn: "9781945223549",
     year: 2023,
     category: Category.Fiction,
@@ -855,6 +980,7 @@ export const books: Array<Book> = [
   {
     slug: "columbus-day-expeditionary-force-book-1",
     title: "Columbus Day: Expeditionary Force, Book 1",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -862,6 +988,7 @@ export const books: Array<Book> = [
   {
     slug: "specops-expeditionary-force-book-2",
     title: "SpecOps: Expeditionary Force, Book 2",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -869,6 +996,7 @@ export const books: Array<Book> = [
   {
     slug: "paradise-expeditionary-force-book-3",
     title: "Paradise: Expeditionary Force, Book 3",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -876,6 +1004,7 @@ export const books: Array<Book> = [
   {
     slug: "black-ops-expeditionary-force-book-4",
     title: "Black Ops: Expeditionary Force, Book 4",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -883,6 +1012,7 @@ export const books: Array<Book> = [
   {
     slug: "zero-hour-expeditionary-force-book-5",
     title: "Zero Hour: Expeditionary Force, Book 5",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -890,6 +1020,7 @@ export const books: Array<Book> = [
   {
     slug: "mavericks-expeditionary-force-book-6",
     title: "Mavericks: Expeditionary Force, Book 6",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -897,6 +1028,7 @@ export const books: Array<Book> = [
   {
     slug: "renegades-expeditionary-force-book-7",
     title: "Renegades: Expeditionary Force, Book 7",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -904,6 +1036,7 @@ export const books: Array<Book> = [
   {
     slug: "armageddon-expeditionary-force-book-8",
     title: "Armageddon: Expeditionary Force, Book 8",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -911,6 +1044,7 @@ export const books: Array<Book> = [
   {
     slug: "valkyrie-expeditionary-force-book-9",
     title: "Valkyrie: Expeditionary Force, Book 9",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -918,6 +1052,7 @@ export const books: Array<Book> = [
   {
     slug: "critical-mass-expeditionary-force-book-10",
     title: "Critical Mass: Expeditionary Force, Book 10",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -925,6 +1060,7 @@ export const books: Array<Book> = [
   {
     slug: "brushfire-expeditionary-force-book-11",
     title: "Brushfire: Expeditionary Force, Book 11",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -932,6 +1068,7 @@ export const books: Array<Book> = [
   {
     slug: "breakaway-expeditionary-force-book-12",
     title: "Breakaway: Expeditionary Force, Book 12",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -939,6 +1076,7 @@ export const books: Array<Book> = [
   {
     slug: "fallout-expeditionary-force-book-13",
     title: "Fallout: Expeditionary Force, Book 13",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -946,6 +1084,7 @@ export const books: Array<Book> = [
   {
     slug: "match-game-expeditionary-force-book-14",
     title: "Match Game: Expeditionary Force, Book 14",
+    author: "Craig Alanson",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -953,6 +1092,7 @@ export const books: Array<Book> = [
   {
     slug: "old-man-s-war-book-1",
     title: "Old Man's War, Book 1",
+    author: "John Scalzi",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -960,6 +1100,7 @@ export const books: Array<Book> = [
   {
     slug: "the-ghost-brigades-old-man-s-war-book-2",
     title: "The Ghost Brigades: Old Man's War, Book 2",
+    author: "John Scalzi",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -967,6 +1108,7 @@ export const books: Array<Book> = [
   {
     slug: "the-last-colony-old-man-s-war-book-3",
     title: "The Last Colony: Old Man's War, Book 3",
+    author: "John Scalzi",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -974,6 +1116,7 @@ export const books: Array<Book> = [
   {
     slug: "zoe-s-tale-old-man-s-war-book-4",
     title: "Zoe's Tale: Old Man's War, Book 4",
+    author: "John Scalzi",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -981,6 +1124,7 @@ export const books: Array<Book> = [
   {
     slug: "the-human-division-old-man-s-war-book-5",
     title: "The Human Division: Old Man's War, Book 5",
+    author: "John Scalzi",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,
@@ -988,6 +1132,7 @@ export const books: Array<Book> = [
   {
     slug: "the-end-of-all-things-old-man-s-war-book-6",
     title: "The End of All Things: Old Man's War, Book 6",
+    author: "John Scalzi",
     year: 2022,
     category: Category.Fiction,
     seriesOnly: true,

@@ -77,9 +77,9 @@ export default async function BookPage({ params }: PageProps) {
               <>
                 <p className="mt-4 whitespace-pre-line break-words text-base leading-7 text-gray-300">{book.synopsis.text}</p>
                 <p className="mt-4 text-sm text-gray-400">
-                  Synopsis from{" "}
+                  Synopsis source:{" "}
                   <a href={book.synopsis.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-200">
-                    {book.synopsis.sourceUrl.startsWith("https://openlibrary.org/") ? "Open Library" : "Google Books"}
+                    {book.synopsis.sourceName ?? (book.synopsis.sourceUrl.startsWith("https://openlibrary.org/") ? "Open Library" : "Google Books")}
                     <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 </p>

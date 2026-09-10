@@ -4,6 +4,7 @@ const { test } = require("node:test");
 process.env.BOOK_REMOTE_ENRICHMENT = "0";
 const { books } = require("../src/data/books.ts");
 const shelf = require("../src/data/bookService.ts").default;
+const { readBookSynopsis } = require("../src/data/bookSynopsis.ts");
 
 test("every reading has a permanent, nonreserved slug; only rereads share one", () => {
   const seen = new Map();
@@ -39,5 +40,19 @@ test("series-only books have pages without affecting yearly lists", async () => 
 test("unknown and year-like book slugs do not resolve", async () => {
   for (const slug of ["unknown-book", "2026-extra", "9999"]) {
     assert.equal(await shelf.getBookWithOpenLibrary(slug), undefined);
+  }
+});
+
+test("the complete catalog has attributed synopses and authors available offline", async () => {
+  const canonicalBooks = [...new Map(books.map((book) => [book.slug, book])).values()];
+  for (const book of canonicalBooks) {
+    const saved = await readBookSynopsis(book.slug);
+    assert.ok(saved?.text.trim(), `${book.slug}: missing saved synopsis`);
+    assert.ok(saved.author?.trim(), `${book.slug}: missing saved author`);
+    assert.match(saved.sourceUrl, /^https:\/\//);
+    assert.equal(book.author, saved.author, `${book.slug}: catalog and snapshot authors differ`);
+    const detail = await shelf.getBookWithOpenLibrary(book.slug);
+    assert.deepEqual(detail.book.synopsis, saved);
+    assert.equal(detail.book.author, saved.author);
   }
 });

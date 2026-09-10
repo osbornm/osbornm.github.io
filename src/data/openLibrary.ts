@@ -1,9 +1,10 @@
-import { Book } from "./types";
+import { Book, BookSynopsis } from "./types";
 import { createHash } from "crypto";
 import { mkdir, readdir, stat, writeFile } from "fs/promises";
 import path from "path";
 import {
   GoogleBooksVolume,
+  bookSearchTitle,
   matchesBookTitleAndAuthor,
   normalizeIsbn,
   readBookSynopsis,
@@ -276,48 +277,97 @@ async function searchOpenLibrary(query: string, value: string) {
   return data.docs?.[0];
 }
 
-async function fetchGoogleBooks(book: Book) {
+async function fetchGoogleBooks(book: Book): Promise<{ image?: string; synopsis?: BookSynopsis; author?: string } | undefined> {
   if (googleBooksQuotaExhausted) return undefined;
   const isbn = normalizeIsbn(book.isbn13 ?? book.isbn);
   const query = isbn
     ? `isbn:${isbn}`
-    : `intitle:${book.title}${book.author ? ` inauthor:${book.author}` : ""}`;
+    : `intitle:${bookSearchTitle(book)}${book.author ? ` inauthor:${book.author}` : ""}`;
   const url = `${GOOGLE_BOOKS_API_URL}?q=${encodeURIComponent(query)}&maxResults=10`;
-  const response = await fetch(url, {
-    signal: AbortSignal.timeout(10_000),
-    headers: {
-      "User-Agent": "osbornm.github.io-books/1.0",
-    },
-    cache: "force-cache",
-  });
-
-  if (response.status === 429) googleBooksQuotaExhausted = true;
-  if (!response.ok) {
-    return undefined;
-  }
-
-  const data = (await response.json()) as GoogleBooksResponse;
-  const match = selectGoogleBooksVolume(book, data.items ?? []);
-  const imageLinks = data.items?.[0]?.volumeInfo?.imageLinks;
-  return {
-    image: normalizeGoogleCoverUrl(imageLinks?.thumbnail ?? imageLinks?.smallThumbnail),
-    synopsis: synopsisFromGoogleVolume(match),
-    author: match?.volumeInfo?.authors?.join(", ") || undefined,
-  };
-}
-
-async function fetchOpenLibraryJson<T>(url: string): Promise<T | undefined> {
   const response = await fetch(url, {
     signal: AbortSignal.timeout(10_000),
     headers: { "User-Agent": "osbornm.github.io-books/1.0" },
     cache: "force-cache",
   });
-  return response.ok ? await response.json() as T : undefined;
+
+  if (response.status === 429) googleBooksQuotaExhausted = true;
+  if (!response.ok) return undefined;
+
+  const data = (await response.json()) as GoogleBooksResponse;
+  const match = selectGoogleBooksVolume(book, data.items ?? []);
+  const imageLinks = match?.volumeInfo?.imageLinks;
+  const result = {
+    image: normalizeGoogleCoverUrl(imageLinks?.thumbnail ?? imageLinks?.smallThumbnail),
+    synopsis: synopsisFromGoogleVolume(match),
+    author: match?.volumeInfo?.authors?.join(", ") || undefined,
+  };
+  // An exact ISBN establishes identity even when that particular edition has no description.
+  const author = book.author ?? result.author;
+  if (isbn && !result.synopsis && author) {
+    const fallback = await fetchGoogleBooks({ ...book, author, isbn: undefined, isbn13: undefined })
+      .catch(() => undefined);
+    if (fallback) return {
+      ...result, ...fallback,
+      author: result.author ?? fallback.author,
+      image: result.image ?? fallback.image,
+    };
+  }
+  return result;
+}
+
+async function fetchOpenLibraryJson<T>(url: string): Promise<T | undefined> {
+  try {
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(10_000),
+      headers: { "User-Agent": "osbornm.github.io-books/1.0" },
+      cache: "force-cache",
+    });
+    return response.ok ? await response.json() as T : undefined;
+  } catch {
+    // A missing edition or failed provider must not prevent the remaining matches being tried.
+    return undefined;
+  }
+}
+
+function openLibraryDescription(record: OpenLibraryEditionOrWork | undefined) {
+  if (record?.languages?.length &&
+      !record.languages.some((language) => language.key === "/languages/eng")) return undefined;
+  return typeof record?.description === "string" ? record.description : record?.description?.value;
+}
+
+async function fetchWorkSynopsis(workKey: string, author?: string) {
+  if (!/^\/works\/OL\d+W$/.test(workKey)) return undefined;
+  const sourceUrl = `https://openlibrary.org${workKey}`;
+  const work = await fetchOpenLibraryJson<OpenLibraryEditionOrWork>(`${sourceUrl}.json`);
+  const description = openLibraryDescription(work);
+  if (description) {
+    const synopsis = synopsisFromDescription(description, sourceUrl, author);
+    if (synopsis) return synopsis;
+  }
+  const editions = await fetchOpenLibraryJson<{ entries?: OpenLibraryEditionOrWork[] }>(
+    `${sourceUrl}/editions.json?limit=50`,
+  );
+  const englishEditions = editions?.entries?.filter((edition) =>
+    edition.languages?.some((language) => language.key === "/languages/eng"),
+  ).slice(0, 5) ?? [];
+  for (const edition of englishEditions) {
+    if (!edition.key || !/^\/books\/OL\d+M$/.test(edition.key)) continue;
+    const editionUrl = `https://openlibrary.org${edition.key}`;
+    const details = openLibraryDescription(edition) ? edition :
+      await fetchOpenLibraryJson<OpenLibraryEditionOrWork>(`${editionUrl}.json`);
+    if (details?.works?.length && !details.works.some((work) => work.key === workKey)) continue;
+    const editionDescription = openLibraryDescription(details);
+    if (editionDescription) {
+      const synopsis = synopsisFromDescription(editionDescription, editionUrl, author);
+      if (synopsis) return synopsis;
+    }
+  }
+  return undefined;
 }
 
 async function fetchOpenLibrarySynopsis(book: Book) {
   const isbn = normalizeIsbn(book.isbn13 ?? book.isbn);
-  let workKey: string | undefined;
+  const triedWorks = new Set<string>();
   let author = book.author;
   if (isbn) {
     if (!author) {
@@ -328,35 +378,46 @@ async function fetchOpenLibrarySynopsis(book: Book) {
     const edition = await fetchOpenLibraryJson<OpenLibraryEditionOrWork>(
       `https://openlibrary.org/isbn/${isbn}.json`,
     );
-    const description = typeof edition?.description === "string"
-      ? edition.description : edition?.description?.value;
-    const translatedEdition = Boolean(edition?.languages?.length) &&
-      !edition?.languages?.some((language) => language.key === "/languages/eng");
-    if (description && !translatedEdition) {
+    const description = openLibraryDescription(edition);
+    if (description) {
       const synopsis = synopsisFromDescription(description, `https://openlibrary.org/isbn/${isbn}`, author);
       if (synopsis) return synopsis;
     }
-    if (edition?.works?.length === 1) workKey = edition.works[0].key;
-  } else {
-    const query = new URLSearchParams({
-      title: book.author ? book.title.split(":")[0] : book.title,
-      limit: "10",
-      fields: "key,title,author_name",
-      ...(book.author ? { author: book.author } : {}),
-    });
-    const results = await fetchOpenLibraryJson<OpenLibraryResponse>(`${OPEN_LIBRARY_SEARCH_URL}?${query}`);
-    const matches = results?.docs?.filter((doc) => matchesBookTitleAndAuthor(book, doc.title, doc.author_name));
-    const keys = new Set(matches?.map((doc) => doc.key));
-    if (keys.size === 1) {
-      workKey = [...keys][0];
-      author ??= matches?.[0].author_name?.join(", ");
-      if (book.synopsis && author) return { ...book.synopsis, author };
+    // Multiple linked works can be an omnibus; a component synopsis would misdescribe it.
+    for (const { key } of edition?.works?.length === 1 ? edition.works : []) {
+      if (!key || triedWorks.has(key)) continue;
+      triedWorks.add(key);
+      const synopsis = await fetchWorkSynopsis(key, author);
+      if (synopsis) return synopsis;
     }
+    // Title-only guessing after an ISBN miss can silently substitute an unrelated book.
+    if (!author) return undefined;
   }
-  if (!workKey || !/^\/works\/OL\d+W$/.test(workKey)) return undefined;
-  const work = await fetchOpenLibraryJson<OpenLibraryEditionOrWork>(`https://openlibrary.org${workKey}.json`);
-  const description = typeof work?.description === "string" ? work.description : work?.description?.value;
-  return description ? synopsisFromDescription(description, `https://openlibrary.org${workKey}`, author) : undefined;
+  const searchBook = { ...book, author };
+  const query = new URLSearchParams({
+    title: bookSearchTitle(searchBook),
+    limit: "20",
+    fields: "key,title,author_name",
+    ...(author ? { author } : {}),
+  });
+  const results = await fetchOpenLibraryJson<OpenLibraryResponse>(`${OPEN_LIBRARY_SEARCH_URL}?${query}`);
+  const matches = results?.docs?.filter((doc) =>
+    matchesBookTitleAndAuthor(searchBook, doc.title, doc.author_name),
+  ) ?? [];
+  // Duplicate catalog works are common. Only an unresolved author identity is ambiguous.
+  const authors = new Set(matches.map((doc) =>
+    doc.author_name!.map((name) => name.toLowerCase().replace(/[^a-z0-9]/g, "")).sort().join(","),
+  ));
+  if (!matches.length || (!author && authors.size !== 1)) return undefined;
+  author ??= matches[0].author_name?.join(", ");
+  if (book.synopsis && author) return { ...book.synopsis, author };
+  for (const match of matches.slice(0, 5)) {
+    if (!match.key || triedWorks.has(match.key)) continue;
+    triedWorks.add(match.key);
+    const synopsis = await fetchWorkSynopsis(match.key, author);
+    if (synopsis) return synopsis;
+  }
+  return undefined;
 }
 
 async function fetchByIsbn(isbn: string) {
@@ -395,7 +456,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
     }
 
     const isbn = normalizeIsbn(book.isbn13 ?? book.isbn);
-    const google = await fetchGoogleBooks(book).catch(() => undefined);
+    const google = await fetchGoogleBooks(enrichedBook).catch(() => undefined);
     const googleImage = google?.image;
     if (!enrichedBook.synopsis || !enrichedBook.author) {
       const savedOrGoogleSynopsis = enrichedBook.synopsis ?? google?.synopsis;
