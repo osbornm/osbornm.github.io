@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "BOOK_COVER_WRITE=1 next build",
+    "build": "BOOK_COVER_WRITE=1 npm run books:sync && npm run build:ci",
     "build:ci": "BOOK_REMOTE_ENRICHMENT=0 next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node --require ./scripts/register-typescript.cjs --test tests/*.test.cjs",
+    "books:sync": "BOOK_SYNOPSIS_WRITE=1 node --require ./scripts/register-typescript.cjs scripts/sync-book-synopses.cjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -16,6 +18,8 @@
     "@next/mdx": "^15.1.6",
     "@types/mdx": "^2.0.13",
     "highlight.js": "^11.11.1",
+    "html-to-text": "^10.0.1",
+    "marked": "^18.0.12",
     "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -27,6 +31,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/html-to-text": "^9.0.4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -4,52 +4,30 @@ import type { Book } from "@/data/types";
 import CoverImage from "@/components/books/CoverImage";
 
 function BookCard({ book }: { book: Book }) {
-  const detailsHref = book.openLibraryHref ?? book.href;
-
   return (
-    <article className="relative flex flex-row items-start gap-4 rounded-lg border border-white/10 p-4 transition-all duration-500 hover:border-white/25">
-      <div className="w-24 shrink-0 overflow-hidden rounded-md bg-white/5 md:w-28">
-        <div className="aspect-[2/3]">
-          <CoverImage
-            src={book.image}
-            alt={`Cover of ${book.title}`}
-            className="h-full w-full object-cover object-center"
-            fallbackText="No cover art available"
-            fallbackClassName="flex h-full w-full items-center justify-center px-2 text-center text-sm text-gray-400"
-          />
+    <article className="relative rounded-lg border border-white/10 transition-all duration-500 hover:border-white/25">
+      <Link
+        href={`/books/${book.slug}`}
+        className="flex h-full flex-row items-start gap-4 rounded-lg p-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300"
+      >
+        <div className="w-24 shrink-0 overflow-hidden rounded-md bg-white/5 md:w-28">
+          <div className="aspect-[2/3]">
+            <CoverImage
+              src={book.image}
+              alt={`Cover of ${book.title}`}
+              className="h-full w-full object-cover object-center"
+              fallbackText="No cover art available"
+              fallbackClassName="flex h-full w-full items-center justify-center px-2 text-center text-sm text-gray-400"
+            />
+          </div>
         </div>
-      </div>
-      <div className="relative z-10 flex-1">
-        <div className="flex items-center gap-x-4 text-xs">{book.category}</div>
-        <h5 className="mb-2 mt-2 text-lg font-bold lg:text-xl">{book.title}</h5>
-        {book.author && <p className="mb-3 text-sm text-gray-300">{book.author}</p>}
-        {detailsHref ? (
-          <Link
-            href={detailsHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block text-md text-gray-200 hover:underline"
-          >
-            See details
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="ml-1 inline-block size-3"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
-              />
-            </svg>
-          </Link>
-        ) : (
-          <p className="text-md text-gray-400">Details unavailable</p>
-        )}
-      </div>
+        <div className="relative z-10 min-w-0 flex-1">
+          <div className="flex items-center gap-x-4 text-xs">{book.category}</div>
+          <h5 className="mb-2 mt-2 text-lg font-bold lg:text-xl">{book.title}</h5>
+          {book.author && <p className="mb-3 text-sm text-gray-300">{book.author}</p>}
+          <span className="inline-block text-md text-gray-200">See details</span>
+        </div>
+      </Link>
     </article>
   );
 }
@@ -111,7 +89,7 @@ function SeriesCard({
   return (
     <article className="relative flex flex-row items-start gap-4 rounded-lg border border-white/10 p-4 transition-all duration-500 hover:border-white/25">
       <SeriesCoverStack books={books} />
-      <div className="relative z-10 flex-1">
+      <div className="relative z-10 min-w-0 flex-1">
         <div className="flex items-center gap-x-4 text-xs text-gray-300">Series</div>
         <h5 className="mb-2 mt-2 text-lg font-bold lg:text-xl">{series}</h5>
         <p className="mb-3 text-sm text-gray-300">
@@ -123,6 +101,25 @@ function SeriesCard({
           </p>
         ) : (
           <p className="text-sm text-gray-400">No matching books found</p>
+        )}
+        {books.length > 0 && (
+          <details className="mt-3 text-sm">
+            <summary className="cursor-pointer rounded-sm text-gray-200 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300">
+              View all books
+            </summary>
+            <ul className="mt-3 space-y-2">
+              {books.map((book) => (
+                <li key={book.slug}>
+                  <Link
+                    href={`/books/${book.slug}`}
+                    className="rounded-sm text-sky-300 underline underline-offset-4 hover:text-sky-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300"
+                  >
+                    {book.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </details>
         )}
       </div>
     </article>

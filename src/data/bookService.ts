@@ -80,19 +80,6 @@ function isBookInSeries(book: Book, seriesRefValue: string) {
   return titleRef(book.title).includes(series);
 }
 
-function getBookIdentity(book: Book) {
-  if (book.isbn13) {
-    return `isbn13:${normalizeRef(book.isbn13)}`;
-  }
-  if (book.isbn) {
-    return `isbn:${normalizeRef(book.isbn)}`;
-  }
-  if (book.asin) {
-    return `asin:${normalizeRef(book.asin)}`;
-  }
-  return `title:${titleRef(book.title)}`;
-}
-
 function sortSeriesBooks(booksToSort: Array<Book>) {
   return [...booksToSort].sort((a, b) => {
     if (a.year !== b.year) {
@@ -107,6 +94,24 @@ function isYearVisibleBook(book: Book) {
 }
 
 class BookShelf {
+  getBookSlugs() {
+    return Array.from(new Set(books.map((book) => book.slug)));
+  }
+
+  getBookWithOpenLibrary = cache(async (slug: string) => {
+    const readings = books
+      .filter((book) => book.slug === slug)
+      .sort((a, b) => b.year - a.year);
+    if (!readings.length) {
+      return undefined;
+    }
+
+    return {
+      book: await enrichBookFromOpenLibrary(readings[0]),
+      yearsRead: Array.from(new Set(readings.map((book) => book.year))),
+    };
+  });
+
   private getEnrichedBooks = cache(async () => {
     const enrichedBooks: Array<Book> = [];
     for (const book of books) {
@@ -196,7 +201,7 @@ class BookShelf {
       if (!book) {
         return;
       }
-      const identity = getBookIdentity(book);
+      const identity = book.slug;
       if (seen.has(identity)) {
         return;
       }
@@ -214,7 +219,7 @@ class BookShelf {
         const seriesBooks: Array<Book> = [];
         for (const book of enrichedBooks) {
           if (isBookInSeries(book, seriesRefValue)) {
-            const identity = getBookIdentity(book);
+            const identity = book.slug;
             if (seen.has(identity)) {
               continue;
             }

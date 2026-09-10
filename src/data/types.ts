@@ -3,7 +3,15 @@ export enum Category {
   NonFiction = "Non-Fiction",
 }
 
+export interface BookSynopsis {
+  text: string;
+  sourceUrl: string;
+  author?: string;
+}
+
 export interface Book {
+  // Permanent URL identifier. Reuse this slug when recording a reread.
+  slug: string;
   title: string;
   year: number;
   category: Category;
@@ -16,4 +24,5 @@ export interface Book {
   isbn13?: string;
   asin?: string;
   image?: string;
+  synopsis?: BookSynopsis;
 }

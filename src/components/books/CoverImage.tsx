@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface CoverImageProps {
   src?: string;
@@ -18,9 +18,11 @@ export default function CoverImage({
   fallbackClassName,
 }: CoverImageProps) {
   const [hasError, setHasError] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    setHasError(false);
+    const image = imageRef.current;
+    setHasError(Boolean(image?.complete && image.naturalWidth === 0));
   }, [src]);
 
   if (!src || hasError) {
@@ -29,6 +31,7 @@ export default function CoverImage({
 
   return (
     <img
+      ref={imageRef}
       src={src}
       alt={alt}
       loading="lazy"

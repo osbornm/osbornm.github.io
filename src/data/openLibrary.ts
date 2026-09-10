@@ -2,6 +2,16 @@ import { Book } from "./types";
 import { createHash } from "crypto";
 import { mkdir, readdir, stat, writeFile } from "fs/promises";
 import path from "path";
+import {
+  GoogleBooksVolume,
+  matchesBookTitleAndAuthor,
+  normalizeIsbn,
+  readBookSynopsis,
+  selectGoogleBooksVolume,
+  synopsisFromGoogleVolume,
+  synopsisFromDescription,
+  writeBookSynopsis,
+} from "./bookSynopsis";
 
 type OpenLibraryDoc = {
   key?: string;
@@ -28,17 +38,15 @@ type OpenLibraryBookResponse = Record<
   }
 >;
 
-type GoogleBooksVolume = {
-  volumeInfo?: {
-    imageLinks?: {
-      thumbnail?: string;
-      smallThumbnail?: string;
-    };
-  };
-};
-
 type GoogleBooksResponse = {
   items?: GoogleBooksVolume[];
+};
+
+type OpenLibraryEditionOrWork = {
+  key?: string;
+  description?: string | { value?: string };
+  works?: Array<{ key?: string }>;
+  languages?: Array<{ key?: string }>;
 };
 
 const OPEN_LIBRARY_SEARCH_URL = "https://openlibrary.org/search.json";
@@ -60,25 +68,16 @@ const LOCAL_COVER_EXTENSIONS = [
   ".avif",
 ];
 const SHOULD_WRITE_COVERS = process.env.BOOK_COVER_WRITE === "1";
+const SHOULD_WRITE_SYNOPSES = process.env.BOOK_SYNOPSIS_WRITE === "1";
 const SHOULD_REMOTE_ENRICH = process.env.BOOK_REMOTE_ENRICHMENT !== "0";
 let localCoverFilesPromise: Promise<string[]> | undefined;
+let googleBooksQuotaExhausted = false;
 
 function toSlug(value: string) {
   return value
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
-}
-
-function normalizeIsbn(value?: string) {
-  if (!value) {
-    return undefined;
-  }
-  const normalized = value.replace(/[^0-9Xx]/g, "").toUpperCase();
-  if (normalized.length === 10 || normalized.length === 13) {
-    return normalized;
-  }
-  return undefined;
 }
 
 function buildCoverUrl(coverId: number) {
@@ -221,6 +220,7 @@ async function persistCoverImageLocally(book: Book, imageUrl?: string) {
     }
 
     const response = await fetch(imageUrl, {
+      signal: AbortSignal.timeout(10_000),
       headers: {
         "User-Agent": "osbornm.github.io-books/1.0",
       },
@@ -261,6 +261,7 @@ async function searchOpenLibrary(query: string, value: string) {
   const url = `${OPEN_LIBRARY_SEARCH_URL}?${query}=${encodeURIComponent(value)}&limit=1&fields=key,title,author_name,cover_i`;
 
   const response = await fetch(url, {
+    signal: AbortSignal.timeout(10_000),
     headers: {
       "User-Agent": "osbornm.github.io-books/1.0",
     },
@@ -275,29 +276,93 @@ async function searchOpenLibrary(query: string, value: string) {
   return data.docs?.[0];
 }
 
-async function fetchGoogleBooksImage(query: string) {
-  const url = `${GOOGLE_BOOKS_API_URL}?q=${encodeURIComponent(query)}&maxResults=1`;
+async function fetchGoogleBooks(book: Book) {
+  if (googleBooksQuotaExhausted) return undefined;
+  const isbn = normalizeIsbn(book.isbn13 ?? book.isbn);
+  const query = isbn
+    ? `isbn:${isbn}`
+    : `intitle:${book.title}${book.author ? ` inauthor:${book.author}` : ""}`;
+  const url = `${GOOGLE_BOOKS_API_URL}?q=${encodeURIComponent(query)}&maxResults=10`;
   const response = await fetch(url, {
+    signal: AbortSignal.timeout(10_000),
     headers: {
       "User-Agent": "osbornm.github.io-books/1.0",
     },
     cache: "force-cache",
   });
 
+  if (response.status === 429) googleBooksQuotaExhausted = true;
   if (!response.ok) {
     return undefined;
   }
 
   const data = (await response.json()) as GoogleBooksResponse;
+  const match = selectGoogleBooksVolume(book, data.items ?? []);
   const imageLinks = data.items?.[0]?.volumeInfo?.imageLinks;
-  return normalizeGoogleCoverUrl(
-    imageLinks?.thumbnail ?? imageLinks?.smallThumbnail,
-  );
+  return {
+    image: normalizeGoogleCoverUrl(imageLinks?.thumbnail ?? imageLinks?.smallThumbnail),
+    synopsis: synopsisFromGoogleVolume(match),
+    author: match?.volumeInfo?.authors?.join(", ") || undefined,
+  };
+}
+
+async function fetchOpenLibraryJson<T>(url: string): Promise<T | undefined> {
+  const response = await fetch(url, {
+    signal: AbortSignal.timeout(10_000),
+    headers: { "User-Agent": "osbornm.github.io-books/1.0" },
+    cache: "force-cache",
+  });
+  return response.ok ? await response.json() as T : undefined;
+}
+
+async function fetchOpenLibrarySynopsis(book: Book) {
+  const isbn = normalizeIsbn(book.isbn13 ?? book.isbn);
+  let workKey: string | undefined;
+  let author = book.author;
+  if (isbn) {
+    if (!author) {
+      const details = await fetchByIsbn(isbn).catch(() => undefined);
+      author = details?.authors?.map((item) => item.name).filter(Boolean).join(", ") || undefined;
+    }
+    if (book.synopsis) return author ? { ...book.synopsis, author } : book.synopsis;
+    const edition = await fetchOpenLibraryJson<OpenLibraryEditionOrWork>(
+      `https://openlibrary.org/isbn/${isbn}.json`,
+    );
+    const description = typeof edition?.description === "string"
+      ? edition.description : edition?.description?.value;
+    const translatedEdition = Boolean(edition?.languages?.length) &&
+      !edition?.languages?.some((language) => language.key === "/languages/eng");
+    if (description && !translatedEdition) {
+      const synopsis = synopsisFromDescription(description, `https://openlibrary.org/isbn/${isbn}`, author);
+      if (synopsis) return synopsis;
+    }
+    if (edition?.works?.length === 1) workKey = edition.works[0].key;
+  } else {
+    const query = new URLSearchParams({
+      title: book.author ? book.title.split(":")[0] : book.title,
+      limit: "10",
+      fields: "key,title,author_name",
+      ...(book.author ? { author: book.author } : {}),
+    });
+    const results = await fetchOpenLibraryJson<OpenLibraryResponse>(`${OPEN_LIBRARY_SEARCH_URL}?${query}`);
+    const matches = results?.docs?.filter((doc) => matchesBookTitleAndAuthor(book, doc.title, doc.author_name));
+    const keys = new Set(matches?.map((doc) => doc.key));
+    if (keys.size === 1) {
+      workKey = [...keys][0];
+      author ??= matches?.[0].author_name?.join(", ");
+      if (book.synopsis && author) return { ...book.synopsis, author };
+    }
+  }
+  if (!workKey || !/^\/works\/OL\d+W$/.test(workKey)) return undefined;
+  const work = await fetchOpenLibraryJson<OpenLibraryEditionOrWork>(`https://openlibrary.org${workKey}.json`);
+  const description = typeof work?.description === "string" ? work.description : work?.description?.value;
+  return description ? synopsisFromDescription(description, `https://openlibrary.org${workKey}`, author) : undefined;
 }
 
 async function fetchByIsbn(isbn: string) {
   const url = `${OPEN_LIBRARY_BOOKS_URL}?bibkeys=ISBN:${encodeURIComponent(isbn)}&format=json&jscmd=data`;
   const response = await fetch(url, {
+    signal: AbortSignal.timeout(10_000),
     headers: {
       "User-Agent": "osbornm.github.io-books/1.0",
     },
@@ -313,20 +378,42 @@ async function fetchByIsbn(isbn: string) {
 }
 
 export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
+  let enrichedBook = book;
   try {
     const localImage = await getLocalCoverImage(book);
+    enrichedBook = {
+      ...book,
+      image: localImage,
+      synopsis: book.synopsis ?? await readBookSynopsis(book.slug),
+    };
+    enrichedBook.author ??= enrichedBook.synopsis?.author;
 
-    if (!SHOULD_REMOTE_ENRICH || (localImage && !SHOULD_WRITE_COVERS)) {
-      return {
-        ...book,
-        image: localImage,
-      };
+    if (!SHOULD_REMOTE_ENRICH ||
+        (localImage && !SHOULD_WRITE_COVERS &&
+          ((enrichedBook.synopsis && enrichedBook.author) || !SHOULD_WRITE_SYNOPSES))) {
+      return enrichedBook;
     }
 
     const isbn = normalizeIsbn(book.isbn13 ?? book.isbn);
-    const googleImage = isbn
-      ? await fetchGoogleBooksImage(`isbn:${isbn}`)
-      : await fetchGoogleBooksImage(`intitle:${book.title}`);
+    const google = await fetchGoogleBooks(book).catch(() => undefined);
+    const googleImage = google?.image;
+    if (!enrichedBook.synopsis || !enrichedBook.author) {
+      const savedOrGoogleSynopsis = enrichedBook.synopsis ?? google?.synopsis;
+      const author = enrichedBook.author ?? savedOrGoogleSynopsis?.author ?? google?.author;
+      const synopsis = savedOrGoogleSynopsis && author
+        ? { ...savedOrGoogleSynopsis, author }
+        : await fetchOpenLibrarySynopsis({ ...enrichedBook, author, synopsis: savedOrGoogleSynopsis })
+          .catch(() => undefined) ?? savedOrGoogleSynopsis;
+      if (synopsis) {
+        const snapshotChanged = !enrichedBook.synopsis ||
+          (!enrichedBook.synopsis.author && Boolean(synopsis.author));
+        enrichedBook = { ...enrichedBook, synopsis, author: author ?? synopsis.author };
+        if (SHOULD_WRITE_SYNOPSES && snapshotChanged) {
+          await writeBookSynopsis(book.slug, synopsis);
+        }
+      }
+    }
+    if (localImage && !SHOULD_WRITE_COVERS) return enrichedBook;
 
     if (isbn) {
       const isbnResult = await fetchByIsbn(isbn);
@@ -341,16 +428,16 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
         );
 
         return {
-          ...book,
+          ...enrichedBook,
           openLibraryHref: isbnResult.url ?? book.openLibraryHref,
-          author: book.author ?? isbnResult.authors?.[0]?.name,
+          author: enrichedBook.author ?? isbnResult.authors?.[0]?.name,
           image,
         };
       }
 
       const image = await persistCoverImageLocally(book, googleImage ?? localImage);
       return {
-        ...book,
+        ...enrichedBook,
         image,
       };
     }
@@ -359,7 +446,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
     if (!doc) {
       const image = await persistCoverImageLocally(book, googleImage ?? localImage);
       return {
-        ...book,
+        ...enrichedBook,
         image,
       };
     }
@@ -367,15 +454,13 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
     const openLibraryHref = doc.key ? `https://openlibrary.org${doc.key}` : undefined;
     const remoteImage = googleImage ?? (doc.cover_i ? buildCoverUrl(doc.cover_i) : localImage);
     const image = await persistCoverImageLocally(book, remoteImage);
-    const author = doc.author_name?.[0] ?? book.author;
-
     return {
-      ...book,
+      ...enrichedBook,
       openLibraryHref,
-      author: book.author ?? author,
+      author: enrichedBook.author ?? doc.author_name?.[0],
       image,
     };
   } catch {
-    return book;
+    return enrichedBook;
   }
 }

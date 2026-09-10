@@ -20,6 +20,25 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Book pages
+
+Every entry in `src/data/books.ts` has a permanent `slug` used at
+`https://osbornm.com/books/<slug>`. Keep that slug when changing a title, and reuse
+it when recording another reading of the same book. Reserve numeric slugs and
+`all`, `collections`, and `lists` for the existing bookshelf routes.
+
+`npm run build` refreshes book assets in one sequential process before generating
+the static site. It fetches missing Google Books synopses, with Open Library as a
+fallback, and saves them under `src/data/book-synopses/`. Open Library requests
+are spaced one second apart. Commit those JSON files alongside book changes so the
+offline `npm run build:ci` deployment includes the descriptions. Each snapshot
+contains plain text, a link to its source, and the author when available; unmatched books keep a usable page
+without a synopsis. Run `npm run books:sync` to fetch missing synopses without
+refreshing existing covers. Delete a book's snapshot and run that command to
+refresh it.
+
+Run `npm test` for book identity, synopsis, and offline enrichment checks.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
