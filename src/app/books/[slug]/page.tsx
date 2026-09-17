@@ -117,23 +117,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const summary = book.synopsis?.text.replace(/\s+/g, " ").trim()
     ?? `${book.title}${book.author ? ` by ${book.author}` : ""}. From Matthew M. Osborn's bookshelf.`;
   const description = summary.length > 160 ? `${summary.slice(0, 157).trimEnd()}…` : summary;
-  const title = `${book.title} | Matthew M. Osborn`;
+  const pageTitle = `${book.title} | Matthew M. Osborn`;
+  const shareTitle = book.author ? `${book.title} by ${book.author}` : book.title;
   const images = book.image
-    ? [{ url: new URL(book.image, siteUrl).toString(), alt: `Cover of ${book.title}` }]
+    ? [{
+        url: new URL(book.image, siteUrl).toString(),
+        alt: `Cover of ${book.title}`,
+      }]
     : [];
 
   return {
-    title,
+    title: pageTitle,
     description,
     alternates: { canonical: bookUrl(slug) },
     openGraph: {
       type: "book",
-      title,
+      title: shareTitle,
       description,
       url: bookUrl(slug),
       siteName: "Matthew M. Osborn",
       images,
     },
-    twitter: { card: "summary", title, description, images },
+    // summary_large_image helps Slack/iMessage show a stronger cover-forward unfurl
+    twitter: { card: "summary_large_image", title: shareTitle, description, images },
   };
 }
