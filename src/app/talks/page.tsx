@@ -1,3 +1,31 @@
+import type { Metadata } from "next";
+import { SITE_NAME, SITE_URL, defaultOgImage } from "@/data/site";
+
+const title = "Talks";
+const description =
+  "Talks and slide decks from Matthew Osborn — NuGet, RequireJS, Knockout, HTML5, CSS/LESS, and more.";
+const url = `${SITE_URL}/talks`;
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: { canonical: url },
+  openGraph: {
+    type: "website",
+    url,
+    siteName: SITE_NAME,
+    title,
+    description,
+    images: [defaultOgImage],
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+    images: [defaultOgImage],
+  },
+};
+
 export default function Page() {
   return (
     <>

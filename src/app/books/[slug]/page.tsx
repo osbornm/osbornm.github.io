@@ -33,8 +33,25 @@ export default async function BookPage({ params }: PageProps) {
   const { book, yearsRead } = details;
   const externalHref = book.openLibraryHref ?? book.href ?? book.synopsis?.sourceUrl;
 
+  const bookJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: book.title,
+    ...(book.author ? { author: { "@type": "Person", name: book.author } } : {}),
+    url: bookUrl(book.slug),
+    ...(book.image ? { image: new URL(book.image, siteUrl).toString() } : {}),
+    ...(book.isbn13 || book.isbn
+      ? { isbn: book.isbn13 ?? book.isbn }
+      : {}),
+    description: book.synopsis?.text?.replace(/\s+/g, " ").trim(),
+  };
+
   return (
     <main className="mx-auto w-full max-w-5xl px-6 py-12 lg:px-20 lg:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }}
+      />
       <Link href="/books/all" className="text-sm text-gray-300 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky-300">
         <span aria-hidden="true">&larr; </span>All books
       </Link>
@@ -106,7 +123,22 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   if (isYear(slug)) {
-    return { title: `${slug} Books | Matthew M. Osborn` };
+    const title = `Books from ${slug}`;
+    const description = `Books Matthew Osborn read in ${slug}, with covers and links from the personal bookshelf.`;
+    const url = bookUrl(slug);
+    return {
+      title,
+      description,
+      alternates: { canonical: url },
+      openGraph: {
+        type: "website",
+        title,
+        description,
+        url,
+        siteName: "Matthew M. Osborn",
+      },
+      twitter: { card: "summary", title, description },
+    };
   }
 
   const details = await Bookshelf.getBookWithOpenLibrary(slug);
