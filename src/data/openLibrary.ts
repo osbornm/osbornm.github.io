@@ -1,6 +1,6 @@
 import { Book, BookSynopsis } from "./types";
 import { createHash } from "crypto";
-import { mkdir, readdir, stat, writeFile } from "fs/promises";
+import { mkdir, readFile, readdir, stat, writeFile } from "fs/promises";
 import path from "path";
 import {
   GoogleBooksVolume,
@@ -89,10 +89,24 @@ function normalizeGoogleCoverUrl(url?: string) {
   if (!url) {
     return undefined;
   }
-  if (url.startsWith("http://")) {
-    return url.replace("http://", "https://");
+
+  let next = url.startsWith("http://") ? url.replace("http://", "https://") : url;
+
+  try {
+    const parsed = new URL(next);
+    // Google Books thumbnails default to zoom=1 (~small). zoom=0 is the larger cover.
+    if (parsed.hostname.includes("googleusercontent.com") || parsed.hostname.includes("googleapis.com")) {
+      if (parsed.searchParams.has("zoom")) {
+        parsed.searchParams.set("zoom", "0");
+      }
+      parsed.searchParams.delete("edge");
+      next = parsed.toString();
+    }
+  } catch {
+    // keep the https-upgraded URL
   }
-  return url;
+
+  return next;
 }
 
 function getBookCoverKey(book: Book) {
@@ -171,21 +185,103 @@ async function getLocalCoverFiles() {
 
 async function getExistingCoverFilePathByKey(key: string) {
   const files = await getLocalCoverFiles();
-  const filename = files
-    .filter((file) => {
-      const extension = path.extname(file).toLowerCase();
-      return (
-        file.startsWith(`${key}-`) &&
-        LOCAL_COVER_EXTENSIONS.includes(extension)
-      );
-    })
-    .sort()[0];
+  const matches = files.filter((file) => {
+    const extension = path.extname(file).toLowerCase();
+    return (
+      file.startsWith(`${key}-`) &&
+      LOCAL_COVER_EXTENSIONS.includes(extension)
+    );
+  });
 
-  return filename ? path.join(LOCAL_COVER_DIR, filename) : undefined;
+  if (!matches.length) {
+    return undefined;
+  }
+
+  // Prefer the largest file so a later high-res download wins over an older thumbnail.
+  const ranked = await Promise.all(
+    matches.map(async (file) => {
+      const filePath = path.join(LOCAL_COVER_DIR, file);
+      try {
+        const info = await stat(filePath);
+        return { filePath, size: info.size };
+      } catch {
+        return { filePath, size: 0 };
+      }
+    }),
+  );
+  ranked.sort((a, b) => b.size - a.size || a.filePath.localeCompare(b.filePath));
+  return ranked[0]?.filePath;
 }
 
 function getPublicCoverPath(filePath: string) {
   return `${LOCAL_COVER_PREFIX}/${path.basename(filePath)}`;
+}
+
+/** Minimum cover width for Slack/iMessage unfurls and bookshelf display. */
+const MIN_SHARE_COVER_WIDTH = 400;
+
+function readJpegWidth(bytes: Buffer): number | undefined {
+  if (bytes.length < 4 || bytes[0] !== 0xff || bytes[1] !== 0xd8) {
+    return undefined;
+  }
+
+  let offset = 2;
+  while (offset + 9 < bytes.length) {
+    if (bytes[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+    while (offset < bytes.length && bytes[offset] === 0xff) {
+      offset += 1;
+    }
+    if (offset >= bytes.length) {
+      break;
+    }
+
+    const marker = bytes[offset];
+    offset += 1;
+
+    // Standalone markers without a length field.
+    if (marker === 0xd8 || marker === 0xd9 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) {
+      continue;
+    }
+
+    if (offset + 1 >= bytes.length) {
+      break;
+    }
+
+    const length = bytes.readUInt16BE(offset);
+    if (
+      marker === 0xc0 || marker === 0xc1 || marker === 0xc2 || marker === 0xc3 ||
+      marker === 0xc5 || marker === 0xc6 || marker === 0xc7 || marker === 0xc9 ||
+      marker === 0xca || marker === 0xcb || marker === 0xcd || marker === 0xce ||
+      marker === 0xcf
+    ) {
+      return bytes.readUInt16BE(offset + 5);
+    }
+    offset += length;
+  }
+
+  return undefined;
+}
+
+async function isLocalCoverTooSmall(publicPath?: string) {
+  if (!publicPath?.startsWith(LOCAL_COVER_PREFIX)) {
+    return false;
+  }
+
+  const filePath = path.join(LOCAL_COVER_DIR, path.basename(publicPath));
+  try {
+    const bytes = await readFile(filePath);
+    const width = readJpegWidth(bytes);
+    // Non-JPEGs (png) or unreadable headers: keep them; only replace clearly tiny JPEGs.
+    if (width === undefined) {
+      return false;
+    }
+    return width < MIN_SHARE_COVER_WIDTH;
+  } catch {
+    return false;
+  }
 }
 
 async function getLocalCoverImage(book: Book) {
@@ -251,6 +347,7 @@ async function persistCoverImageLocally(book: Book, imageUrl?: string) {
 
     const targetPath = path.join(LOCAL_COVER_DIR, `${stem}${extension}`);
     await writeFile(targetPath, bytes);
+    localCoverFilesPromise = undefined;
 
     return getPublicCoverPath(targetPath);
   } catch {
@@ -442,15 +539,17 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
   let enrichedBook = book;
   try {
     const localImage = await getLocalCoverImage(book);
+    const localCoverTooSmall = SHOULD_WRITE_COVERS && await isLocalCoverTooSmall(localImage);
+    const usableLocalImage = localCoverTooSmall ? undefined : localImage;
     enrichedBook = {
       ...book,
-      image: localImage,
+      image: usableLocalImage ?? localImage,
       synopsis: book.synopsis ?? await readBookSynopsis(book.slug),
     };
     enrichedBook.author ??= enrichedBook.synopsis?.author;
 
     if (!SHOULD_REMOTE_ENRICH ||
-        (localImage && !SHOULD_WRITE_COVERS &&
+        (usableLocalImage && !SHOULD_WRITE_COVERS &&
           ((enrichedBook.synopsis && enrichedBook.author) || !SHOULD_WRITE_SYNOPSES))) {
       return enrichedBook;
     }
@@ -474,18 +573,18 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
         }
       }
     }
-    if (localImage && !SHOULD_WRITE_COVERS) return enrichedBook;
+    if (usableLocalImage && !SHOULD_WRITE_COVERS) return enrichedBook;
 
     if (isbn) {
       const isbnResult = await fetchByIsbn(isbn);
       if (isbnResult) {
         const image = await persistCoverImageLocally(
           book,
-          googleImage ??
-            isbnResult.cover?.large ??
+          isbnResult.cover?.large ??
+            googleImage ??
             isbnResult.cover?.medium ??
             isbnResult.cover?.small ??
-            localImage,
+            usableLocalImage,
         );
 
         return {
@@ -496,7 +595,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
         };
       }
 
-      const image = await persistCoverImageLocally(book, googleImage ?? localImage);
+      const image = await persistCoverImageLocally(book, googleImage ?? usableLocalImage);
       return {
         ...enrichedBook,
         image,
@@ -505,7 +604,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
 
     const doc = await searchOpenLibrary("title", book.title);
     if (!doc) {
-      const image = await persistCoverImageLocally(book, googleImage ?? localImage);
+      const image = await persistCoverImageLocally(book, googleImage ?? usableLocalImage);
       return {
         ...enrichedBook,
         image,
@@ -513,7 +612,7 @@ export async function enrichBookFromOpenLibrary(book: Book): Promise<Book> {
     }
 
     const openLibraryHref = doc.key ? `https://openlibrary.org${doc.key}` : undefined;
-    const remoteImage = googleImage ?? (doc.cover_i ? buildCoverUrl(doc.cover_i) : localImage);
+    const remoteImage = (doc.cover_i ? buildCoverUrl(doc.cover_i) : undefined) ?? googleImage ?? usableLocalImage;
     const image = await persistCoverImageLocally(book, remoteImage);
     return {
       ...enrichedBook,

@@ -134,6 +134,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: "Matthew M. Osborn",
       images,
     },
+    // Keep Slack's compact summary unfurl (small cover beside title/description).
     twitter: { card: "summary", title, description, images },
   };
 }
