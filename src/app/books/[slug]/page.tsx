@@ -117,28 +117,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const summary = book.synopsis?.text.replace(/\s+/g, " ").trim()
     ?? `${book.title}${book.author ? ` by ${book.author}` : ""}. From Matthew M. Osborn's bookshelf.`;
   const description = summary.length > 160 ? `${summary.slice(0, 157).trimEnd()}…` : summary;
-  const pageTitle = `${book.title} | Matthew M. Osborn`;
-  const shareTitle = book.author ? `${book.title} by ${book.author}` : book.title;
+  const title = `${book.title} | Matthew M. Osborn`;
   const images = book.image
-    ? [{
-        url: new URL(book.image, siteUrl).toString(),
-        alt: `Cover of ${book.title}`,
-      }]
+    ? [{ url: new URL(book.image, siteUrl).toString(), alt: `Cover of ${book.title}` }]
     : [];
 
   return {
-    title: pageTitle,
+    title,
     description,
     alternates: { canonical: bookUrl(slug) },
     openGraph: {
       type: "book",
-      title: shareTitle,
+      title,
       description,
       url: bookUrl(slug),
       siteName: "Matthew M. Osborn",
       images,
     },
-    // summary_large_image helps Slack/iMessage show a stronger cover-forward unfurl
-    twitter: { card: "summary_large_image", title: shareTitle, description, images },
+    // Keep Slack's compact summary unfurl (small cover beside title/description).
+    twitter: { card: "summary", title, description, images },
   };
 }
