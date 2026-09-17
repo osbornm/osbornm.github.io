@@ -116,10 +116,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { book } = details;
   const summary = book.synopsis?.text.replace(/\s+/g, " ").trim()
     ?? `${book.title}${book.author ? ` by ${book.author}` : ""}. From Matthew M. Osborn's bookshelf.`;
-  const description = summary.length > 160 ? `${summary.slice(0, 157).trimEnd()}…` : summary;
+  const description = summary.length > 160 ? `${summary.slice(0, 157).trimEnd()}...` : summary;
   const title = `${book.title} | Matthew M. Osborn`;
   const images = book.image
-    ? [{ url: new URL(book.image, siteUrl).toString(), alt: `Cover of ${book.title}` }]
+    ? [{
+        url: new URL(book.image, siteUrl).toString(),
+        alt: `Cover of ${book.title}`,
+        // Slack is pickier about OG images without explicit size hints.
+        width: 400,
+        height: 600,
+      }]
     : [];
 
   return {
@@ -127,14 +133,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     alternates: { canonical: bookUrl(slug) },
     openGraph: {
-      type: "book",
+      type: "website",
       title,
       description,
       url: bookUrl(slug),
       siteName: "Matthew M. Osborn",
       images,
     },
-    // Keep Slack's compact summary unfurl (small cover beside title/description).
+    // Compact summary card (cover thumb beside text). Use website type — Slack often drops rich fields for og:type=book.
     twitter: { card: "summary", title, description, images },
   };
 }
