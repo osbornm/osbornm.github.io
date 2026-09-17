@@ -122,9 +122,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? [{
         url: new URL(book.image, siteUrl).toString(),
         alt: `Cover of ${book.title}`,
-        // Slack is pickier about OG images without explicit size hints.
-        width: 400,
-        height: 600,
       }]
     : [];
 
