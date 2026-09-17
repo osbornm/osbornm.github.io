@@ -118,12 +118,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ?? `${book.title}${book.author ? ` by ${book.author}` : ""}. From Matthew M. Osborn's bookshelf.`;
   const description = summary.length > 160 ? `${summary.slice(0, 157).trimEnd()}...` : summary;
   const title = `${book.title} | Matthew M. Osborn`;
-  const images = book.image
-    ? [{
-        url: new URL(book.image, siteUrl).toString(),
-        alt: `Cover of ${book.title}`,
-      }]
-    : [];
+  // Dedicated 600x600 share thumbs — Slack often skips small portrait covers.
+  const sharePath = `/img/book-share/${slug}.jpg`;
+  const shareUrl = `${new URL(sharePath, siteUrl).toString()}?v=20260917`;
+  const images = [
+    {
+      url: shareUrl,
+      alt: `Cover of ${book.title}`,
+      width: 600,
+      height: 600,
+    },
+  ];
 
   return {
     title,
