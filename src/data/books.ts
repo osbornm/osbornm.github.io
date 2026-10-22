@@ -2,6 +2,36 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2026 */
   {
+    slug: "the-infinite-extent-bobiverse-book-6",
+    title: "The Infinite Extent: Bobiverse, Book 6",
+    author: "Dennis E. Taylor",
+    isbn13: "9781668271100",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.simonandschuster.biz/books/The-Infinite-Extent/Dennis-E-Taylor/Bobiverse/9781668271100",
+    image: "/img/book-covers/the-infinite-extent.jpg",
+  },
+  {
+    slug: "a-parade-of-horribles-dungeon-crawler-carl-book-8",
+    title: "A Parade of Horribles: Dungeon Crawler Carl, Book 8",
+    author: "Matt Dinniman",
+    isbn13: "9798217190065",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.penguinrandomhouse.com/books/812017/a-parade-of-horribles-by-matt-dinniman/",
+    image: "/img/book-covers/a-parade-of-horribles.jpg",
+  },
+  {
+    slug: "this-inevitable-ruin-dungeon-crawler-carl-book-7",
+    title: "This Inevitable Ruin: Dungeon Crawler Carl, Book 7",
+    author: "Matt Dinniman",
+    isbn13: "9798217190041",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://www.penguinrandomhouse.com/books/812016/this-inevitable-ruin-by-matt-dinniman/9798217190041/",
+    image: "/img/book-covers/this-inevitable-ruin.jpg",
+  },
+  {
     slug: "the-eye-of-the-bedlam-bride-dungeon-crawler-carl-book-6",
     title: "The Eye of the Bedlam Bride: Dungeon Crawler Carl, Book 6",
     author: "Matt Dinniman",
