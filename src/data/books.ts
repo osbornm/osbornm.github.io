@@ -2,6 +2,16 @@ import { Book, Category } from "./types";
 export const books: Array<Book> = [
   /* 2026 */
   {
+    slug: "remnant-first-colony-book-20",
+    title: "Remnant: First Colony, Book 20",
+    author: "Ken Lozito",
+    isbn13: "9781945223853",
+    year: 2026,
+    category: Category.Fiction,
+    href: "https://kenlozito.com/first-colony-remnant/",
+    image: "/img/book-covers/remnant.jpg",
+  },
+  {
     slug: "the-infinite-extent-bobiverse-book-6",
     title: "The Infinite Extent: Bobiverse, Book 6",
     author: "Dennis E. Taylor",
